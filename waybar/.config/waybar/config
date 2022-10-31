@@ -1,0 +1,53 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": ["clock", "sway/language"],
+    "modules-right": ["cpu", "memory", "bluetooth", "pulseaudio", "network"],
+
+    "pulseaudio": {
+        "format": "VOL: {volume}%",
+        "format-bluetooth": "HVOL: {volume}%",
+        "format-muted": "VOL: X",
+        "scroll-step": 5
+    },
+
+    "clock": {
+        "interval": 1,
+        "format": "{:%a %b %d.%m %r}"
+    },
+
+    "cpu": {
+        "format": "CPU: {usage}%"
+    },
+
+    "memory": {
+    "format": "MEM: {used:0.1f}/{total:0.1f} GB"
+    },
+
+    "sway/language": {
+        "format": "{}",
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+        "tooltip-format": "{long}"
+    },
+
+    "bluetooth": {
+        "format": "BtH",
+        "format-off": ""
+    },
+
+    "network": {
+        "interface": "wlo1",
+        "interval": 60, 
+        "format-disconnected": "Offline",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-wifi": "WiFi: {signalStrength}%",
+        "tooltip-format-wifi": "ESSID: {essid} \nIP: {ipaddr}"
+    },
+
+    "sway/mode": {
+        "format": "{}",
+        "max-length": 50
+    }
+}
+
