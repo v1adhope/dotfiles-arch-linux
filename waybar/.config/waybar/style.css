@@ -43,16 +43,16 @@ window#waybar {
   margin-right: 5px;
 }
 
+#network.ethernet, #network.wifi, #bluetooth {
+  color: @var-green-color;
+}
+
 #pulseaudio.muted, #network.disconnected  {
   color: @var-red-color; 
 }
 
-#bluetooth {
-  color: @var-green-color;
- }
-
 #memory {
- margin-right: 100px;
+ margin-right: 60px;
 }
 
 #mode {
