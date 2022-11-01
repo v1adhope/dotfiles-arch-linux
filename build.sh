@@ -7,6 +7,7 @@
 # A reboot is required after installation
 #
 #
+#
 PKGLIST=()
 STOWLIST=()
 #
@@ -41,7 +42,7 @@ PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel xdg-desktop-portal-wl
 STOWLIST+=(sway waybar mako fuzzel)
 #
 # Multimedia 
-PKGLIST+=(vim pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
+PKGLIST+=(vim pulseaudio bluez playerctl pipewire lib32-pipewire wireplumber imv \
           xdg-desktop-portal grim flameshot jre8-openjdk libreoffice-still \
           hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv)
 #
@@ -59,30 +60,39 @@ PKGLIST+=(go)
 PKGLIST+=(steam mangohud lib32-mangohud)
 STOWLIST+=(mangohud)
 #
-## Refresh keyring(requires entropy)
+#
+#
+### Refresh keyring(requires entropy)
 # pacman-key --init
 # pacman-key --populate archlinux
 # pacman-key --refresh-keys
-# pacman -Sy
+# sudo pacman -Sy
 #
-## Mirror generation
-# pacman -S reflector
+### Mirror generation
+# sudo pacman -S reflector
 # reflector --latest 15 --protocol https --country France --country Germany \
 #           --sort rate --save /etc/pacman.d/mirrorlist
-# pacman -Syyuu
+# sudo pacman -Syyuu
 #
-## Install tweaks for arch zen core 
+### Install tweaks for arch zen core 
 # paru -S cfs-zen-tweaks
 # systemctl enable --now set-cfs-tweaks.service
 #
-## Install(requires git)
+#
+#
+### Install(requires git)
 echo ${PKGLIST[@]}
 # git clone https://aur.archlinux.org/paru.git $HOME/gits/paru
 # cd $HOME/gits/paru && makepkg -si
 # cd .. && rm -rf paru
-paru -S ${PKGLIST[@]}
+# paru -S ${PKGLIST[@]}
 #
-## Create link configs
+### Create link configs
 echo ${STOWLIST[@]}
 # stow ${STOWLIST[@]}
 #
+### STOW /etc location
+#
+# Bluetooth simple settings 
+# sudo rm /etc/bluetooth/main.conf
+# sudo stow -t /etc/bluetooth bluez
