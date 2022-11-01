@@ -12,7 +12,7 @@ PKGLIST=()
 STOWLIST=()
 #
 # Common
-PKGLIST+=(git stow networkmanager)
+PKGLIST+=(git stow networkmanager bluez)
 STOWLIST+=(git scripts)
 #
 # AMD
@@ -34,7 +34,7 @@ PKGLIST+=(zsh)
 STOWLIST+=(zsh)
 #
 # Fonts
-PKGLIST+=(otf-font-awesome ttf-hack-nerd)
+PKGLIST+=(ttf-hack-nerd)
 #
 # Sway
 PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel xdg-desktop-portal-wlr \
@@ -42,12 +42,12 @@ PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel xdg-desktop-portal-wl
 STOWLIST+=(sway waybar mako fuzzel)
 #
 # Multimedia 
-PKGLIST+=(vim pulseaudio bluez playerctl pipewire lib32-pipewire wireplumber imv \
+PKGLIST+=(vim pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
           xdg-desktop-portal grim flameshot jre8-openjdk libreoffice-still \
           hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv)
 #
 # Utilities 
-PKGLIST+=(mesa-utils vulkan-tools htop nvtop xeyes wireguard-tools neofetch nnn)
+PKGLIST+=(mesa-utils vulkan-tools bluez-utils htop nvtop xeyes wireguard-tools neofetch nnn)
 #
 # Software
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent clipgrab \
@@ -70,15 +70,16 @@ STOWLIST+=(mangohud)
 #
 ### Mirror generation
 # sudo pacman -S reflector
-# reflector --latest 15 --protocol https --country France --country Germany \
+# sudo reflector --latest 15 --protocol https --country France --country Germany \
 #           --sort rate --save /etc/pacman.d/mirrorlist
 # sudo pacman -Syyuu
 #
 ### Install tweaks for arch zen core 
 # paru -S cfs-zen-tweaks
-# systemctl enable --now set-cfs-tweaks.service
+# sudo systemctl enable --now set-cfs-tweaks.service
 #
-#
+### Enable bluetooth
+# sudo systemctl enable -now bluetooth.service
 #
 ### Install(requires git)
 echo ${PKGLIST[@]}
@@ -95,4 +96,4 @@ echo ${STOWLIST[@]}
 #
 # Bluetooth simple settings 
 # sudo rm /etc/bluetooth/main.conf
-# sudo stow -t /etc/bluetooth bluez
+# sudo stow -t /etc/bluetooth bluetooth-stack
