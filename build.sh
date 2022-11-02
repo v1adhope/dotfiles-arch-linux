@@ -55,6 +55,7 @@ PKGLIST+=(mesa-utils vulkan-tools bluez-utils htop nvtop inxi xorg-xeyes wiregua
 # Software
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent clipgrab \
           authy google-chrome notion-app webcord)
+STOWLIST+=(google-chrome)
 #
 # Go
 PKGLIST+=(go)

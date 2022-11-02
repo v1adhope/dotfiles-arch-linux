@@ -49,8 +49,7 @@ assign [app_id="exec_alacritty"] 1
 exec --no-startup-id alacritty --class "exec_alacritty"
 # Browser workspace 2
 assign [app_id="google-chrome"] 2
-exec --no-startup-id google-chrome-stable %U --ozone-platform=wayland \
-     --enable-features=UseOzonePlatform --enable-features=WebUIDarkMode --force-dark-mode
+exec --no-startup-id google-chrome-stable
 # Messages workspace 3
 assign [app_id="telegramdesktop"] 3
 exec --no-startup-id telegram-desktop
