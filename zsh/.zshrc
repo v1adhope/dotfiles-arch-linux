@@ -37,8 +37,8 @@ prompt_themes+=( mytheme )
 prompt mytheme
 #
 # Theme&plagins
-source /home/rat/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/rat/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /home/rat/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/rat/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 #
 # Zsh history bind
 bindkey '^[[A' history-substring-search-up

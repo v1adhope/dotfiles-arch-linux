@@ -43,10 +43,10 @@ for_window [class="XEyes"] floating enable
 for_window [title="glxgears"] floating enable
 for_window [app_id="flameshot"] floating enable
 # Workspace 1
-assign [app_id="exec_alacritty"] 1
-exec --no-startup-id alacritty --class "exec_alacritty"
 assign [class="notion-app"] 1
 exec --no-startup-id notion-app
+assign [app_id="exec_alacritty"] 1
+exec --no-startup-id alacritty --class "exec_alacritty"
 # Browser workspace 2
 assign [app_id="google-chrome"] 2
 exec --no-startup-id google-chrome-stable %U --ozone-platform=wayland \

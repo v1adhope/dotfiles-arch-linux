@@ -3,6 +3,9 @@
 ### Attention please!!!
 #
 # Comment/uncomment the groups you want
+# 
+# recommend pacstrap pkgs: base base-devel linux-zen linux-zen-headers linux-lts linux-lts-headers \
+#                linux-firmware btrfs-progs vim git grub efibootmgr dhcpcd dhclient networkmanager
 #
 # A reboot is required after installation
 #
@@ -12,7 +15,7 @@ PKGLIST=()
 STOWLIST=()
 #
 # Common
-PKGLIST+=(git stow networkmanager bluez)
+PKGLIST+=(stow)
 STOWLIST+=(git scripts)
 #
 # AMD
@@ -38,7 +41,7 @@ PKGLIST+=(ttf-hack-nerd)
 #
 # Sway
 PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel xdg-desktop-portal-wlr \
-          xorg-server)
+          xorg-server xorg-xwayland)
 STOWLIST+=(sway waybar mako fuzzel)
 #
 # Multimedia 
@@ -47,7 +50,7 @@ PKGLIST+=(vim pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
           hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv)
 #
 # Utilities 
-PKGLIST+=(mesa-utils vulkan-tools bluez-utils htop nvtop xeyes wireguard-tools neofetch nnn)
+PKGLIST+=(mesa-utils vulkan-tools bluez-utils htop nvtop inxi xorg-xeyes wireguard-tools neofetch nnn cronie)
 #
 # Software
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent clipgrab \
@@ -60,7 +63,8 @@ PKGLIST+=(go)
 PKGLIST+=(steam mangohud lib32-mangohud)
 STOWLIST+=(mangohud)
 #
-#
+### TRIM enable
+# sudo systemctl enable fstrim.timer
 #
 ### Refresh keyring(requires entropy)
 # pacman-key --init
@@ -78,8 +82,7 @@ STOWLIST+=(mangohud)
 # paru -S cfs-zen-tweaks
 # sudo systemctl enable --now set-cfs-tweaks.service
 #
-### Enable bluetooth
-# sudo systemctl enable -now bluetooth.service
+#
 #
 ### Install(requires git)
 echo ${PKGLIST[@]}
@@ -92,8 +95,14 @@ echo ${PKGLIST[@]}
 echo ${STOWLIST[@]}
 # stow ${STOWLIST[@]}
 #
-### STOW /etc location
 #
-# Bluetooth simple settings 
+#
+### Set zsh shell
+#
+# chsh -s /bin/zsh
+#
+### Bluetooth enable with simple settings 
+# rfkill unblock bluetooth
+# sudo systemctl enable -now bluetooth.service
 # sudo rm /etc/bluetooth/main.conf
 # sudo stow -t /etc/bluetooth bluetooth-stack
