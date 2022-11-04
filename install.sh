@@ -120,6 +120,11 @@ echo ${STOWLIST[@]}
 # sudo stow -t /etc/fonts fonts
 # fc-cache
 #
+# Create grub link config
+# sudo rm /etc/default/grub
+# sudo stow -t /etc/default grub
+# sudo grub-mkconfig -o /boot/grub/grub.cfg
+#
 ### Bluetooth enable with simple settings 
 # rfkill unblock bluetooth
 # sudo systemctl enable -now bluetooth.service
