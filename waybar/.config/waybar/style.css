@@ -5,7 +5,7 @@
 @define-color var-yellow-color rgba(255, 215, 71, 0.8);
 
 * {
-  font-family: "Hack Nerd Font Mono";
+  font-family: "Noto Sans Mono";
   font-size: 13px;
 }
 

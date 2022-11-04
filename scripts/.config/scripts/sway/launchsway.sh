@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# GTK
+export GTK_THEME=Adwaita:dark
+
 # QT5 fix
-export QT_QPA_PLATFORMTHEME=qt5ct
+# export QT_QPA_PLATFORMTHEME=
+# QT_STYLE_OVERRIDE=
 
 # Wayland fix
 export SDL_VIDEODRIVER=wayland

@@ -9,6 +9,11 @@
 #
 # A reboot is required after installation
 #
+# Install paru
+# git clone https://aur.archlinux.org/paru.git
+# cd paru && makepkg -si
+# cd .. && rm -rf paru
+#
 #
 #
 PKGLIST=()
@@ -37,7 +42,14 @@ PKGLIST+=(zsh)
 STOWLIST+=(zsh)
 #
 # Fonts
-PKGLIST+=(ttf-hack-nerd)
+PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji)
+#
+# Bluetooth support
+PKGLIST+=(pulseaudio-bluetooth bluez-utils)
+#
+# Widget toolkits
+PKGLIST+=(gtk2 gtk3 gtk4)
+STOWLIST+=(gtk)
 #
 # Sway
 PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel xdg-desktop-portal-wlr \
@@ -47,10 +59,10 @@ STOWLIST+=(sway waybar mako fuzzel)
 # Multimedia 
 PKGLIST+=(vim pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
           xdg-desktop-portal grim flameshot jre8-openjdk libreoffice-still \
-          hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv)
+	  hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv) 
 #
 # Utilities 
-PKGLIST+=(mesa-utils vulkan-tools bluez-utils htop nvtop inxi xorg-xeyes wireguard-tools neofetch nnn cronie)
+PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes wireguard-tools neofetch nnn cronie)
 #
 # Software
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent clipgrab \
@@ -74,10 +86,10 @@ STOWLIST+=(mangohud)
 # sudo pacman -Sy
 #
 ### Mirror generation
-# sudo pacman -S reflector
+# paru -S reflector
 # sudo reflector --latest 15 --protocol https --country France --country Germany \
 #           --sort rate --save /etc/pacman.d/mirrorlist
-# sudo pacman -Syyuu
+# paru -Syyuu
 #
 ### Install tweaks for arch zen core 
 # paru -S cfs-zen-tweaks
@@ -85,11 +97,8 @@ STOWLIST+=(mangohud)
 #
 #
 #
-### Install(requires git)
+### Install
 echo ${PKGLIST[@]}
-# git clone https://aur.archlinux.org/paru.git $HOME/gits/paru
-# cd $HOME/gits/paru && makepkg -si
-# cd .. && rm -rf paru
 # paru -S ${PKGLIST[@]}
 #
 ### Create link configs
@@ -99,8 +108,17 @@ echo ${STOWLIST[@]}
 #
 #
 ### Set zsh shell
-#
 # chsh -s /bin/zsh
+#
+### Fonts setup
+# sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
+# sudo ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
+# sudo ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
+#
+# Uncomment export FREETYPE_PROPERTIES="truetype:interpreter-version=40" in /etc/profile.d/freetype2.sh
+#
+# sudo stow -t /etc/fonts fonts
+# fc-cache
 #
 ### Bluetooth enable with simple settings 
 # rfkill unblock bluetooth

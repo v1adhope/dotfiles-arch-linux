@@ -1,7 +1,7 @@
 on-button-left=dismiss
 on-button-right=dismiss-all
 
-font="Hack Nerd Font Mono" Regular 11
+font="Noto Sans Mono" Regular 11
 background-color=#000000CE
 text-color=#FFFFFFFF
 padding=12, 6

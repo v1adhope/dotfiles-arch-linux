@@ -15,7 +15,7 @@ compinit
 [[ $- != *i* ]] && return
 #
 # If running from tty1 start sway
-[ "$(tty)" = "/dev/tty1" ] && source $HOME/.config/scripts/launchsway.sh
+[ "$(tty)" = "/dev/tty1" ] && source $HOME/.config/scripts/sway/launchsway.sh
 #
 ### Exports
 #
