@@ -4,6 +4,6 @@ See https://github.com/sibradzic/amdgpu-clocks for more information and this htt
 > The current installation script is designed for one video card 5xxx series!
 
 Use your pattern `custom-values/amdgpu-custom-states.card0`
-Find it you can run this command
+For dind it you can run this command
 ```cat $(readlink -f /sys/class/drm/card0/device)/pp_od_clk_voltage```
 

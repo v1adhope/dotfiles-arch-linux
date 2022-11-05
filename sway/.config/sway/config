@@ -1,7 +1,3 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 ### Common settings
@@ -43,6 +39,10 @@ for_window [app_id="org.keepassxc.KeePassXC"] floating enable
 for_window [class="XEyes"] floating enable
 for_window [title="glxgears"] floating enable
 for_window [app_id="flameshot"] floating enable, fullscreen disable, move absolute position 0 0, border pixel 0
+# Steam
+assign [class="Steam"] 7
+for_window [class="Steam" title="Steam"] resize set 70 ppt
+for_window [class="Steam" title="Friends List"] resize set 20 ppt
 
 ### Variables
 #
@@ -50,7 +50,7 @@ for_window [app_id="flameshot"] floating enable, fullscreen disable, move absolu
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
-set $down j
+set $down j 
 set $up k
 set $right l
 # Your preferred terminal emulator
@@ -132,10 +132,12 @@ input type:keyboard {
 # Moving around:
 #
     # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+    bindsym --to-code {
+      $mod+$left focus left
+      $mod+$down focus down
+      $mod+$up focus up
+      $mod+$right focus right
+    }
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
@@ -143,10 +145,12 @@ input type:keyboard {
     bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    bindsym --to-code {
+      $mod+Shift+$left move left
+      $mod+Shift+$down move down
+      $mod+Shift+$up move up
+      $mod+Shift+$right move right
+    }
     # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
@@ -224,10 +228,12 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym --to-code {
+      $left resize shrink width 10px
+      $down resize grow height 10px
+      $up resize shrink height 10px
+      $right resize grow width 10px
+    }
 
     # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
@@ -239,7 +245,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym --to-code $mod+r mode "resize"
 
 #
 # Status Bar:

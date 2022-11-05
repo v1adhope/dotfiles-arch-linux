@@ -62,7 +62,8 @@ PKGLIST+=(vim pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
 	  hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv) 
 #
 # Utilities 
-PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes wireguard-tools neofetch nnn cronie)
+PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes wireguard-tools neofetch nnn \
+          cronie wl-clipboard)
 #
 # Software
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent clipgrab \
