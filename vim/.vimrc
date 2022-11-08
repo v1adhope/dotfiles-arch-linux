@@ -1,6 +1,21 @@
 " ~/.vimrc
 
+call plug#begin('~/.vim/plugged')
+
+Plug 'joshdick/onedark.vim'
+
+call plug#end()
+
+" True color 24-bit
+if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
 syntax on
+set termguicolors
+colorscheme onedark
+
 set number
 " Use space characters instead of tabs.
 set expandtab

@@ -34,7 +34,6 @@ exec --no-startup-id telegram-desktop
 
 ### Application layout
 #
-for_window [class="Vlc"] resize set width 70 ppt
 for_window [app_id="org.keepassxc.KeePassXC"] floating enable 
 for_window [class="XEyes"] floating enable
 for_window [title="glxgears"] floating enable
@@ -91,7 +90,7 @@ input type:keyboard {
 ### Key bindings
 #
     # Get screenshot
-    bindsym Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/documents/screenshots" grim 
+    bindsym Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim 
 
     #bindsym Print exec --no-startup-id flameshot gui 
     # https://github.com/flameshot-org/flameshot/issues/2959

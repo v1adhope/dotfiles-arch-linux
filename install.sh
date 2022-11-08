@@ -10,7 +10,7 @@
 # A reboot is required after installation
 #
 # Install paru
-# git clone https://aur.archlinux.org/paru.git
+# git clone https://aur.archlinux.org/paru.git --depth=1
 # cd paru && makepkg -si
 # cd .. && rm -rf paru
 #
@@ -41,6 +41,10 @@ STOWLIST+=(alacritty)
 PKGLIST+=(zsh)
 STOWLIST+=(zsh)
 #
+# Multiplexer
+PKGLIST+=(tmux)
+STOWLIST+=(tmux)
+#
 # Fonts
 PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji)
 #
@@ -57,13 +61,15 @@ PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel xdg-desktop-portal-wl
 STOWLIST+=(sway waybar mako fuzzel)
 #
 # Multimedia 
-PKGLIST+=(vim pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
+PKGLIST+=(vim vim-plug pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
           xdg-desktop-portal grim flameshot jre8-openjdk libreoffice-still \
 	  hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv) 
+STOWLIST+=(imv)
 #
 # Utilities 
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes wireguard-tools neofetch nnn \
-          cronie wl-clipboard)
+          cronie wl-clipboard perl-file-mimeinfo)
+STOWLIST+=(mimetype nnn)
 #
 # Software
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent clipgrab \
@@ -110,6 +116,9 @@ echo ${STOWLIST[@]}
 #
 ### Set zsh shell
 # chsh -s /bin/zsh
+#
+### Vim
+# Use :PlugInstall for install plugins
 #
 ### Fonts setup
 # sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d

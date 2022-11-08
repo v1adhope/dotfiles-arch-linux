@@ -11,12 +11,12 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# If not running interactively, don't do anything
+### If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-#
-# If running from tty1 start sway
+
+### If running from tty1 start sway
 [ "$(tty)" = "/dev/tty1" ] && source $HOME/.config/scripts/sway/launchsway.sh
-#
+
 ### Exports
 #
 # Default text editor
@@ -25,21 +25,23 @@ export EDITOR=/usr/bin/vim
 source "$HOME/.config/scripts/hardware-video-acceleration.sh"
 # Alias
 source "$HOME/.config/scripts/alias.sh"
-#
-# Load promptinit
+# Customize nnn
+source "$HOME/.config/nnn/cusomize-nnn.sh"
+
+### Load promptinit
 autoload -Uz promptinit && promptinit
-#
-# Rat Theme
+
+### Rat Theme
 prompt_mytheme_setup() {
   PS1="%B[%F{66}%n%f@%m: %F{white}%~%f ]%# %b"
 }
 prompt_themes+=( mytheme )
 prompt mytheme
-#
-# Theme&plagins
+
+### Theme&plagins
 source /home/rat/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/rat/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-#
-# Zsh history bind
+
+### Zsh history bind
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down

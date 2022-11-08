@@ -1,0 +1,14 @@
+[Added Associations]
+x-scheme-handler/tg=userapp-Telegram Desktop-5CKYU1.desktop;
+
+[Default Applications]
+x-scheme-handler/notion=notion-app.desktop
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+image/png=imv.desktop;
+video/mp4=mpv.desktop;
+application/x-shellscript=vim.desktop;
+
