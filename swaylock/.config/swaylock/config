@@ -1,0 +1,7 @@
+font="Noto Sans Mono"
+image="$HOME/.config/swaylock/images/swaylock1.png"
+scaling=fill
+
+daemonize
+show-failed-attempts
+

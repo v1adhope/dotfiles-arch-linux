@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["clock", "sway/language"],
+    "modules-center": ["clock", "sway/language", "tray"],
     "modules-right": ["cpu", "memory", "pulseaudio", "bluetooth", "network"],
 
     "pulseaudio": {
@@ -52,6 +52,11 @@
     "sway/mode": {
         "format": "{}",
         "max-length": 50
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 5
     }
 }
 

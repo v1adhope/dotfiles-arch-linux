@@ -10,7 +10,7 @@
 # A reboot is required after installation
 #
 # Install paru
-# git clone https://aur.archlinux.org/paru.git --depth=1
+# git clone https://aur.archlinux.org/paru-bin.git --depth=1
 # cd paru && makepkg -si
 # cd .. && rm -rf paru
 #
@@ -56,15 +56,15 @@ PKGLIST+=(gtk2 gtk3 gtk4)
 STOWLIST+=(gtk)
 #
 # Sway
-PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel xdg-desktop-portal-wlr \
+PKGLIST+=(sway swaybg swayidle swaylock waybar mako jq fuzzel xdg-desktop-portal-wlr \
           xorg-server xorg-xwayland)
-STOWLIST+=(sway waybar mako fuzzel)
+STOWLIST+=(sway waybar mako fuzzel swaylock)
 #
 # Multimedia 
 PKGLIST+=(vim vim-plug pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
           xdg-desktop-portal grim flameshot jre8-openjdk libreoffice-still \
 	  hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv) 
-STOWLIST+=(imv)
+STOWLIST+=(vim imv mpv)
 #
 # Utilities 
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes wireguard-tools neofetch nnn \

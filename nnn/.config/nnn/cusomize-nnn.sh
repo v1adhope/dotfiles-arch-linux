@@ -19,5 +19,10 @@ export NNN_ARCHIVE="\\.(7z|bz2|gz|tar|tgz|zip)$"
 
 export NNN_FIFO=/tmp/nnn.fifo
 
-# Pluging
-#export NNN_PLUG="p:preview-tui"
+### Plugins
+#
+export NNN_PLUG="p:preview-tui"
+#
+# Preview-tui
+export SPLIT="v"
+

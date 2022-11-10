@@ -69,3 +69,6 @@ window#waybar {
   color: @var-red-color;
 }
 
+#tray {
+  margin-left: 5px;
+}
