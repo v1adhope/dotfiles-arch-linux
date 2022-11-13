@@ -52,7 +52,7 @@ PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji)
 PKGLIST+=(pulseaudio-bluetooth bluez-utils)
 #
 # Widget toolkits
-PKGLIST+=(gtk2 gtk3 gtk4)
+PKGLIST+=(gtk2 gtk3 qt5ct qt6ct adwaita-qt5 adwaita-qt6)
 STOWLIST+=(gtk)
 #
 # Sway
@@ -62,8 +62,8 @@ STOWLIST+=(sway waybar mako fuzzel swaylock)
 #
 # Multimedia 
 PKGLIST+=(vim vim-plug pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
-          xdg-desktop-portal grim flameshot jre8-openjdk libreoffice-still \
-	  hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv) 
+          xdg-desktop-portal grim slurp flameshot jre8-openjdk libreoffice-still \
+	        hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv obs-studio)
 STOWLIST+=(vim imv mpv)
 #
 # Utilities 
@@ -73,7 +73,7 @@ STOWLIST+=(mimetype nnn)
 #
 # Software
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent clipgrab \
-          authy google-chrome notion-app webcord)
+          authy google-chrome obsidian webcord)
 STOWLIST+=(google-chrome)
 #
 # Go
@@ -113,6 +113,8 @@ echo ${STOWLIST[@]}
 # stow ${STOWLIST[@]}
 #
 #
+### NetworkManager
+# sudo stow -t /etc/NetworkManager/conf.d/ networkmanager
 #
 ### Set zsh shell
 # chsh -s /bin/zsh

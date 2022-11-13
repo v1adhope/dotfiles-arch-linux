@@ -13,18 +13,18 @@ exec_always $HOME/.config/scripts/sway/import-gsettings.sh
 ### Appearance
 #
 font pango: "Noto Sans" Regular 11
-default_border pixel
-gaps inner 5
+default_border pixel 2
+gaps top 6
 default_orientation horizontal
 workspace_auto_back_and_forth yes
 
 ### Workspace
 #
 # Main(1)
-assign [class="notion-app"] 1
-exec --no-startup-id notion-app
-assign [app_id="exec_alacritty"] 1
-exec --no-startup-id alacritty --class "exec_alacritty"
+assign [class="obsidian"] 1
+exec --no-startup-id obsidian
+# assign [app_id="exec_alacritty"] 1
+# exec --no-startup-id alacritty --class "exec_alacritty"
 # Browser(2)
 assign [app_id="google-chrome"] 2
 exec --no-startup-id google-chrome-stable
@@ -64,7 +64,7 @@ set $menu fuzzel
 # Main screen
 output HDMI-A-1 pos 0 0 res 1920x1080
 #  Wallpaper
-output * bg $HOME/.config/sway/wallpapers/wallpaper1.jpg fill
+output * bg $HOME/.config/sway/wallpapers/wallpaper3.jpg fill
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
@@ -95,6 +95,7 @@ input type:keyboard {
 
     # Get screenshot
     bindsym Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim 
+    bindsym Shift+Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim -g "$(slurp)"
 
     #bindsym Print exec --no-startup-id flameshot gui 
     # https://github.com/flameshot-org/flameshot/issues/2959

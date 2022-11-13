@@ -1,14 +1,10 @@
 #!/bin/bash
 
-# GTK
-export GTK_THEME=Adwaita:dark
-
 # Steam fix
 export SDL_VIDEODRIVER=x11
 
-# QT5 fix
-# export QT_QPA_PLATFORMTHEME=
-# QT_STYLE_OVERRIDE=
+# QT5 and QT6 fix
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Wayland fix
 #export SDL_VIDEODRIVER=wayland
@@ -20,3 +16,4 @@ export GDK_BACKEND="wayland,x11"
 
 exec sway
 exec mako
+

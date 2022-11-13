@@ -8,6 +8,7 @@ shell:
     - -l
     - -c
     - "tmux attach || tmux"
+#    - tmux
 
 window:
   opacity: 0.8
