@@ -63,7 +63,7 @@ STOWLIST+=(sway waybar mako fuzzel swaylock)
 # Multimedia 
 PKGLIST+=(vim vim-plug pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
           xdg-desktop-portal grim slurp flameshot jre8-openjdk libreoffice-still \
-	        hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv obs-studio)
+          hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv) 
 STOWLIST+=(vim imv mpv)
 #
 # Utilities 
@@ -73,11 +73,15 @@ STOWLIST+=(mimetype nnn)
 #
 # Software
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent clipgrab \
-          authy google-chrome obsidian webcord)
+          authy google-chrome obsidian dropbox webcord obs-studio)
 STOWLIST+=(google-chrome)
 #
 # Go
 PKGLIST+=(go)
+#
+# SQL
+# Postgres version 14
+PKGLIST+=(postgresql)
 #
 # Games
 PKGLIST+=(steam mangohud lib32-mangohud)
@@ -112,6 +116,14 @@ echo ${PKGLIST[@]}
 echo ${STOWLIST[@]}
 # stow ${STOWLIST[@]}
 #
+# Dropbox fix
+for i in ${STOWLIST[@]}; do
+  if [ $i == "dropbox" ]
+    then
+     rm -rf ~/.dropbox-dist
+     install -dm0 ~/.dropbox-dist 
+  fi
+done
 #
 ### NetworkManager
 # sudo stow -t /etc/NetworkManager/conf.d/ networkmanager

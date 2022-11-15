@@ -26,6 +26,7 @@ case $1 in
        DNS_changer
        echo "DNS fixed: $default_DNS"
   fi
+  echo "done!"
 ;;
 -c) 
   if [ "$status" == "active" ]
@@ -40,5 +41,11 @@ case $1 in
   fi
   echo "done!"
 ;;
-*) echo "uncknown";;
+*)
+  echo "Uncknown:
+Use -s for check is-active status postgresql.service
+Use -c for on/off wireguard VPN
+USE -f for fix DNS if network not working, this may help"
+;;
 esac
+

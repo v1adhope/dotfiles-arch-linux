@@ -1,8 +1,13 @@
 #!/bin/bash
-#
+
 alias ls='ls -lhN --color=auto --group-directories-first'
-alias comcom='~/.config/scripts/common-commands.sh'
-alias wgcon='~/.config/scripts/wireguard-connection.sh'
-# alias q='tmux kill-session -t $(tmux display-message -p "#S")'
+
+# Removing unnecessary dependencies
 alias pman='sudo pacman -R $(pacman -Qdtq)'
+# Common commands 
+alias comcom='~/.config/scripts/common-commands.sh'
+# Wireguard connect support tool
+alias wgcon='~/.config/scripts/wireguard-connection.sh'
+# PostgreSQL support tool
+alias ps='~/.config/scripts/postgres/use-postgres.sh'
 
