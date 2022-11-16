@@ -4,17 +4,56 @@
 #
 # Comment/uncomment the groups you want
 # 
+# Use install_paru function if you have not paru
+#
 # recommend pacstrap pkgs: base base-devel linux-zen linux-zen-headers linux-lts linux-lts-headers \
 #                linux-firmware btrfs-progs vim git grub efibootmgr dhcpcd dhclient networkmanager
 #
 # A reboot is required after installation
+
+function TRIM_enable {
+  sudo systemctl enable fstrim.timer
+}
+
+function install_paru {
+  git clone --depth=1 https://aur.archlinux.org/paru-bin.git 
+  cd paru && makepkg -si
+  cd .. && rm -rf paru
+}
+
+function mirror_generation {
+  paru -S reflector
+  sudo reflector --latest 15 --protocol https --country France --country Germany \
+                 --sort rate --save /etc/pacman.d/mirrorlist
+  paru -Syu
+}
+
+function refresh_keyring {
+  sudo pacman-key --init
+  sudo pacman-key --populate archlinux
+  sudo pacman-key --refresh-keys
+  mirror_generation
+}
+
+function zen_core_tweaks {
+  paru -S cfs-zen-tweaks
+  sudo systemctl enable --now set-cfs-tweaks.service
+}
+
+### Functions
 #
-# Install paru
-# git clone https://aur.archlinux.org/paru-bin.git --depth=1
-# cd paru && makepkg -si
-# cd .. && rm -rf paru
+# TRIM_enable
 #
+# install_paru
 #
+# mirror_generation
+#
+## Include mirror_generation
+# refresh_keyring
+#
+# zen_core_tweaks
+ 
+### Choosing packages and configs
 #
 PKGLIST=()
 STOWLIST=()
@@ -86,54 +125,43 @@ PKGLIST+=(postgresql)
 # Games
 PKGLIST+=(steam mangohud lib32-mangohud)
 STOWLIST+=(mangohud)
+
+### Install packages
 #
-### TRIM enable
-# sudo systemctl enable fstrim.timer
-#
-### Refresh keyring(requires entropy)
-# pacman-key --init
-# pacman-key --populate archlinux
-# pacman-key --refresh-keys
-# sudo pacman -Sy
-#
-### Mirror generation
-# paru -S reflector
-# sudo reflector --latest 15 --protocol https --country France --country Germany \
-#           --sort rate --save /etc/pacman.d/mirrorlist
-# paru -Syyuu
-#
-### Install tweaks for arch zen core 
-# paru -S cfs-zen-tweaks
-# sudo systemctl enable --now set-cfs-tweaks.service
-#
-#
-#
-### Install
 echo ${PKGLIST[@]}
 # paru -S ${PKGLIST[@]}
-#
+
 ### Create link configs
+#
 echo ${STOWLIST[@]}
 # stow ${STOWLIST[@]}
+
+### Fixes and automation
 #
-# Dropbox fix
-for i in ${STOWLIST[@]}; do
+function settings {
+for i in ${PKGLIST[@]}; do
   if [ $i == "dropbox" ]
     then
-     rm -rf ~/.dropbox-dist
-     install -dm0 ~/.dropbox-dist 
+      # Dropbox fix
+      rm -rf ~/.dropbox-dist
+      install -dm0 ~/.dropbox-dist 
+  elif [ $i == "bluez-utils" ]
+    then
+      # Enable bluetooth
+      rfkill unblock bluetooth
+      sudo systemctl enable --now bluetooth.service
+  elif [ $i == "zsh" ]
+    then
+      #  ZSH as default shell
+      chsh -s /bin/zsh
   fi
 done
-#
+}
+#settings
+
 ### NetworkManager
-# sudo stow -t /etc/NetworkManager/conf.d/ networkmanager
-#
-### Set zsh shell
-# chsh -s /bin/zsh
-#
-### Vim
-# Use :PlugInstall for install plugins
-#
+# sudo stow -t /etc/NetworkManager/conf.d/ networkmanager #
+
 ### Fonts setup
 # sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
 # sudo ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
@@ -143,14 +171,13 @@ done
 #
 # sudo stow -t /etc/fonts fonts
 # fc-cache
-#
-# Create grub link config
+
+### Create grub link config
 # sudo rm /etc/default/grub
 # sudo stow -t /etc/default grub
 # sudo grub-mkconfig -o /boot/grub/grub.cfg
-#
-### Bluetooth enable with simple settings 
-# rfkill unblock bluetooth
-# sudo systemctl enable -now bluetooth.service
+
+### Create bluetooth link config
 # sudo rm /etc/bluetooth/main.conf
 # sudo stow -t /etc/bluetooth bluetooth-stack
+
