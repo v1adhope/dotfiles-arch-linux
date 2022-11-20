@@ -128,12 +128,12 @@ STOWLIST+=(mangohud)
 
 ### Install packages
 #
-echo ${PKGLIST[@]}
+echo -e "--- Packages list ---\n${PKGLIST[@]}\n"
 # paru -S ${PKGLIST[@]}
 
 ### Create link configs
 #
-echo ${STOWLIST[@]}
+echo -e "--- Configs list ---\n${STOWLIST[@]}\n"
 # stow ${STOWLIST[@]}
 
 ### Fixes and automation
