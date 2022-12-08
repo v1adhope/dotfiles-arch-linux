@@ -27,7 +27,8 @@ compinit
 ### Exports
 #
 # Default text editor
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 # Hardware video acceleration
 source "$HOME/.config/scripts/hardware-video-acceleration.sh"
 # Alias
@@ -57,3 +58,4 @@ bindkey '^[[B' history-substring-search-down
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+

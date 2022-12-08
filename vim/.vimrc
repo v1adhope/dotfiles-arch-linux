@@ -16,6 +16,7 @@ syntax on
 set termguicolors
 colorscheme onedark
 
+" Line numbering
 set number
 " Use space characters instead of tabs.
 set expandtab

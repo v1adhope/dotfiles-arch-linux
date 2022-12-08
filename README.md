@@ -2,7 +2,7 @@
 
 ## Preview
 
-![preview](/assets/images/preview-20221116.png)
+![preview](/assets/images/preview-20221209.png)
 
 ## Where to look for information about current dotfiles?
 

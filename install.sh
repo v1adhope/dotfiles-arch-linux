@@ -6,8 +6,10 @@
 # 
 # Use install_paru function if you have not paru
 #
-# recommend pacstrap pkgs: base base-devel linux-zen linux-zen-headers linux-lts linux-lts-headers \
-#                linux-firmware btrfs-progs vim git grub efibootmgr dhcpcd dhclient networkmanager
+# recommend pacstrap pkgs: base base-devel linux-zen linux-zen-headers \
+#                          linux-lts linux-lts-headers linux-firmware \
+#                          btrfs-progs vim git grub efibootmgr dhcpcd \
+#                          dhclient networkmanager
 #
 # A reboot is required after installation
 
@@ -23,8 +25,9 @@ function install_paru {
 
 function mirror_generation {
   paru -S reflector
-  sudo reflector --latest 15 --protocol https --country France --country Germany \
-                 --sort rate --save /etc/pacman.d/mirrorlist
+  sudo reflector --latest 15 --protocol https --country France \
+                 --country Germany --sort rate \
+                 --save /etc/pacman.d/mirrorlist
   paru -Syu
 }
 
@@ -95,25 +98,33 @@ PKGLIST+=(gtk2 gtk3 qt5ct qt6ct adwaita-qt5 adwaita-qt6)
 STOWLIST+=(gtk)
 #
 # Sway
-PKGLIST+=(sway swaybg swayidle swaylock waybar mako jq fuzzel xdg-desktop-portal-wlr \
-          xorg-server xorg-xwayland)
+PKGLIST+=(sway swaybg swayidle swaylock waybar mako jq fuzzel \
+          xdg-desktop-portal-wlr xorg-server xorg-xwayland)
 STOWLIST+=(sway waybar mako fuzzel swaylock)
 #
 # Multimedia 
-PKGLIST+=(vim vim-plug pulseaudio playerctl pipewire lib32-pipewire wireplumber imv \
-          xdg-desktop-portal grim slurp flameshot jre8-openjdk libreoffice-still \
-          hunspell-en_us hunspell-ru libreoffice-extension-languagetool mpv) 
-STOWLIST+=(vim imv mpv)
+PKGLIST+=(pulseaudio playerctl pipewire lib32-pipewire \
+          wireplumber imv xdg-desktop-portal grim slurp flameshot \
+          jre8-openjdk libreoffice-still hunspell-en_us hunspell-ru \
+          libreoffice-extension-languagetool mpv)
+STOWLIST+=(imv mpv)
 #
 # Utilities 
-PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes wireguard-tools neofetch nnn \
-          cronie wl-clipboard perl-file-mimeinfo)
-STOWLIST+=(mimetype nnn)
+PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
+          wireguard-tools neofetch nnn cronie wl-clipboard \
+          perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
+          wine)
+STOWLIST+=(nnn)
 #
 # Software
-PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent clipgrab \
-          authy google-chrome obsidian dropbox webcord obs-studio)
+PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
+          clipgrab authy google-chrome obsidian dropbox webcord \
+          obs-studio)
 STOWLIST+=(google-chrome)
+#
+# Text editors
+PKGLIST+=(vim vim-plug neovim nvim-packer-git)
+STOWLIST+=(vim nvim)
 #
 # Go
 PKGLIST+=(go)
@@ -123,7 +134,7 @@ PKGLIST+=(go)
 PKGLIST+=(postgresql)
 #
 # Games
-PKGLIST+=(steam mangohud lib32-mangohud)
+PKGLIST+=(steam lutris mangohud lib32-mangohud xpadneo-dkms)
 STOWLIST+=(mangohud)
 
 ### Install packages
@@ -180,4 +191,7 @@ done
 ### Create bluetooth link config
 # sudo rm /etc/bluetooth/main.conf
 # sudo stow -t /etc/bluetooth bluetooth-stack
+
+### Mimetype
+# cat mimetype/.config/mimeapps.list > $HOME/.config/mimeapps.list
 

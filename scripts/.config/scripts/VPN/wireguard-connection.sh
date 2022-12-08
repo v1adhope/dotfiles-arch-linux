@@ -2,18 +2,20 @@
 
 # DNS changer integrated into wg-quick.conf
 
-config="wg-quick@arch_wg.service"
+config="arch_wg"
 
-status=$(systemctl is-active $config)
+status=$(systemctl is-active wg-quick@$config.service)
 
 case $1 in
 -c) echo "$status";;
 -s)
 if [ "$status" == "active" ]
   then
-    sudo systemctl stop $config
+    echo "Shutting down the service..."
+    sudo systemctl stop "wg-quick@$config.service"
   else
-    sudo systemctl start $config
+    echo "Starting the service..."
+    sudo systemctl start "wg-quick@$config.service"
 fi
 echo "done!"
 ;;

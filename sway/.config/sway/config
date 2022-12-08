@@ -31,20 +31,22 @@ exec --no-startup-id obsidian
 assign [app_id="google-chrome"] 2
 exec --no-startup-id google-chrome-stable
 # Messengers(3)
-assign [app_id="telegramdesktop"] 3
+assign [app_id="org.telegram.desktop"] 3
 exec --no-startup-id telegram-desktop
 
 ### Application layout
 #
 for_window [app_id="org.keepassxc.KeePassXC"] floating enable 
+assign [app_id="org.qbittorrent.qBittorrent"] 6
 for_window [class="XEyes"] floating enable
 for_window [title="glxgears"] floating enable
 for_window [app_id="flameshot"] floating enable, fullscreen disable, move absolute position 0 0, border pixel 0
 for_window [title="Picture in picture"] floating enable
-# Steam
+# Games
 assign [class="Steam"] 7
-for_window [class="Steam" title="Steam"] resize set 70 ppt
 for_window [class="Steam" title="Friends List"] resize set 20 ppt
+assign [app_id="lutris"] 7
+assign [class="epicgameslauncher.exe"] 7
 
 ### Variables
 #
@@ -66,7 +68,9 @@ set $menu fuzzel
 #
 # Main screen
 output HDMI-A-1 pos 0 0 res 1920x1080
-#  Wallpaper
+# VRR
+output * adaptive_sync on
+# Wallpaper
 output * bg $HOME/.config/sway/wallpapers/wallpaper3.jpg fill
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 

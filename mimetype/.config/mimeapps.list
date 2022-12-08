@@ -1,6 +1,3 @@
-[Added Associations]
-x-scheme-handler/tg=userapp-Telegram Desktop-5CKYU1.desktop;
-
 [Default Applications]
 text/html=google-chrome.desktop
 x-scheme-handler/http=google-chrome.desktop
@@ -9,6 +6,7 @@ x-scheme-handler/about=google-chrome.desktop
 x-scheme-handler/unknown=google-chrome.desktop
 image/png=imv.desktop;
 video/mp4=mpv.desktop;
-application/x-shellscript=vim.desktop;
 application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;
 inode/directory=nnn.desktop;
+application/pdf=firefox.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-OTXRW1.desktop

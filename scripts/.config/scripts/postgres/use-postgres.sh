@@ -12,19 +12,21 @@ case $1 in
 -a) 
   if [ "$status" != "active" ]
     then
+      echo "Starting the service..."
       sudo systemctl start postgresql.service
   fi
+      echo "Run pgadmin..."
   run_pgadmin
-  echo "done!"
 ;;
 -c) echo "$status";;
 -s)
   if [ "$status" == "active" ]
     then
+      echo "Shutting down the service..."
       sudo systemctl stop postgresql.service
     else
+      echo "Starting the service..."
       sudo systemctl start postgresql.service
-      run_pgadmin
   fi
   echo "done!"
 ;;

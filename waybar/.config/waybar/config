@@ -2,8 +2,19 @@
     "layer": "top",
     "position": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["clock", "sway/language", "tray"],
-    "modules-right": ["cpu", "memory", "pulseaudio", "bluetooth", "network"],
+    "modules-center": ["clock", "sway/language", /*"custom/weather",*/ "tray"],
+    "modules-right": ["cpu", "memory", "pulseaudio", "bluetooth", "custom/vpn", "network"],
+
+    "custom/weather": {
+        "exec": "curl 'https://wttr.in/Penza?format=1'",
+        "interval": 3600
+    },
+
+
+    "custom/vpn": {
+        "exec": "$HOME/mnt/vpn-indicator.sh",
+        "interval": 5
+    },
 
     "pulseaudio": {
         "format": "VOL: {volume}%",
