@@ -23,6 +23,3 @@ opt.incsearch = true
 -- Use highlighting when doing a search.
 opt.hlsearch = true
 
--- Colorscheme
-cmd[[colorscheme tokyonight-storm]]
-
