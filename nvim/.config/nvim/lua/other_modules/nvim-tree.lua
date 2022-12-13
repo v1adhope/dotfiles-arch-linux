@@ -1,5 +1,5 @@
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_ok then
+local ok, nvim_tree = pcall(require, "nvim-tree")
+if not ok then
   return
 end
 
@@ -12,7 +12,7 @@ nvim_tree.setup {
   sort_by = case_sensitive,
   diagnostics = {
     enable = true,
-    -- later maybe will be changed
+    -- TODO: later maybe will be changed
     icons = {
       hint = "",
       info = "",

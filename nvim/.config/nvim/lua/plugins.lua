@@ -19,9 +19,9 @@ return require('packer').startup(function(use)
   use {
     'nvim-tree/nvim-tree.lua',
     requires = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      'nvim-tree/nvim-web-devicons'
     },
-    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    tag = 'nightly'
   }
 
   -- Statusline
@@ -29,11 +29,16 @@ return require('packer').startup(function(use)
 
   -- LSP
   use 'neovim/nvim-lspconfig'
+
   -- Autocomplete
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
-  --use 'hrsh7th/cmp-buffer'
-  use {"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"}
+  use 'hrsh7th/cmp-buffer'
+  use {
+    'L3MON4D3/LuaSnip',
+    tag = 'v1.*'
+  }
+  use 'windwp/nvim-autopairs'
 end)
 

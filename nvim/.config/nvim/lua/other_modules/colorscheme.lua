@@ -1,5 +1,5 @@
-local status_ok, colorscheme = pcall(require, 'tokyonight')
-if not status_ok then
+local ok, colorscheme = pcall(require, 'tokyonight')
+if not ok then
   return
 end
 
@@ -10,8 +10,8 @@ colorscheme.setup {
 
 local colorscheme = 'tokyonight'
 
-local status_ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
-if not status_ok then
+local ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
+if not ok then
   return
 end
 

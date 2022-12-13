@@ -29,6 +29,8 @@ compinit
 # Default text editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
+# Go
+export PATH=$HOME/go/bin:$PATH
 # Hardware video acceleration
 source "$HOME/.config/scripts/hardware-video-acceleration.sh"
 # Alias

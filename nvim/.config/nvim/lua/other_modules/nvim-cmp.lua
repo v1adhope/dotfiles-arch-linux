@@ -1,11 +1,10 @@
--- TODO
-local status_ok, cmp = pcall(require, 'cmp')
-if not status_ok then
+local ok, cmp = pcall(require, 'cmp')
+if not ok then
   return
 end
 
-local status_ok, luasnip = pcall(require, 'luasnip')
-if not status_ok then
+local ok, luasnip = pcall(require, 'luasnip')
+if not ok then
   return
 end
 
@@ -17,15 +16,32 @@ cmp.setup {
     end
   },
   mapping = cmp.mapping.preset.insert {
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm { select = true }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm { select = true },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+        return
+      end
+      fallback()
+    end,
+    { 'i' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+        return
+      end
+      fallback()
+    end,
+    { 'i' }),
   },
   sources = cmp.config.sources {
     { name = 'nvim_lsp' },
-    { name = 'luasnip' }
-  },
+    { name = 'luasnip' },
+    { name = 'buffer' }
+  }
 }
 

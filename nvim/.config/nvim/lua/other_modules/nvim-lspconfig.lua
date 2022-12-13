@@ -1,11 +1,11 @@
 -- TODO 
-local status_ok, lspconfig = pcall(require, 'lspconfig')
-if not status_ok then
+local ok, lspconfig = pcall(require, 'lspconfig')
+if not ok then
   return
 end
 
-local status_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
-if not status_ok then
+local ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+if not ok then
   return
 end
 
@@ -21,7 +21,6 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
