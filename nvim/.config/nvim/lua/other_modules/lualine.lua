@@ -3,17 +3,17 @@ if not status_ok then
   return
 end
 
--- No verification TODO
-local lualine_theme = 'tokyonight'
+-- TODO: No verification
+local theme = 'tokyonight'
 local loaded_extensions = 'nvim-tree'
 
 lualine.setup {
   options = {
-    theme = lualine_theme,
-    ignore_focus = {'NvimTree'},
+    theme = theme,
+    ignore_focus = { 'NvimTree' },
     globalstatus = true,
-    extensions = {loaded_extensions}
+    extensions = { loaded_extensions }
   },
-  sections = {lualine_x = {'encoding', 'filetype'}}
+  sections = { lualine_x = { 'encoding', 'filetype' } }
 }
 

@@ -20,10 +20,10 @@ nvim_tree.setup {
       error = ""
     }
   },
-  git = {ignore = false},
+  git = { ignore = false },
   renderer = {
-    indent_markers = {enable = true},
-    icons = {git_placement = 'after'},
+    indent_markers = { enable = true },
+    icons = { git_placement = 'after' }
   }
 }
 

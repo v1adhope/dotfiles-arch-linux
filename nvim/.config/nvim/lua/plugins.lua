@@ -26,5 +26,14 @@ return require('packer').startup(function(use)
 
   -- Statusline
   use 'nvim-lualine/lualine.nvim'
+
+  -- LSP
+  use 'neovim/nvim-lspconfig'
+  -- Autocomplete
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'saadparwaiz1/cmp_luasnip'
+  --use 'hrsh7th/cmp-buffer'
+  use {"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"}
 end)
 
