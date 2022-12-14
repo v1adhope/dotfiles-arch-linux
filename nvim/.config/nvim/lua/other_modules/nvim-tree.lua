@@ -26,4 +26,3 @@ nvim_tree.setup {
     icons = { git_placement = 'after' }
   }
 }
-

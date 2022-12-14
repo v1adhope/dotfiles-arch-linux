@@ -4,7 +4,7 @@ if not ok then
 end
 
 autopairs.setup {
-  --disable_filetype = {},
+  disable_filetype = { '' },
   fast_wrap = {
     map = '<M-e>',
     chars = { '{', '[', '(', '"', "'" },
@@ -13,6 +13,6 @@ autopairs.setup {
     keys = 'qwertyuiopzxcvbnmasdfghjkl',
     check_comma = true,
     highlight = 'Search',
-    highlight_grey='Comment'
+    highlight_grey = 'Comment'
   }
 }

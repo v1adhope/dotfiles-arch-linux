@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Lua LSP
+#alias luamake=/home/rat/.config/lsp/lua-language-server/3rd/luamake/luamake
+
 alias ls='ls -lhN --color=auto --group-directories-first'
 alias v='nvim'
 alias n='nnn'

@@ -1,10 +1,10 @@
-local cmd = vim.cmd
+-- local cmd = vim.cmd
 local opt = vim.opt
 local api = vim.api
 
 -- Visual limiter
 opt.colorcolumn = '70'
-api.nvim_set_hl(0, 'ColorColumn', { ctermbg=0 })
+api.nvim_set_hl(0, 'ColorColumn', { ctermbg = 0 })
 -- True Color 24-bit
 opt.termguicolors = true
 -- Line numbering
@@ -22,4 +22,3 @@ opt.ignorecase = true
 opt.incsearch = true
 -- Use highlighting when doing a search.
 opt.hlsearch = true
-

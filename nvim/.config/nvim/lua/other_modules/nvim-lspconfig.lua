@@ -1,4 +1,4 @@
--- TODO 
+-- TODO
 local ok, lspconfig = pcall(require, 'lspconfig')
 if not ok then
   return
@@ -22,8 +22,8 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
@@ -47,3 +47,16 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- Custom LSP for Lua
+lspconfig.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabillities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        disable = { 'unused-local', 'lowercase-global', 'redefined-local' },
+        globals = { 'vim', 'case_sensitive' }
+      }
+    }
+  }
+}

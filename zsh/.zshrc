@@ -31,6 +31,8 @@ export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 # Go
 export PATH=$HOME/go/bin:$PATH
+# LUA
+export PATH=$HOME/.config/lsp/lua-language-server/bin:$PATH
 # Hardware video acceleration
 source "$HOME/.config/scripts/hardware-video-acceleration.sh"
 # Alias

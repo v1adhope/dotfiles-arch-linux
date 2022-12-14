@@ -8,10 +8,9 @@ colorscheme.setup {
   terminal_colors = true
 }
 
-local colorscheme = 'tokyonight'
+local theme = 'tokyonight'
 
-local ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
+local ok, _ = pcall(vim.cmd, 'colorscheme ' .. theme)
 if not ok then
   return
 end
-

@@ -28,7 +28,7 @@ cmp.setup {
       end
       fallback()
     end,
-    { 'i' }),
+      { 'i' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -36,7 +36,7 @@ cmp.setup {
       end
       fallback()
     end,
-    { 'i' }),
+      { 'i' }),
   },
   sources = cmp.config.sources {
     { name = 'nvim_lsp' },
@@ -44,4 +44,3 @@ cmp.setup {
     { name = 'buffer' }
   }
 }
-

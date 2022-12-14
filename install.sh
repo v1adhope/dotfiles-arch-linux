@@ -106,7 +106,7 @@ STOWLIST+=(sway waybar mako fuzzel swaylock)
 PKGLIST+=(pulseaudio playerctl pipewire lib32-pipewire \
           wireplumber imv xdg-desktop-portal grim slurp flameshot \
           jre8-openjdk libreoffice-still hunspell-en_us hunspell-ru \
-          libreoffice-extension-languagetool mpv)
+          libreoffice-extension-languagetool mpv gimp ninja)
 STOWLIST+=(imv mpv)
 #
 # Utilities 
@@ -194,4 +194,19 @@ done
 
 ### Mimetype
 # cat mimetype/.config/mimeapps.list > $HOME/.config/mimeapps.list
+
+### Choosing LSP
+#
+#SEE: dotfiles/install-lsp/
+LSPLIST=()
+LSPLIST+=(go lua)
+
+echo -e "--- LSP list ---\n${LSPLIST[@]}\n"
+
+function install_lsp {
+  for i in ${LSPLIST[@]}; do
+    "./install-lsp/install-$i-lsp.sh"
+  done
+}
+#install_lsp
 
