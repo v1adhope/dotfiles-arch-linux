@@ -1,4 +1,3 @@
--- Import modules
 require('other_modules/create_keymap')
 
 -- Copy to system clipboard

@@ -9,6 +9,7 @@ api.nvim_set_hl(0, 'ColorColumn', { ctermbg = 0 })
 opt.termguicolors = true
 -- Line numbering
 opt.number = true
+opt.relativenumber = true
 -- Use space characters instead of tabs.
 opt.expandtab = true
 -- Set tab width to n columns.

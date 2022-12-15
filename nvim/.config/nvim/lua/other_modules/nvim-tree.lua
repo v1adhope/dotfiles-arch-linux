@@ -24,5 +24,6 @@ nvim_tree.setup {
   renderer = {
     indent_markers = { enable = true },
     icons = { git_placement = 'after' }
-  }
+  },
+  -- view = { number = true }
 }

@@ -8,6 +8,13 @@ if not ok then
   return
 end
 
+local ok, vscode_like_snippets = pcall(require, 'luasnip.loaders.from_vscode')
+if not ok then
+  return
+end
+
+vscode_like_snippets.lazy_load()
+
 cmp.setup {
   completion = { autocomplete = false },
   snippet = {

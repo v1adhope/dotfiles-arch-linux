@@ -40,6 +40,7 @@ return require('packer').startup(function(use)
     tag = 'v1.*'
   }
   use 'windwp/nvim-autopairs'
+  use 'rafamadriz/friendly-snippets'
 
   -- Syntax Highlighting
   use {
