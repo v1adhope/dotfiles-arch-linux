@@ -14,5 +14,4 @@ require 'other_modules/treesitter'
 require 'other_modules/new-line-without-comment'
 
 -- Go features
-require 'other_modules/go/go-sort-imports'
 require 'other_modules/go/go-formatting'
