@@ -123,7 +123,7 @@ PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
 STOWLIST+=(google-chrome)
 #
 # Text editors
-PKGLIST+=(vim neovim nvim-packer-git)
+PKGLIST+=(vim neovim)
 STOWLIST+=(vim nvim)
 #
 # Go
