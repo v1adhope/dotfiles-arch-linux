@@ -14,33 +14,54 @@
 # A reboot is required after installation
 
 function TRIM_enable {
+  echo -e "\n***** enabling TRIM... *****\n"
   sudo systemctl enable fstrim.timer
+  if [ 0 == $? ]; then
+    echo "TRIM is on"
+  fi
 }
 
 function install_paru {
+  echo -e "\n*****  installation of the AUR paru manager... *****\n"
   git clone --depth=1 https://aur.archlinux.org/paru-bin.git 
   cd paru && makepkg -si
   cd .. && rm -rf paru
+  if [ 0 == $? ]; then
+    echo "paru installed"
+  fi
 }
 
 function mirror_generation {
+  echo -e "\n***** mirror generation... *****\n"
   paru -S reflector
   sudo reflector --latest 15 --protocol https --country France \
                  --country Germany --sort rate \
                  --save /etc/pacman.d/mirrorlist
   paru -Syu
+  if [ 0 == $? ]; then
+    echo "mirrors generated"
+  fi
 }
 
 function refresh_keyring {
+  echo -e "\n***** keychain update... *****\n"
   sudo pacman-key --init
   sudo pacman-key --populate archlinux
   sudo pacman-key --refresh-keys
+  if [ 0 == $? ]; then
+    echo "keychain updated"
+  fi
+  # mirror gen are recommended
   mirror_generation
 }
 
 function zen_core_tweaks {
+  echo -e "\n***** installing tweaks to the linux zen kernel... *****\n"
   paru -S cfs-zen-tweaks
   sudo systemctl enable --now set-cfs-tweaks.service
+  if [ 0 == $? ]; then
+    echo "tweaks installed"
+  fi
 }
 
 ### Functions
@@ -90,9 +111,6 @@ STOWLIST+=(tmux)
 # Fonts
 PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji)
 #
-# Bluetooth support
-PKGLIST+=(pulseaudio-bluetooth bluez-utils)
-#
 # Widget toolkits
 PKGLIST+=(gtk2 gtk3 qt5ct qt6ct adwaita-qt5 adwaita-qt6)
 STOWLIST+=(gtk)
@@ -102,9 +120,13 @@ PKGLIST+=(sway swaybg swayidle swaylock waybar mako jq fuzzel \
           xdg-desktop-portal-wlr xorg-server xorg-xwayland)
 STOWLIST+=(sway waybar mako fuzzel swaylock)
 #
+# Audio
+PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-alsa \
+          pipewire-pulse pipewire-jack lib32-pipewire-jack playerctl \
+          bluez-utils)
+#
 # Multimedia 
-PKGLIST+=(pulseaudio playerctl pipewire lib32-pipewire \
-          wireplumber imv xdg-desktop-portal grim slurp flameshot \
+PKGLIST+=(imv xdg-desktop-portal grim slurp flameshot \
           jre8-openjdk libreoffice-still hunspell-en_us hunspell-ru \
           libreoffice-extension-languagetool mpv gimp ninja)
 STOWLIST+=(imv mpv)
@@ -139,17 +161,18 @@ STOWLIST+=(mangohud)
 
 ### Install packages
 #
-echo -e "--- Packages list ---\n${PKGLIST[@]}\n"
+echo -e "\n***** Packages list *****\n${PKGLIST[@]}\n"
 # paru -S ${PKGLIST[@]}
 
 ### Create link configs
 #
-echo -e "--- Configs list ---\n${STOWLIST[@]}\n"
+echo -e "\n***** Configs list *****\n${STOWLIST[@]}\n"
 # stow ${STOWLIST[@]}
 
 ### Fixes and automation
 #
 function settings {
+  echo -e "\n***** make the necessary adjustments... *****\n"
 for i in ${PKGLIST[@]}; do
   if [ $i == "dropbox" ]
     then
@@ -168,12 +191,14 @@ for i in ${PKGLIST[@]}; do
   fi
 done
 }
-#settings
+# settings
 
 ### NetworkManager
+#
 # sudo stow -t /etc/NetworkManager/conf.d/ networkmanager #
 
 ### Fonts setup
+#
 # sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
 # sudo ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
 # sudo ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
@@ -184,15 +209,18 @@ done
 # fc-cache
 
 ### Create grub link config
+#
 # sudo rm /etc/default/grub
 # sudo stow -t /etc/default grub
 # sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 ### Create bluetooth link config
+#
 # sudo rm /etc/bluetooth/main.conf
 # sudo stow -t /etc/bluetooth bluetooth-stack
 
-### Mimetype
+### Mimetype TODO: system overwrites the file
+#
 # cat mimetype/.config/mimeapps.list > $HOME/.config/mimeapps.list
 
 ### Choosing LSP
@@ -201,12 +229,13 @@ done
 LSPLIST=()
 LSPLIST+=(go lua)
 
-echo -e "--- LSP list ---\n${LSPLIST[@]}\n"
+#echo -e "\n***** LSP list *****\n${LSPLIST[@]}\n"
 
 function install_lsp {
+  echo -e "\n***** installing LSP servers... *****\n"
   for i in ${LSPLIST[@]}; do
     "./install-lsp/install-$i-lsp.sh"
   done
 }
-#install_lsp
+# install_lsp
 

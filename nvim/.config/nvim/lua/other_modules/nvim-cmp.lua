@@ -1,3 +1,4 @@
+-- TODO
 local ok, cmp = pcall(require, 'cmp')
 if not ok then
   return
@@ -13,7 +14,7 @@ if not ok then
   return
 end
 
-vscode_like_snippets.lazy_load()
+vscode_like_snippets.lazy_load({ include = { 'go', 'lua' } })
 
 cmp.setup {
   completion = { autocomplete = false },
