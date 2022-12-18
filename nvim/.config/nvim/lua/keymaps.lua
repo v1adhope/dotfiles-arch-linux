@@ -1,7 +1,5 @@
 require('other_modules/create_keymap')
 
--- Copy to system clipboard
-map('v', '<S-Y>', ':w !wl-copy<CR><CR>', { silent = true })
 -- No highlighting
 map('n', '<C-n>', ':noh<CR>')
 -- Open terminal

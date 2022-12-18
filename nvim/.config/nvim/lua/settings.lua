@@ -23,3 +23,5 @@ opt.ignorecase = true
 opt.incsearch = true
 -- Use highlighting when doing a search.
 opt.hlsearch = true
+-- OS buffer with wl-clipboard
+opt.clipboard = 'unnamedplus'
