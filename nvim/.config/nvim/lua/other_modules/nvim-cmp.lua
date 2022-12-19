@@ -9,6 +9,13 @@ if not ok then
   return
 end
 
+-- Correct work cmp with luasnip
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 local ok, vscode_like_snippets = pcall(require, 'luasnip.loaders.from_vscode')
 if not ok then
   return
@@ -32,19 +39,25 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-        return
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
       end
-      fallback()
     end,
-      { 'i' }),
+      { 'i', 's' }),
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-        return
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
       end
-      fallback()
     end,
-      { 'i' }),
+      { 'i', 's' }),
   },
   sources = cmp.config.sources {
     { name = 'nvim_lsp' },

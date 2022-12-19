@@ -12,6 +12,7 @@ require 'other_modules/nvim-cmp'
 require 'other_modules/nvim-autopairs'
 require 'other_modules/treesitter'
 require 'other_modules/new-line-without-comment'
+require 'other_modules/nvim-comment'
 
 -- Go features
 require 'other_modules/go/go-formatting'
