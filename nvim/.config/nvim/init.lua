@@ -13,6 +13,7 @@ require 'other_modules/nvim-autopairs'
 require 'other_modules/treesitter'
 require 'other_modules/new-line-without-comment'
 require 'other_modules/nvim-comment'
+require 'other_modules/trim'
 
 -- Go features
 require 'other_modules/go/go-formatting'

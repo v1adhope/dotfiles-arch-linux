@@ -6,4 +6,3 @@ See https://github.com/sibradzic/amdgpu-clocks for more information and this htt
 Use your pattern `custom-values/amdgpu-custom-states.card0`
 For find it you can run this command
 ```cat $(readlink -f /sys/class/drm/card0/device)/pp_od_clk_voltage```
-

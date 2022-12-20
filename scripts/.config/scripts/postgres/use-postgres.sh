@@ -9,7 +9,7 @@ function run_pgadmin {
 }
 
 case $1 in
--a) 
+-a)
   if [ "$status" != "active" ]
     then
       echo "Starting the service..."
@@ -37,4 +37,3 @@ Use -c for check is-active status postgresql.service
 Use -s for on/off postgresql.service"
 ;;
 esac
-

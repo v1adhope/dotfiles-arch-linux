@@ -19,4 +19,3 @@ set incsearch
 set hlsearch
 " Copy to system clipboard
 xnoremap <silent> <S-Y> :w !wl-copy<CR><CR>
-

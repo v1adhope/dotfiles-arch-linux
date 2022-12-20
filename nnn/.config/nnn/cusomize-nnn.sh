@@ -25,4 +25,3 @@ export NNN_PLUG="p:preview-tui;u:getplugs;i:imgview"
 #
 # Preview-tui
 export SPLIT="v"
-

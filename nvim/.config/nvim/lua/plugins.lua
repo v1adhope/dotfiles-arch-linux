@@ -68,8 +68,12 @@ return packer.startup(function(use)
       ts_update()
     end
   }
+
   -- Comment
   use 'terrortylor/nvim-comment'
+
+  -- Formatting
+  use 'cappyzawa/trim.nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

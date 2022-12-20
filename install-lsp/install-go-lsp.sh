@@ -11,4 +11,3 @@ fi
 go install golang.org/x/tools/gopls@latest
 
 echo -e "\n##### Attantion please #####\nAdd it \"export PATH=\$HOME:/go/bin\$PATH\" to your .shellrc file e.g. .bashrc"
-

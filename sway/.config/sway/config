@@ -36,7 +36,7 @@ exec --no-startup-id telegram-desktop
 
 ### Application layout
 #
-for_window [app_id="org.keepassxc.KeePassXC"] floating enable 
+for_window [app_id="org.keepassxc.KeePassXC"] floating enable
 assign [app_id="org.qbittorrent.qBittorrent"] 6
 for_window [class="XEyes"] floating enable
 for_window [title="glxgears"] floating enable
@@ -54,7 +54,7 @@ assign [class="epicgameslauncher.exe"] 7
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
-set $down j 
+set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
@@ -62,7 +62,7 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu fuzzel 
+set $menu fuzzel
 
 ### Output configuration
 #
@@ -101,10 +101,10 @@ input type:keyboard {
     bindsym --to-code $mod+u exec swaylock
 
     # Get screenshot
-    bindsym Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim 
+    bindsym Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim
     bindsym Shift+Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim -g "$(slurp)"
 
-    #bindsym Print exec --no-startup-id flameshot gui 
+    #bindsym Print exec --no-startup-id flameshot gui
     # https://github.com/flameshot-org/flameshot/issues/2959
 
     # Multimedia XF86 keys https://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols

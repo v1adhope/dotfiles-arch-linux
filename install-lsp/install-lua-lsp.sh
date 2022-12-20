@@ -17,4 +17,3 @@ cd ../..
 ./3rd/luamake/luamake rebuild
 
 echo -e "\n##### Attantion please #####\nAdd it \"export PATH=\$HOME/.config/lsp/lua-language-server/bin:\$PATH\" to your .shellrc file e.g. .bashrc"
-

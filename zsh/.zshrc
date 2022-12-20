@@ -26,12 +26,12 @@ compinit
 
 ### Exports
 #
-# Default text editor
+# Set default text editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 # Go
 export PATH=$HOME/go/bin:$PATH
-# LUA
+# Lua
 export PATH=$HOME/.config/lsp/lua-language-server/bin:$PATH
 # Hardware video acceleration
 source "$HOME/.config/scripts/hardware-video-acceleration.sh"
@@ -39,17 +39,6 @@ source "$HOME/.config/scripts/hardware-video-acceleration.sh"
 source "$HOME/.config/scripts/alias.sh"
 # Customize nnn
 source "$HOME/.config/nnn/cusomize-nnn.sh"
-
-### Load promptinit
-#
-#autoload -Uz promptinit && promptinit
-#
-# Rat Theme
-#prompt_mytheme_setup() {
-#  PS1="%B[%F{66}%n%f@%m: %F{white}%~%f ]%# %b"
-#}
-#prompt_themes+=( mytheme )
-#prompt mytheme
 
 ### Theme&plagins
 source "$HOME/.config/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme"
@@ -62,4 +51,3 @@ bindkey '^[[B' history-substring-search-down
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-

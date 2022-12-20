@@ -9,4 +9,3 @@
 [/install.sh](/install.sh)
 
 [/gpu-undervolt/README.md](/gpu-undervolt/README.md)
-

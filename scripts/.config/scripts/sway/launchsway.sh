@@ -16,4 +16,3 @@ export GDK_BACKEND="wayland,x11"
 
 exec sway
 exec mako
-

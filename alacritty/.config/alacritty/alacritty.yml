@@ -8,21 +8,14 @@ shell:
     - -l
     - -c
     - "tmux attach || tmux"
-#    - tmux
 
 window:
   opacity: 0.8
   title: Alacritty Terminal
   decorations_theme_variant: dark
- #position:
-   #x: 0
-   #y: 0
- #dimensions:
-   #columns: 104
-   #lines: 55
 
 cursor:
-  style: 
+  style:
     shape: Underline
     blinking: always
   blink_interval: 750
@@ -45,8 +38,3 @@ font:
   bold_italic:
     family: "Hack Nerd Font Mono"
     style: Bold Italic
-
-#key_bindings:
-# - { key: N,   mods: Control|Shift, action: SpawnNewInstance }
-# - { key: W,	mods: Control, action: Quit }
-# - { key: H,   mods: Control, action: Minimize }

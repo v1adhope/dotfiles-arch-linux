@@ -3,7 +3,7 @@
 ### Attention please!!!
 #
 # Comment/uncomment the groups you want
-# 
+#
 # Use install_paru function if you have not paru
 #
 # recommend pacstrap pkgs: base base-devel linux-zen linux-zen-headers \
@@ -23,7 +23,7 @@ function TRIM_enable {
 
 function install_paru {
   echo -e "\n*****  installation of the AUR paru manager... *****\n"
-  git clone --depth=1 https://aur.archlinux.org/paru-bin.git 
+  git clone --depth=1 https://aur.archlinux.org/paru-bin.git
   cd paru && makepkg -si
   cd .. && rm -rf paru
   if [ 0 == $? ]; then
@@ -76,7 +76,7 @@ function zen_core_tweaks {
 # refresh_keyring
 #
 # zen_core_tweaks
- 
+
 ### Choosing packages and configs
 #
 PKGLIST=()
@@ -125,13 +125,13 @@ PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-alsa \
           pipewire-pulse pipewire-jack lib32-pipewire-jack playerctl \
           bluez-utils)
 #
-# Multimedia 
+# Multimedia
 PKGLIST+=(imv xdg-desktop-portal grim slurp flameshot \
           jre8-openjdk libreoffice-still hunspell-en_us hunspell-ru \
           libreoffice-extension-languagetool mpv gimp ninja)
 STOWLIST+=(imv mpv)
 #
-# Utilities 
+# Utilities
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
           wireguard-tools neofetch nnn cronie wl-clipboard \
           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
@@ -178,7 +178,7 @@ for i in ${PKGLIST[@]}; do
     then
       # Dropbox fix
       rm -rf ~/.dropbox-dist
-      install -dm0 ~/.dropbox-dist 
+      install -dm0 ~/.dropbox-dist
   elif [ $i == "bluez-utils" ]
     then
       # Enable bluetooth
@@ -238,4 +238,3 @@ function install_lsp {
   done
 }
 # install_lsp
-

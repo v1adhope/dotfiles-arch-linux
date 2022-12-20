@@ -16,4 +16,3 @@ gsettings set "$gnome_schema" font-name "$font_name"
 
 # Hide buttons
 gsettings set org.gnome.desktop.wm.preferences button-layout ''
-
