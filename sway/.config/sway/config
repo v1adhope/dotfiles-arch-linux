@@ -25,8 +25,6 @@ exec dropbox
 # Main(1)
 assign [class="obsidian"] 1
 exec --no-startup-id obsidian
-# assign [app_id="exec_alacritty"] 1
-# exec --no-startup-id alacritty --class "exec_alacritty"
 # Browser(2)
 assign [app_id="google-chrome"] 2
 exec --no-startup-id google-chrome-stable
@@ -45,8 +43,6 @@ for_window [title="Picture in picture"] floating enable
 # Games
 assign [class="Steam"] 7
 for_window [class="Steam" title="Friends List"] resize set 20 ppt
-assign [app_id="lutris"] 7
-assign [class="epicgameslauncher.exe"] 7
 
 ### Variables
 #
@@ -80,7 +76,6 @@ exec swayidle \
          timeout 300 "swaylock" \
          timeout 310 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          timeout 300 'makoctl mode -s away' resume 'makoctl mode -s default'
-        #before-sleep 'swaylock -f --image "$HOME/.config/sway/swaylock/swaylock1.png" --show-failed-attempts --scaling "fill"'
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -104,7 +99,7 @@ input type:keyboard {
     bindsym Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim
     bindsym Shift+Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim -g "$(slurp)"
 
-    #bindsym Print exec --no-startup-id flameshot gui
+    # bindsym Print exec --no-startup-id flameshot gui
     # https://github.com/flameshot-org/flameshot/issues/2959
 
     # Multimedia XF86 keys https://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols

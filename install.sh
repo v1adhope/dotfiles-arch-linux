@@ -34,9 +34,8 @@ function install_paru {
 function mirror_generation {
   echo -e "\n***** mirror generation... *****\n"
   paru -S reflector
-  sudo reflector --latest 15 --protocol https --country France \
-                 --country Germany --sort rate \
-                 --save /etc/pacman.d/mirrorlist
+  sudo reflector --latest 15 --protocol https --country DE,FR,US \
+                 --sort rate --save /etc/pacman.d/mirrorlist
   paru -Syu
   if [ 0 == $? ]; then
     echo "mirrors generated"
@@ -109,7 +108,7 @@ PKGLIST+=(tmux)
 STOWLIST+=(tmux)
 #
 # Fonts
-PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji)
+PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
 #
 # Widget toolkits
 PKGLIST+=(gtk2 gtk3 qt5ct qt6ct adwaita-qt5 adwaita-qt6)
@@ -128,14 +127,14 @@ PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-alsa \
 # Multimedia
 PKGLIST+=(imv xdg-desktop-portal grim slurp flameshot \
           jre8-openjdk libreoffice-still hunspell-en_us hunspell-ru \
-          libreoffice-extension-languagetool mpv gimp ninja)
+          libreoffice-extension-languagetool mpv gimp sioyek)
 STOWLIST+=(imv mpv)
 #
 # Utilities
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
           wireguard-tools neofetch nnn cronie wl-clipboard \
           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
-          wine)
+          ninja)
 STOWLIST+=(nnn)
 #
 # Software
@@ -144,19 +143,16 @@ PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
           obs-studio)
 STOWLIST+=(google-chrome)
 #
-# Text editors
-PKGLIST+=(vim neovim)
+# DEV
+PKGLIST+=(vim neovim go docker docker-compose)
 STOWLIST+=(vim nvim)
-#
-# Go
-PKGLIST+=(go)
 #
 # SQL
 # Postgres version 14
-PKGLIST+=(postgresql)
+# PKGLIST+=(postgresql)
 #
 # Games
-PKGLIST+=(steam lutris mangohud lib32-mangohud xpadneo-dkms)
+PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
 STOWLIST+=(mangohud)
 
 ### Install packages
@@ -195,7 +191,7 @@ done
 
 ### NetworkManager
 #
-# sudo stow -t /etc/NetworkManager/conf.d/ networkmanager #
+# sudo stow -t /etc/NetworkManager/conf.d/ networkmanager
 
 ### Fonts setup
 #
@@ -228,9 +224,9 @@ done
 #SEE: dotfiles/install-lsp/
 LSPLIST=()
 LSPLIST+=(go lua)
-
+#
 #echo -e "\n***** LSP list *****\n${LSPLIST[@]}\n"
-
+#
 function install_lsp {
   echo -e "\n***** installing LSP servers... *****\n"
   for i in ${LSPLIST[@]}; do
