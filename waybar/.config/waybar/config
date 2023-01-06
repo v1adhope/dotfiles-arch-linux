@@ -2,18 +2,23 @@
     "layer": "top",
     "position": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["clock", "sway/language", /*"custom/weather",*/ "tray"],
-    "modules-right": ["cpu", "memory", "pulseaudio", "bluetooth", "custom/vpn", "network"],
+    "modules-center": ["custom/weather", "clock", "sway/language", "tray"],
+    "modules-right": ["cpu", "memory", "custom/space", "pulseaudio", "network", "custom/vpn", "bluetooth"],
 
-    /* "custom/weather": { */
-    /*     "exec": "curl 'https://wttr.in/Penza?format=1'", */
-    /*     "interval": 3600 */
-    /* }, */
+    "custom/weather": {
+        "max-length": 15,
+        "format": "WX:{}",
+        "exec": "$HOME/.config/waybar/scripts/weather",
+        "interval": 216000
+    },
 
     "custom/vpn": {
-        "exec": "$HOME/mnt/vpn-indicator.sh",
+        "max-lenght": 3,
+        "exec": "$HOME/.config/waybar/scripts/vpn-indicator.sh",
         "interval": 5
     },
+
+    "custom/space": {"format": " "},
 
     "pulseaudio": {
         "format": "VOL: {volume}%",
@@ -32,12 +37,12 @@
     },
 
     "memory": {
-    "format": "MEM: {used:0.1f}/{total:0.1f} GB"
+        "format": "MEM: {used:0.1f}/{total:0.1f} GB"
     },
 
     "sway/language": {
         "format": "{}",
-      // Bug with bluetoothctl connect, change for click not working
+        /* Bug with bluetoothctl connect, change for click not working */
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
         "tooltip-format": "{long}"
     },
@@ -49,7 +54,7 @@
     },
 
     "network": {
-     // "interface": "wlo1",
+        "interface": "wlo1",
         "interval": 60,
         "format-disconnected": "Offline",
         "tooltip-format-disconnected": "Disconnected",

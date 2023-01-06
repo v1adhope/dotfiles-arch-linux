@@ -147,10 +147,6 @@ STOWLIST+=(google-chrome)
 PKGLIST+=(vim neovim go docker docker-compose)
 STOWLIST+=(vim nvim)
 #
-# SQL
-# Postgres version 14
-# PKGLIST+=(postgresql)
-#
 # Games
 PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
 STOWLIST+=(mangohud)
