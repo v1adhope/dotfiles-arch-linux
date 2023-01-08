@@ -7,6 +7,7 @@
 
     "custom/weather": {
         "max-length": 15,
+        "return-type": "json",
         "format": "WX:{}",
         "exec": "$HOME/.config/waybar/scripts/weather",
         "interval": 1800
