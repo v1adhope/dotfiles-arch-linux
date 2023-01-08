@@ -134,7 +134,7 @@ STOWLIST+=(imv mpv)
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
           wireguard-tools neofetch nnn cronie wl-clipboard \
           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
-          ninja)
+          ninja cups samsung-unified-driver-printer)
 STOWLIST+=(nnn)
 #
 # Software

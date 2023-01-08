@@ -9,7 +9,7 @@
         "max-length": 15,
         "format": "WX:{}",
         "exec": "$HOME/.config/waybar/scripts/weather",
-        "interval": 216000
+        "interval": 1800
     },
 
     "custom/vpn": {

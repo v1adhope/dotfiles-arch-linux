@@ -10,4 +10,4 @@ alias pman='sudo pacman -R $(pacman -Qdtq)'
 # Common commands
 alias comcom='~/.config/scripts/common-commands.sh'
 # Wireguard connect support tool
-alias wgc='~/.config/scripts/VPN/wireguard-connection.sh'
+alias wgc='~/.config/scripts/wireguard-connection.sh'
