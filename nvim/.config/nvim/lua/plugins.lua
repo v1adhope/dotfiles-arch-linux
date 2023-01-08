@@ -26,6 +26,16 @@ if not ok then
   return
 end
 
+local ok, ts = pcall(require, 'nvim-treesitter.install')
+if not ok then
+  return
+end
+
+-- Correct work after update/ first install
+local function ts_update()
+  ts.update({ with_sync = true })
+end
+
 return packer.startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
@@ -63,10 +73,7 @@ return packer.startup(function(use)
   -- Syntax Highlighting
   use {
     'nvim-treesitter/nvim-treesitter',
-    run = function()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-      ts_update()
-    end
+    run = ts_update()
   }
 
   -- Comment

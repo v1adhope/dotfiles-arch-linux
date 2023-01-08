@@ -9,11 +9,6 @@ if not ok then
   return
 end
 
--- Connecting servers with default settings
-local servers = { 'gopls' }
-
-local capabilities = cmp_lsp.default_capabilities()
-
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
@@ -46,6 +41,11 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
+
+-- Connecting servers with default settings
+local servers = { 'gopls' }
+
+local capabilities = cmp_lsp.default_capabilities()
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

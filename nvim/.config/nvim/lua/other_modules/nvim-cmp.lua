@@ -23,6 +23,17 @@ end
 
 vscode_like_snippets.lazy_load({ include = { 'go', 'lua' } })
 
+local ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+if not ok then
+  return
+end
+
+-- If you want insert `(` after select function or method item
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+
 cmp.setup {
   completion = { autocomplete = false },
   snippet = {
