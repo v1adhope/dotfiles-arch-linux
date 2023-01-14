@@ -64,6 +64,7 @@ function zen_core_tweaks {
 }
 
 ### Functions
+# Uncomment below to use
 #
 # TRIM_enable
 #
@@ -115,26 +116,27 @@ PKGLIST+=(gtk2 gtk3 qt5ct qt6ct adwaita-qt5 adwaita-qt6)
 STOWLIST+=(gtk)
 #
 # Sway
-PKGLIST+=(sway swaybg swayidle swaylock waybar mako jq fuzzel \
+PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel \
           xdg-desktop-portal-wlr xorg-server xorg-xwayland)
 STOWLIST+=(sway waybar mako fuzzel swaylock)
 #
-# Audio
+# Audio-Voice
 PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-alsa \
           pipewire-pulse pipewire-jack lib32-pipewire-jack playerctl \
-          bluez-utils)
+          bluez-utils noise-suppression-for-voice)
+STOWLIST+=(pipewire)
 #
 # Multimedia
-PKGLIST+=(imv xdg-desktop-portal grim slurp flameshot \
-          jre8-openjdk libreoffice-still hunspell-en_us hunspell-ru \
-          libreoffice-extension-languagetool mpv gimp sioyek)
+PKGLIST+=(imv grim slurp flameshot libreoffice-still mpv gimp sioyek)
 STOWLIST+=(imv mpv)
 #
 # Utilities
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
           wireguard-tools neofetch nnn cronie wl-clipboard \
           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
-          ninja cups samsung-unified-driver-printer)
+          ninja cups samsung-unified-driver-printer jre8-openjdk \
+          hunspell-en_us hunspell-ru xdg-desktop-portal jq bat viu \
+          ffmpegthumbnailer glow)
 STOWLIST+=(nnn)
 #
 # Software
@@ -180,9 +182,15 @@ for i in ${PKGLIST[@]}; do
     then
       #  ZSH as default shell
       chsh -s /bin/zsh
-  fi
+  elif [ $i == "pipewire" ]
+    then
+      # Use for immediate application pipewire
+      systemctl restart --user pipewire.service
+      systemctl --user daemon-reload
+    fi
 done
 }
+# Uncomment below to use
 # settings
 
 ### NetworkManager

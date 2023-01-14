@@ -30,7 +30,9 @@ compinit
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 # Go
-export PATH=$HOME/go/bin:$PATH
+export GOPATH=$HOME/.local/share/go
+export PATH=$HOME/.local/share/go/bin:$PATH
+# export PATH=$HOME/go/bin:$PATH
 # Lua
 export PATH=$HOME/.config/lsp/lua-language-server/bin:$PATH
 # Hardware video acceleration
@@ -38,7 +40,7 @@ source "$HOME/.config/scripts/hardware-video-acceleration.sh"
 # Alias
 source "$HOME/.config/scripts/alias.sh"
 # Customize nnn
-source "$HOME/.config/nnn/cusomize-nnn.sh"
+source "$HOME/.config/nnn/customize.sh"
 
 ### Theme&plagins
 source "$HOME/.config/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme"

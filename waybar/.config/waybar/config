@@ -19,7 +19,7 @@
         "interval": 5
     },
 
-    "custom/space": {"format": " "},
+    "custom/space": {"format": " ", "tooltip": false},
 
     "pulseaudio": {
         "format": "VOL: {volume}%",
@@ -43,7 +43,6 @@
 
     "sway/language": {
         "format": "{}",
-        /* Bug with bluetoothctl connect, change for click not working */
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
         "tooltip-format": "{long}"
     },
