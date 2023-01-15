@@ -98,6 +98,7 @@ input type:keyboard {
     # Get screenshot
     bindsym Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim
     bindsym Shift+Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim -g "$(slurp)"
+    bindsym Ctrl+Shift+Print exec --no-startup-id grim -g "$(slurp -d)" - | wl-copy
 
     # bindsym Print exec --no-startup-id flameshot gui
     # https://github.com/flameshot-org/flameshot/issues/2959

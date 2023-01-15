@@ -6,6 +6,8 @@
 
 ## Where to look for information about current dotfiles?
 
-[/install.sh](/install.sh)
+- [/install.sh](/install.sh)
 
-[/gpu-undervolt/README.md](/gpu-undervolt/README.md)
+- [/gpu-undervolt/README.md](/gpu-undervolt/README.md)
+
+- [/waybar/scripts/README.md](waybar/.config/waybar/scripts/README.md)
