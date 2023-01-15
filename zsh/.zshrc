@@ -26,13 +26,15 @@ compinit
 
 ### Exports
 #
+# Ls and exa color overwrite
+export LS_COLORS="di=01;38;5;12:ln=01;38;5;13:or=01;38;5;167:ex=38;5;115:*.*=00"
+export EXA_COLORS="ur=01;38;5;187:uw=01;38;5;167:ux=01;38;5;115:ue=01;38;5;115:gr=01;38;5;187:gw=01;38;5;167:gx=01;38;5;115:tr=01;38;5;187:tw=01;38;5;167:tx=01;38;5;115:uu=01;38;5;13:gu=01;38;5;13:un=01;38;5;12:gn=01;38;5;12:sn=38;5;115:sb=38;5;115:da=38;5;187:lp=01;38;5;13:b0=01;38;5;167"
 # Set default text editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 # Go
 export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.local/share/go/bin:$PATH
-# export PATH=$HOME/go/bin:$PATH
 # Lua
 export PATH=$HOME/.config/lsp/lua-language-server/bin:$PATH
 # Hardware video acceleration

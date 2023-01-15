@@ -1,6 +1,7 @@
 #!/bin/bash
 
-alias ls='ls -lhN --color=auto --group-directories-first'
+alias ls='exa -Fl --group-directories-first --sort=name -g --color=auto'
+alias cat='bat'
 alias v='nvim'
 alias n='nnn'
 alias diff='diff -us'

@@ -83,7 +83,7 @@ PKGLIST=()
 STOWLIST=()
 #
 # Common
-PKGLIST+=(stow)
+PKGLIST+=(stow exa bat)
 STOWLIST+=(git scripts)
 #
 # AMD
@@ -135,7 +135,7 @@ PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
           wireguard-tools neofetch nnn cronie wl-clipboard \
           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
           ninja cups samsung-unified-driver-printer jre8-openjdk \
-          hunspell-en_us hunspell-ru xdg-desktop-portal jq bat viu \
+          hunspell-en_us hunspell-ru xdg-desktop-portal jq viu \
           ffmpegthumbnailer glow)
 STOWLIST+=(nnn)
 #
