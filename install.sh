@@ -43,11 +43,12 @@ function TRIM_enable {
   print_func_prompt
 
   sudo systemctl enable fstrim.timer
-  if [ 0 == $? ]; then
-    print_complete
-  else
+  if [ 0 != $? ]; then
     print_error
+    return
   fi
+
+  print_complete
 }
 #
 function install_paru {
@@ -55,13 +56,20 @@ function install_paru {
   print_func_prompt
 
   git clone --depth=1 https://aur.archlinux.org/paru-bin.git .cache/paru
-  cd .cache/paru && makepkg -si
-  cd .. && rm -rf paru
-  if [ 0 == $? ]; then
-    print_complete
-  else
+  if [ 0 != $? ]; then
     print_error
+    return
   fi
+
+  cd .cache/paru && makepkg -si
+  if [ 0 != $? ]; then
+    print_error
+    return
+  fi
+
+  cd .. && rm -rf paru
+
+  print_complete
 }
 #
 function mirror_generation {
@@ -69,14 +77,25 @@ function mirror_generation {
   print_func_prompt
 
   paru -S reflector
+  if [ 0 != $? ]; then
+    print_error
+    return
+  fi
+
   sudo reflector --latest 15 --protocol https --country DE,FR,US \
                  --sort rate --save /etc/pacman.d/mirrorlist
-  paru -Syu
-  if [ 0 == $? ]; then
-    print_complete
-  else
+  if [ 0 != $? ]; then
     print_error
+    return
   fi
+
+  paru -Syu
+  if [ 0 != $? ]; then
+    print_error
+    return
+  fi
+
+  print_complete
 }
 #
 function refresh_keyring {
@@ -84,13 +103,24 @@ function refresh_keyring {
   print_func_prompt
 
   sudo pacman-key --init
-  sudo pacman-key --populate archlinux
-  sudo pacman-key --refresh-keys
-  if [ 0 == $? ]; then
-    print_complete
-  else
+  if [ 0 != $? ]; then
     print_error
+    return
   fi
+
+  sudo pacman-key --populate archlinux
+  if [ 0 != $? ]; then
+    print_error
+    return
+  fi
+
+  sudo pacman-key --refresh-keys
+  if [ 0 != $? ]; then
+    print_error
+    return
+  fi
+
+  print_complete
 }
 #
 function install_zen_core_tweaks {
@@ -98,12 +128,18 @@ function install_zen_core_tweaks {
   print_func_prompt
 
   paru -S cfs-zen-tweaks
-  sudo systemctl enable --now set-cfs-tweaks.service
-  if [ 0 == $? ]; then
-    print_complete
-  else
+  if [ 0 != $? ]; then
     print_error
+    return
   fi
+
+  sudo systemctl enable --now set-cfs-tweaks.service
+  if [ 0 != $? ]; then
+    print_error
+    return
+  fi
+
+  print_complete
 }
 #
 # TRIM_enable
@@ -197,6 +233,7 @@ STOWLIST+=(mangohud)
 
 ### Install packages
 #
+# NOTE: See 292 line
 PROMPT="Packages list"; VALUE="${PKGLIST[*]}"
 print_info_prompt
 # paru -S ${PKGLIST[@]}
@@ -252,7 +289,7 @@ for i in ${PKGLIST[@]}; do
 done
 }
 #
-# NOTE: Recommended it for first use
+# NOTE: Necessarily for first use
 # settings
 
 ### NetworkManager
