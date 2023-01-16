@@ -2,7 +2,7 @@
 
 ### Attention please!!!
 #
-# Comment/uncomment the groups you want
+# Comment/uncomment the groups and functions you want
 #
 # Use install_paru function if you have not paru
 #
@@ -13,58 +13,98 @@
 #
 # A reboot is required after installation
 
+DEFAULT="\033[0m"
+BLUE="\033[1;94m" # BOLD
+MAGENTA="\033[1;95m" # BOLD
+GREEN="\033[1;92m" # BOLD
+RED="\033[1;91m" #BOLD
+
+function print_error {
+    echo -e "${RED}==>${DEFAULT} Something went wrong\n"
+}
+
+function print_complete {
+    echo -e "${GREEN}==>${DEFAULT} Task completed\n"
+}
+
+function print_func_prompt {
+  printf "${MAGENTA}==>${DEFAULT} %s\n" "${PROMPT}"
+
+}
+
+function print_info_prompt {
+  printf "${BLUE}==>${DEFAULT} %s\n%s\n\n" "${PROMPT}" "${VALUE}"
+}
+
+### Functions
+#
 function TRIM_enable {
-  echo -e "\n***** enabling TRIM... *****\n"
+  PROMPT="Enabling TRIM..."
+  print_func_prompt
+
   sudo systemctl enable fstrim.timer
   if [ 0 == $? ]; then
-    echo "TRIM is on"
+    print_complete
+  else
+    print_error
   fi
 }
-
+#
 function install_paru {
-  echo -e "\n*****  installation of the AUR paru manager... *****\n"
-  git clone --depth=1 https://aur.archlinux.org/paru-bin.git
-  cd paru && makepkg -si
+  PROMPT="Installation of the AUR paru manager..."
+  print_func_prompt
+
+  git clone --depth=1 https://aur.archlinux.org/paru-bin.git .cache/paru
+  cd .cache/paru && makepkg -si
   cd .. && rm -rf paru
   if [ 0 == $? ]; then
-    echo "paru installed"
+    print_complete
+  else
+    print_error
   fi
 }
-
+#
 function mirror_generation {
-  echo -e "\n***** mirror generation... *****\n"
+  PROMPT="Mirror generation..."
+  print_func_prompt
+
   paru -S reflector
   sudo reflector --latest 15 --protocol https --country DE,FR,US \
                  --sort rate --save /etc/pacman.d/mirrorlist
   paru -Syu
   if [ 0 == $? ]; then
-    echo "mirrors generated"
+    print_complete
+  else
+    print_error
   fi
 }
-
+#
 function refresh_keyring {
-  echo -e "\n***** keychain update... *****\n"
+  PROMPT="Keychain update..."
+  print_func_prompt
+
   sudo pacman-key --init
   sudo pacman-key --populate archlinux
   sudo pacman-key --refresh-keys
   if [ 0 == $? ]; then
-    echo "keychain updated"
+    print_complete
+  else
+    print_error
   fi
-  # mirror gen are recommended
-  mirror_generation
 }
+#
+function install_zen_core_tweaks {
+  PROMPT="Installing tweaks to the linux zen kernel..."
+  print_func_prompt
 
-function zen_core_tweaks {
-  echo -e "\n***** installing tweaks to the linux zen kernel... *****\n"
   paru -S cfs-zen-tweaks
   sudo systemctl enable --now set-cfs-tweaks.service
   if [ 0 == $? ]; then
-    echo "tweaks installed"
+    print_complete
+  else
+    print_error
   fi
 }
-
-### Functions
-# Uncomment below to use
 #
 # TRIM_enable
 #
@@ -72,15 +112,17 @@ function zen_core_tweaks {
 #
 # mirror_generation
 #
-## Include mirror_generation
+# NOTE: Is recomended after mirror_generation
 # refresh_keyring
 #
-# zen_core_tweaks
+# install_zen_core_tweaks
 
-### Choosing packages and configs
+### Choosing packages, configs, LSPs
 #
 PKGLIST=()
 STOWLIST=()
+# See dotfiles/install-lsp/ about available
+LSPLIST+=(go lua)
 #
 # Common
 PKGLIST+=(stow exa bat)
@@ -155,42 +197,62 @@ STOWLIST+=(mangohud)
 
 ### Install packages
 #
-echo -e "\n***** Packages list *****\n${PKGLIST[@]}\n"
+PROMPT="Packages list"; VALUE="${PKGLIST[*]}"
+print_info_prompt
 # paru -S ${PKGLIST[@]}
 
 ### Create link configs
 #
-echo -e "\n***** Configs list *****\n${STOWLIST[@]}\n"
+PROMPT="Configs list"; VALUE="${STOWLIST[*]}"
+print_info_prompt
 # stow ${STOWLIST[@]}
+
+### Install LSPs
+#
+PROMPT="LSP list"; VALUE="${LSPLIST[*]}"
+print_info_prompt
+#
+function install_lsp {
+  PROMPT="Installing LSP servers..."
+  print_func_prompt
+
+  for i in ${LSPLIST[@]}; do
+    "./install-lsp/install-$i-lsp.sh"
+  done
+}
+#
+# install_lsp
+
 
 ### Fixes and automation
 #
 function settings {
-  echo -e "\n***** make the necessary adjustments... *****\n"
+  PROMPT="Make the necessary adjustments..."
+  print_func_prompt
+
 for i in ${PKGLIST[@]}; do
-  if [ $i == "dropbox" ]
-    then
+  case $i in
+    "dropbox")
       # Dropbox fix
       rm -rf ~/.dropbox-dist
       install -dm0 ~/.dropbox-dist
-  elif [ $i == "bluez-utils" ]
-    then
+    ;; "bluez-utils")
       # Enable bluetooth
       rfkill unblock bluetooth
       sudo systemctl enable --now bluetooth.service
-  elif [ $i == "zsh" ]
-    then
-      #  ZSH as default shell
+    ;; "zsh")
+      # ZSH as default shell
       chsh -s /bin/zsh
-  elif [ $i == "pipewire" ]
-    then
+    ;; "pipewire"
       # Use for immediate application pipewire
       systemctl restart --user pipewire.service
       systemctl --user daemon-reload
-    fi
+    ;;
+  esac
 done
 }
-# Uncomment below to use
+#
+# NOTE: Recommended it for first use
 # settings
 
 ### NetworkManager
@@ -199,42 +261,38 @@ done
 
 ### Fonts setup
 #
-# sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
-# sudo ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
-# sudo ln -s /etc/fonts/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
+function setup_fonts {
+  sudo ln -s /usr/share/fontconfig/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
+  sudo ln -s /usr/share/fontconfig/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d
+  sudo ln -s /usr/share/fontconfig/conf.avail/11-lcdfilter-default.conf /etc/fonts/conf.d
+
+  sudo sed -e '/export FREETYPE_PROPERTIES="truetype:interpreter-version=40"/s/^# *//' -i /etc/profile.d/freetype2.sh
+
+  sudo stow -t /etc/fonts fonts
+  fc-cache
+}
 #
-# Uncomment export FREETYPE_PROPERTIES="truetype:interpreter-version=40" in /etc/profile.d/freetype2.sh
-#
-# sudo stow -t /etc/fonts fonts
-# fc-cache
+# setup_fonts
 
 ### Create grub link config
 #
-# sudo rm /etc/default/grub
-# sudo stow -t /etc/default grub
-# sudo grub-mkconfig -o /boot/grub/grub.cfg
+function create_GRUB_cfg_link {
+  sudo rm /etc/default/grub
+  sudo stow -t /etc/default grub
+  sudo grub-mkconfig -o /boot/grub/grub.cfg
+}
+#
+# create_GRUB_cfg_link
 
 ### Create bluetooth link config
 #
-# sudo rm /etc/bluetooth/main.conf
-# sudo stow -t /etc/bluetooth bluetooth-stack
+function create_BtH_cfg_link {
+  sudo rm /etc/bluetooth/main.conf
+  sudo stow -t /etc/bluetooth bluetooth-stack
+}
+#
+# create_BtH_cfg_link
 
 ### Mimetype TODO: system overwrites the file
 #
 # cat mimetype/.config/mimeapps.list > $HOME/.config/mimeapps.list
-
-### Choosing LSP
-#
-#SEE: dotfiles/install-lsp/
-LSPLIST=()
-LSPLIST+=(go lua)
-#
-#echo -e "\n***** LSP list *****\n${LSPLIST[@]}\n"
-#
-function install_lsp {
-  echo -e "\n***** installing LSP servers... *****\n"
-  for i in ${LSPLIST[@]}; do
-    "./install-lsp/install-$i-lsp.sh"
-  done
-}
-# install_lsp
