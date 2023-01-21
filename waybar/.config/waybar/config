@@ -48,7 +48,7 @@
     },
 
     "bluetooth": {
-        "format": "BtH",
+        "format-on": "BtH",
         "format-off": "",
         "tooltip-format-connected": "{device_alias}\t{controller_address}"
     },

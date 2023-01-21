@@ -18,7 +18,7 @@ box.horizontal.modules-right, box.horizontal.modules-left {
   margin: 0px 5px;
 }
 
-#workspaces button, #clock, #cpu, #network, #pulseaudio, #language, #bluetooth, #memory, #custom-vpn, #custom-weather {
+#workspaces button, #clock, #cpu, #network, #pulseaudio, #language, #bluetooth.on, #memory, #custom-vpn, #custom-weather {
   border: 2px solid @var-blue-color;
   border-radius: 10;
   margin: 8px 2px 10px;
