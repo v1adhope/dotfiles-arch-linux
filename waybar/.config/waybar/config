@@ -48,9 +48,12 @@
     },
 
     "bluetooth": {
-        "format-on": "BtH",
+        "format": "BtH",
+        "format-disabled": "",
         "format-off": "",
-        "tooltip-format-connected": "{device_alias}\t{controller_address}"
+        "tooltip-format-on": "{controller_alias}\t{controller_address}\n\nBluetooth is enabled but not used",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
 
     "network": {
