@@ -1,6 +1,7 @@
 on-button-left=dismiss
 on-button-right=dismiss-all
 default-timeout=5000
+ignore-timeout=1
 
 font="Noto Sans Mono" Regular 11
 background-color=#000000CE
@@ -12,4 +13,3 @@ border-radius=10
 
 [mode=away]
 default-timeout=0
-ignore-timeout=1
