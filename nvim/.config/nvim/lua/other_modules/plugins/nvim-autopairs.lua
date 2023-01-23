@@ -4,11 +4,12 @@ if not ok then
 end
 
 autopairs.setup {
-  disable_filetype = { '' },
+  check_ts = true,
+  disable_filetype = { 'TelescopePrompt' },
   fast_wrap = {
     map = '<M-e>',
     chars = { '{', '[', '(', '"', "'" },
-    pattern = [=[[%'%"%)%>%]%)%}%,]]=],
+    pattern = [=[[%'%"%)%>%]%)%}%,%:%;]]=],
     end_key = '$',
     keys = 'qwertyuiopzxcvbnmasdfghjkl',
     check_comma = true,

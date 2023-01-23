@@ -190,8 +190,8 @@ STOWLIST+=(tmux)
 PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
 #
 # Widget toolkits
-PKGLIST+=(gtk2 gtk3 qt5ct qt6ct adwaita-qt5 adwaita-qt6)
-STOWLIST+=(gtk)
+PKGLIST+=(gtk3 qt6ct adwaita-qt6)
+STOWLIST+=(widget-toolkits)
 #
 # Sway
 PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel \
@@ -205,7 +205,7 @@ PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-alsa \
 STOWLIST+=(pipewire)
 #
 # Multimedia
-PKGLIST+=(imv grim slurp flameshot libreoffice-still mpv gimp sioyek)
+PKGLIST+=(imv grim slurp flameshot libreoffice-still mpv gimp-devel sioyek)
 STOWLIST+=(imv mpv)
 #
 # Utilities

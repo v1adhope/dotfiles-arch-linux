@@ -3,13 +3,11 @@
 # Steam fix
 export SDL_VIDEODRIVER=x11
 
-# QT5 and QT6 fix
-export QT_QPA_PLATFORMTHEME=qt5ct
-
 # Wayland fix
 #export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=qt6ct
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
 export GDK_BACKEND="wayland,x11"
