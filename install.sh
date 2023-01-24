@@ -190,7 +190,7 @@ STOWLIST+=(tmux)
 PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
 #
 # Widget toolkits
-PKGLIST+=(gtk3 qt6ct adwaita-qt6)
+PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt6)
 STOWLIST+=(widget-toolkits)
 #
 # Sway

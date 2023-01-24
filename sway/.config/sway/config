@@ -8,7 +8,7 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # Fix GTK
-exec_always $HOME/.config/scripts/sway/import-gsettings.sh
+exec_always $HOME/.config/sway/load/extra/import-gsettings.sh
 
 ### Appearance
 #

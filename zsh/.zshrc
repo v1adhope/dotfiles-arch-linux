@@ -21,8 +21,8 @@ compinit
 ### If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-### If running from tty1 start sway
-[ "$(tty)" = "/dev/tty1" ] && source $HOME/.config/scripts/sway/launchsway.sh
+### If running from tty1 start sway and its deps
+[ "$(tty)" = "/dev/tty1" ] && for f in $HOME/.config/sway/load/*.sh; do source $f; done
 
 ### Exports
 #
