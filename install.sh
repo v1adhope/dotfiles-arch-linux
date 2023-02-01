@@ -153,12 +153,10 @@ function install_zen_core_tweaks {
 #
 # install_zen_core_tweaks
 
-### Choosing packages, configs, LSPs
+### Choosing packages, configs
 #
 PKGLIST=()
 STOWLIST=()
-# See dotfiles/install-lsp/ about available
-LSPLIST+=(go lua)
 #
 # Common
 PKGLIST+=(stow exa bat)
@@ -233,7 +231,6 @@ STOWLIST+=(mangohud)
 
 ### Install packages
 #
-# NOTE: See 292 line
 PROMPT="Packages list"; VALUE="${PKGLIST[*]}"
 print_info_prompt
 # paru -S ${PKGLIST[@]}
@@ -243,23 +240,6 @@ print_info_prompt
 PROMPT="Configs list"; VALUE="${STOWLIST[*]}"
 print_info_prompt
 # stow ${STOWLIST[@]}
-
-### Install LSPs
-#
-PROMPT="LSP list"; VALUE="${LSPLIST[*]}"
-print_info_prompt
-#
-function install_lsp {
-  PROMPT="Installing LSP servers..."
-  print_func_prompt
-
-  for i in ${LSPLIST[@]}; do
-    "./install-lsp/install-$i-lsp.sh"
-  done
-}
-#
-# install_lsp
-
 
 ### Fixes and automation
 #
@@ -280,7 +260,7 @@ for i in ${PKGLIST[@]}; do
     ;; "zsh")
       # ZSH as default shell
       chsh -s /bin/zsh
-    ;; "pipewire"
+    ;; "pipewire")
       # Use for immediate application pipewire
       systemctl restart --user pipewire.service
       systemctl --user daemon-reload

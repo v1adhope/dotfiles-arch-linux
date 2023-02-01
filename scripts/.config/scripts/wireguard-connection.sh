@@ -1,10 +1,9 @@
 #!/bin/bash
 
 # DNS changer integrated into wg-quick.conf
+# Use env for config variable
 
-config="arch_wg"
-
-status=$(systemctl is-active wg-quick@$config.service)
+status=$(systemctl is-active wg-quick@${WG_CONFIG}.service)
 
 case $1 in
 -c) echo "$status";;
@@ -12,10 +11,10 @@ case $1 in
 if [ "$status" == "active" ]
   then
     echo "Shutting down the service..."
-    sudo systemctl stop "wg-quick@$config.service"
+    sudo systemctl stop "wg-quick@${WG_CONFIG}.service"
   else
     echo "Starting the service..."
-    sudo systemctl start "wg-quick@$config.service"
+    sudo systemctl start "wg-quick@${WG_CONFIG}.service"
 fi
 echo "done!"
 ;;
@@ -25,4 +24,3 @@ Use -c for check is-active status wg-quick.service
 Use -s for on/off wireguard VPN"
 ;;
 esac
-

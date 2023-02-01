@@ -4,17 +4,17 @@ require 'settings'
 require 'keymaps'
 
 -- Plagins
-require 'other_modules/plugins/nvim-tree'
-require 'other_modules/plugins/colorscheme'
-require 'other_modules/plugins/lualine'
-require 'other_modules/plugins/nvim-lspconfig'
-require 'other_modules/plugins/nvim-cmp'
-require 'other_modules/plugins/nvim-autopairs'
-require 'other_modules/plugins/treesitter'
-require 'other_modules/plugins/nvim-comment'
-require 'other_modules/plugins/trim'
+require 'other-modules/plugins/nvim-tree'
+require 'other-modules/plugins/colorscheme'
+require 'other-modules/plugins/lualine'
+require 'other-modules/plugins/lsp/nvim-lspconfig'
+require 'other-modules/plugins/nvim-cmp'
+require 'other-modules/plugins/nvim-autopairs'
+require 'other-modules/plugins/treesitter'
+require 'other-modules/plugins/nvim-comment'
+require 'other-modules/plugins/trim'
 -- Features
-require 'other_modules/new-line-without-comment'
+require 'other-modules/new-line-without-comment'
 
 -- Go features
-require 'other_modules/go/go-formatting'
+require 'other-modules/go/go-formatting'

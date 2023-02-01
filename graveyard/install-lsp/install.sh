@@ -1,0 +1,15 @@
+-### Install LSPs
+-#
+-PROMPT="LSP list"; VALUE="${LSPLIST[*]}"
+-print_info_prompt
+-#
+-function install_lsp {
+-  PROMPT="Installing LSP servers..."
+-  print_func_prompt
+-
+-  for i in ${LSPLIST[@]}; do
+-    "./install-lsp/install-$i-lsp.sh"
+-  done
+-}
+-#
+-# install_lsp

@@ -55,7 +55,9 @@ return packer.startup(function(use)
   -- Statusline
   use 'nvim-lualine/lualine.nvim'
 
-  -- LSP
+  -- LSP + mason
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
   use 'neovim/nvim-lspconfig'
 
   -- Autocomplete

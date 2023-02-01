@@ -19,7 +19,10 @@
         "interval": 5
     },
 
-    "custom/space": {"format": " ", "tooltip": false},
+    "custom/space": {
+        "format": " ",
+        "tooltip": false
+    },
 
     "pulseaudio": {
         "format": "VOL: {volume}%",
@@ -30,7 +33,8 @@
 
     "clock": {
         "interval": 1,
-        "format": "{:%a %b %d.%m %I:%M:%S}"
+        "format": "{:%a %b %d.%m %H:%M:%S}",
+        "tooltip-format": "{calendar}"
     },
 
     "cpu": {

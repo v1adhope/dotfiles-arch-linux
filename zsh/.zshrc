@@ -21,11 +21,10 @@ compinit
 ### If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-### If running from tty1 start sway and its deps
-[ "$(tty)" = "/dev/tty1" ] && for f in $HOME/.config/sway/load/*.sh; do source $f; done
-
 ### Exports
 #
+# WireGuard config variable
+export WG_CONFIG="arch-wg"
 # Ls and exa color overwrite
 export LS_COLORS="di=01;38;5;12:ln=01;38;5;13:or=01;38;5;167:ex=38;5;115:*.*=00"
 export EXA_COLORS="ur=01;38;5;187:uw=01;38;5;167:ux=01;38;5;115:ue=01;38;5;115:gr=01;38;5;187:gw=01;38;5;167:gx=01;38;5;115:tr=01;38;5;187:tw=01;38;5;167:tx=01;38;5;115:uu=01;38;5;13:gu=01;38;5;13:un=01;38;5;12:gn=01;38;5;12:sn=38;5;115:sb=38;5;115:da=38;5;187:lp=01;38;5;13:b0=01;38;5;167"
@@ -37,14 +36,15 @@ export PATH=$HOME/.config/scripts/bin:$PATH
 # Go
 export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.local/share/go/bin:$PATH
-# Lua
-export PATH=$HOME/.config/lsp/lua-language-server/bin:$PATH
 # Hardware video acceleration
 source "$HOME/.config/scripts/hardware-video-acceleration.sh"
 # Alias
 source "$HOME/.config/scripts/alias.sh"
 # Customize nnn
 source "$HOME/.config/nnn/customize.sh"
+
+### If running from tty1 start sway and its deps
+[ "$(tty)" = "/dev/tty1" ] && for f in $HOME/.config/sway/load/*.sh; do source $f; done
 
 ### Theme&plagins
 source "$HOME/.config/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme"
@@ -57,3 +57,6 @@ bindkey '^[[B' history-substring-search-down
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Remove $PATH duplicates
+typeset -U path
