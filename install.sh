@@ -141,6 +141,25 @@ function install_zen_core_tweaks {
 
   print_complete
 }
+
+function install_irqbalance {
+  PROMPT="Installing irqbalance..."
+  print_func_prompt
+
+  paru -S irqbalance
+  if [ 0 != $? ]; then
+    print_error
+    return
+  fi
+
+  sudo systemctl enable --now irqbalance.service
+  if [ 0 != $? ]; then
+    print_error
+    return
+  fi
+
+  print_complete
+}
 #
 # TRIM_enable
 #
@@ -152,6 +171,8 @@ function install_zen_core_tweaks {
 # refresh_keyring
 #
 # install_zen_core_tweaks
+#
+# install_irqbalance
 
 ### Choosing packages, configs
 #

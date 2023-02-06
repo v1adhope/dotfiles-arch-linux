@@ -1,0 +1,20 @@
+#!/bin/bash
+
+### Customization block
+#
+$HOME/.config/swaylock/random-wallpaper.sh
+
+### The block below is always the last one
+swayidle \
+  timeout 10 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
+#
+makoctl mode -a away
+#
+# Before lock
+swaylock
+# After unlock
+#
+makoctl mode -r away
+#
+# Cancel swayidle
+kill %%

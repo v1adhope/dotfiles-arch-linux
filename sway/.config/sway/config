@@ -1,19 +1,19 @@
 # Read `man 5 sway` for a complete reference.
 
-### Common settings
+### Fixes
 #
-# Fix dbus
+# dbus
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec hash dbus-update-activation-environment 2>/dev/null && \
      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-
-# Fix GTK
-exec_always $HOME/.config/sway/load/extra/import-gsettings.sh
+#
+# GTK
+exec_always "$HOME/.config/sway/load/extra/import-gsettings.sh"
 
 ### Appearance
 #
-font pango: "Noto Sans" Regular 11
-default_border pixel 2
+font pango: "Noto Sans Mono" Regular 11
+default_border pixel 3
 gaps top 6
 default_orientation horizontal
 workspace_auto_back_and_forth yes
@@ -22,7 +22,7 @@ workspace_auto_back_and_forth yes
 #
 # Common
 exec dropbox
-# Main(1)
+# Knowledge base(1)
 assign [class="obsidian"] 1
 exec --no-startup-id obsidian
 # Browser(2)
@@ -40,6 +40,7 @@ for_window [class="XEyes"] floating enable
 for_window [title="glxgears"] floating enable
 for_window [app_id="flameshot"] floating enable, fullscreen disable, move absolute position 0 0, border pixel 0
 for_window [title="Picture in picture"] floating enable
+#
 # Games
 assign [class="Steam"] 7
 for_window [class="Steam" title="Friends List"] resize set 20 ppt
@@ -56,44 +57,40 @@ set $right l
 # Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
 set $menu fuzzel
 
 ### Output configuration
+# You can get the names of your outputs by running: swaymsg -t get_outputs
 #
 # Main screen
 output HDMI-A-1 pos 0 0 res 1920x1080
 # VRR
 output * adaptive_sync on
 # Wallpaper
-output * bg $HOME/.config/sway/wallpapers/wallpaper3.jpg fill
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+output * bg $HOME/.config/sway/wallpapers/wallpaper-2.jpg fill
 
 ### Idle configuration
 #
-exec swayidle \
-         timeout 300 "swaylock" \
-         timeout 310 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         timeout 300 "makoctl mode -a away" resume "makoctl mode -r away"
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# Calls itself. Until unlocked the screen fades every 10 seconds of
+# inactivity and notifications have no disappearance period.
+# The wallpaper is set randomly. Initially there are no variations,
+# add them to the path "$HOME/.config/swaylock/wallpapers/" by default.
+set $manual_lock_path "$HOME/.config/swaylock/manual-lock.sh"
+exec swayidle timeout 300 'exec $manual_lock_path'
 
 ### Input configuration
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
 #
 # Keyboard layout
 input type:keyboard {
     xkb_layout us,ru
     xkb_options grp:win_space_toggle
 }
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
 #
-    # Lock screen !!!Mako away doesn't working with this keybinding
-    bindsym --to-code $mod+u exec swaylock
+    bindsym --to-code $mod+u exec $manual_lock_path
 
     # Get screenshot
     bindsym Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim
@@ -257,6 +254,8 @@ bindsym --to-code $mod+r mode "resize"
 #
 # Status Bar:
 #
-bar swaybar_command waybar
+bar {
+    swaybar_command waybar
+}
 
 include /etc/sway/config.d/*

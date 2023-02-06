@@ -1,9 +1,8 @@
-daemonize
 show-failed-attempts
 ignore-empty-password
 
 font="Noto Sans Mono"
-image="$HOME/.config/swaylock/images/swaylock1.png"
+image="$HOME/.config/swaylock/wallpapers/wallpaper.jpg"
 scaling=fill
 indicator-caps-lock
 show-keyboard-layout

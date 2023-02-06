@@ -1,5 +1,14 @@
 #!/bin/sh
 
+# Use crontab
+# @weekly "/home/rat/.config/scripts/paccache-clear.sh"
+
+# Script ericmurphyxyz
+# https://gist.github.com/ericmurphyxyz/37baa4c9da9d3b057a522f20a9ad6eba
+# Based on scripts from albertored11 and luukvbaal
+# https://gist.github.com/albertored11/bfc0068f4e43ca0d7ce0af968f7314db
+# https://gist.github.com/luukvbaal/2c697b5e068471ee989bff8a56507142
+
 # The location of the cache for your aur helper
 AUR_CACHE_DIR=$HOME/.cache/paru/clone
 

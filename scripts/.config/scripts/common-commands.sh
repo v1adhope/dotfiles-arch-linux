@@ -1,8 +1,8 @@
 #!/bin/bash
 
 case $1 in
--r) echo "Run reboot..."; sudo systemctl reboot;;
--s) echo "Run shutdown..." ;sudo systemctl poweroff;;
+-r) echo "Run reboot..."; shutdown -r now;;
+-s) echo "Run shutdown..." ; shutdown now;;
 *)
   echo "Unknown:
 Use -r for reboot
