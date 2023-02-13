@@ -6,10 +6,9 @@
 #
 # Use install_paru function if you have not paru
 #
-# recommend pacstrap pkgs: base base-devel linux-zen linux-zen-headers \
-#                          linux-lts linux-lts-headers linux-firmware \
-#                          btrfs-progs vim git grub efibootmgr dhcpcd \
-#                          dhclient networkmanager
+# recommend pacstrap pkgs: base base-devel linux-zen linux-zen-headers
+#                          linux-firmware btrfs-progs vim git grub
+#                          efibootmgr dhcpcd dhclient networkmanager
 #
 # A reboot is required after installation
 
@@ -225,7 +224,7 @@ STOWLIST+=(pipewire)
 #
 # Multimedia
 PKGLIST+=(imv grim slurp flameshot libreoffice-still mpv gimp-devel sioyek)
-STOWLIST+=(imv mpv)
+STOWLIST+=(imv mpv sioyek)
 #
 # Utilities
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
@@ -237,6 +236,7 @@ PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
 STOWLIST+=(nnn)
 #
 # Software
+# NOTE: Telegream coredump: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7754
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
           clipgrab authy google-chrome obsidian dropbox webcord \
           obs-studio)

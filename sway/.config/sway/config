@@ -74,7 +74,9 @@ output * bg $HOME/.config/sway/wallpapers/wallpaper-2.jpg fill
 # Calls itself. Until unlocked the screen fades every 10 seconds of
 # inactivity and notifications have no disappearance period.
 # The wallpaper is set randomly. Initially there are no variations,
-# add them to the path "$HOME/.config/swaylock/wallpapers/" by default.
+# add them to the path "$HOME/.config/swaylock/wallpapers/" by default,
+# with the names wallpaper, wallpaper-1 ... and set up this
+# "$HOME/.config/swaylock/random-wallpaper.sh" script.
 set $manual_lock_path "$HOME/.config/swaylock/manual-lock.sh"
 exec swayidle timeout 300 'exec $manual_lock_path'
 
