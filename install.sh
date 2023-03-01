@@ -180,7 +180,7 @@ STOWLIST=()
 #
 # Common
 PKGLIST+=(stow exa bat)
-STOWLIST+=(git scripts)
+STOWLIST+=(git scripts bat)
 #
 # AMD
 PKGLIST+=(amd-ucode)
@@ -230,7 +230,7 @@ STOWLIST+=(imv mpv sioyek)
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
           wireguard-tools neofetch nnn cronie wl-clipboard \
           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
-          ninja cups samsung-unified-driver-printer jre8-openjdk \
+          ninja cups samsung-unified-driver-printer java-openjfx-src jre8-openjdk \
           hunspell-en_us hunspell-ru xdg-desktop-portal jq viu \
           ffmpegthumbnailer glow)
 STOWLIST+=(nnn)
@@ -247,6 +247,7 @@ PKGLIST+=(vim neovim go docker docker-compose)
 STOWLIST+=(vim nvim)
 #
 # Games
+# NOTE: https://github.com/ValveSoftware/steam-for-linux/issues/9083
 PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
 STOWLIST+=(mangohud)
 
@@ -321,6 +322,14 @@ function create_GRUB_cfg_link {
 }
 #
 # create_GRUB_cfg_link
+
+### Create pacman link config
+#
+function create_pacman_cfg_link {
+  sudo rm /etc/pacman.conf
+  sudo stow -t /etc pacman
+}
+#create_pacman_cfg_link
 
 ### Create bluetooth link config
 #

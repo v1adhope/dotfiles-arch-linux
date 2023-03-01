@@ -21,7 +21,7 @@ if not ok then
 end
 
 -- Connecting servers
-Servers = { 'sumneko_lua', 'gopls', 'bashls', 'emmet_ls', 'html' }
+Servers = { 'lua_ls', 'gopls', 'bashls', 'emmet_ls', 'html' }
 
 mason_lsp.setup {
   ensure_install = { Servers },

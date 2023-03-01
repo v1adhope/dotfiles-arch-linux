@@ -207,10 +207,10 @@ input type:keyboard {
     bindsym --to-code $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+s floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+Ctrl+space focus mode_toggle
+    bindsym $mod+s focus mode_toggle
 
     # Move focus to the parent container
     bindsym --to-code $mod+a focus parent

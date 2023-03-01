@@ -16,7 +16,6 @@ if [ "$status" == "active" ]
     echo "Starting the service..."
     sudo systemctl start "wg-quick@${WG_CONFIG}.service"
 fi
-echo "done!"
 ;;
 *)
   echo "Uncknown:
