@@ -2,7 +2,7 @@
 
 ### Customization block
 #
-$HOME/.config/swaylock/random-wallpaper.sh
+${0%/*}/random-wallpaper.sh
 
 ### The block below is always the last one
 swayidle \

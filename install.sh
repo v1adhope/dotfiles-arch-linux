@@ -182,27 +182,14 @@ STOWLIST=()
 PKGLIST+=(stow exa bat)
 STOWLIST+=(git scripts bat)
 #
-# AMD
-PKGLIST+=(amd-ucode)
+# AMD # GPU/2D/3D rendering # Hardware video acceleration x64
+PKGLIST+=(amd-ucode mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon \
+          vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu \
+          libva-mesa-driver mesa-vdpau)
 #
-# AMD GPU/2D/3D rendering
-PKGLIST+=(mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon \
-          vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu)
-#
-# Hardware video acceleration x64
-PKGLIST+=(libva-mesa-driver mesa-vdpau)
-#
-# Terminal emulator
-PKGLIST+=(alacritty)
-STOWLIST+=(alacritty)
-#
-# Shell
-PKGLIST+=(zsh)
-STOWLIST+=(zsh)
-#
-# Multiplexer
-PKGLIST+=(tmux)
-STOWLIST+=(tmux)
+# Terminal emulator # Shell # Multiplexer
+PKGLIST+=(alacritty zsh tmux)
+STOWLIST+=(alacritty zsh tmux)
 #
 # Fonts
 PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
@@ -222,25 +209,21 @@ PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-alsa \
           bluez-utils noise-suppression-for-voice)
 STOWLIST+=(pipewire)
 #
-# Multimedia
-PKGLIST+=(imv grim slurp flameshot libreoffice-still mpv gimp-devel sioyek)
-STOWLIST+=(imv mpv sioyek)
-#
 # Utilities
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
           wireguard-tools neofetch nnn cronie wl-clipboard \
           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
           ninja cups samsung-unified-driver-printer java-openjfx-src jre8-openjdk \
           hunspell-en_us hunspell-ru xdg-desktop-portal jq viu \
-          ffmpegthumbnailer glow)
+          ffmpegthumbnailer glow zip unzip exfat-utils ascii grim slurp)
 STOWLIST+=(nnn)
 #
 # Software
 # NOTE: Telegream coredump: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7754
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
           clipgrab authy google-chrome obsidian dropbox webcord \
-          obs-studio)
-STOWLIST+=(google-chrome)
+          obs-studio gimp-devel audacity imv libreoffice-still mpv sioyek)
+STOWLIST+=(google-chrome imv mpv sioyek)
 #
 # DEV
 PKGLIST+=(vim neovim go docker docker-compose)

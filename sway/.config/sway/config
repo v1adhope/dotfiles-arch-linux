@@ -75,8 +75,7 @@ output * bg $HOME/.config/sway/wallpapers/wallpaper-2.jpg fill
 # inactivity and notifications have no disappearance period.
 # The wallpaper is set randomly. Initially there are no variations,
 # add them to the path "$HOME/.config/swaylock/wallpapers/" by default,
-# with the names wallpaper, wallpaper-1 ... and set up this
-# "$HOME/.config/swaylock/random-wallpaper.sh" script.
+# with the names wallpaper, wallpaper-1 ...
 set $manual_lock_path "$HOME/.config/swaylock/manual-lock.sh"
 exec swayidle timeout 300 'exec $manual_lock_path'
 

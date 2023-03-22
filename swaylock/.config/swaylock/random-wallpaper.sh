@@ -1,22 +1,30 @@
 #!/bin/bash
 
-wallpaper_path="$HOME/.config/swaylock/wallpapers/"
+### Settings
+#
+config_location="${0%/*}/config"
+wallpaper_pwd="${0%/*}/wallpapers/"
+file_pattern="wallpaper"
 
-# Don't foget change in swaylock config
-file_format="jpg"
-
-file_count=$(($(ls $wallpaper_path | wc -l) - 1))
+### Don't touch if you don't know what you're doing
+#
+file_count=$(($(ls $wallpaper_pwd | wc -l) - 1))
 if [ "$file_count" -lt 1 ]; then
   echo "no wallpapers"
   exit 1
 fi
-
-file1="wallpaper.$file_format"
-file2="wallpaper-$(($RANDOM % $(($file_count - 1)) + 1 )).$file_format"
-
+#
+wallpaper_path=$wallpaper_pwd$file_pattern
+file_name=$(basename $wallpaper_path.*)
+extension=".${file_name##*.}"
+file1="$wallpaper_path$extension"
+file2="$wallpaper_path-$(($RANDOM % $(($file_count - 1)) + 1 ))$extension"
+#
+sed -i "s,^image.*,image=\"$file1\"," $config_location
+#
 tempdir="$(mktemp -d)"
-
-mv "$wallpaper_path$file1" "$tempdir/tmpfile" &&
-mv "$wallpaper_path$file2" "$wallpaper_path$file1" &&
-mv "$tempdir/tmpfile" "$wallpaper_path$file2" &&
+#
+mv "$file1" "$tempdir/tmpfile" &&
+mv "$file2" "$file1" &&
+mv "$tempdir/tmpfile" "$file2" &&
 rm -rf "$tempdir"
