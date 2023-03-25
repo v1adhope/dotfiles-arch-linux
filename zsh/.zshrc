@@ -22,6 +22,9 @@ compinit
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 
+# Remove $PATH duplicates
+typeset -U path
+
 ### If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -35,13 +38,14 @@ export EXA_COLORS="ur=01;38;5;187:uw=01;38;5;167:ux=01;38;5;115:ue=01;38;5;115:g
 # Set default text editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
+# Hardware video acceleration
+export VDPAU_DRIVER=radeonsi
+export LIBVA_DRIVER_NAME=radeonsi
 # My executable scripts
 export PATH=$HOME/.config/scripts/bin:$PATH
 # Go
 export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.local/share/go/bin:$PATH
-# Hardware video acceleration
-source "$HOME/.config/scripts/hardware-video-acceleration.sh"
 # Alias
 source "$HOME/.config/scripts/alias.sh"
 # Customize nnn
@@ -61,6 +65,3 @@ bindkey '^[[B' history-substring-search-down
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Remove $PATH duplicates
-typeset -U path

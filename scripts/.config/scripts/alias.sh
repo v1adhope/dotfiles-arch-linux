@@ -5,10 +5,9 @@ alias cat='bat'
 alias diff='diff -us'
 alias v='nvim'
 alias n='nnn'
+
 # Removing unnecessary dependencies
-alias pman='sudo pacman -Rns $(pacman -Qdtq)'
+alias pman="sudo pacman -Rns $(pacman -Qdtq)"
 
 # Common commands
-alias comcom='~/.config/scripts/common-commands.sh'
-# Wireguard connect support tool
-alias wgc='~/.config/scripts/wireguard-connection.sh'
+alias comcom="~/.config/scripts/common-commands.sh"
