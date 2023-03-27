@@ -8,7 +8,7 @@ alias nnn="nnn -a -e"
 # -H - show hidden files
 
 # Bookmarks
-export NNN_BMS="d:$HOME/Documents;D:$HOME/Downloads;p:$HOME/Pictures;v:$HOME/Videos;m:$HOME/Dropbox/DropsyncFiles/music;b:$HOME/Dropbox/DropsyncFiles/books"
+export NNN_BMS="d:$HOME/Documents;D:$HOME/Downloads;p:$HOME/Pictures;v:$HOME/Videos;m:$HOME/Dropbox/DropsyncFiles/music;b:$HOME/Dropbox/DropsyncFiles/books;s:/smb"
 
 # Color theme
 BLK="04" CHR="04" DIR="0c" EXE="79" REG="00" HARDLINK="00" SYMLINK="0d" MISSING="00" ORPHAN="01" FIFO="0F" SOCK="0F" OTHER="02"

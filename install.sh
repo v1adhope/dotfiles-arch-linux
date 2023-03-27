@@ -226,7 +226,7 @@ PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
 STOWLIST+=(google-chrome imv mpv sioyek)
 #
 # DEV
-PKGLIST+=(vim neovim go docker docker-compose)
+PKGLIST+=(vim neovim go docker docker-compose apache)
 STOWLIST+=(vim nvim)
 #
 # Games

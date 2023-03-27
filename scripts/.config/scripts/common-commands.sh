@@ -54,11 +54,11 @@ status=$(systemctl is-active wg-quick@${WG_CONFIG}.service)
 if [[ "$1" == "wg" ]]; then
   if [ "$status" == "active" ]
     then
-      echo "=> Opening wireguard tunnel..."
+      echo "=> Closing wireguard tunnel..."
       sudo systemctl stop "wg-quick@${WG_CONFIG}.service"
       exit 0
     else
-      echo "=> Closing wireguard tunnel..."
+      echo "=> Opening wireguard tunnel..."
       sudo systemctl start "wg-quick@${WG_CONFIG}.service"
       exit 0
   fi

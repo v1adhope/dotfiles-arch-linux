@@ -74,8 +74,11 @@ return packer.startup(function(use)
 
   -- Syntax Highlighting
   use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ts_update()
+    'HiPhish/nvim-ts-rainbow2',
+    requires = {
+      'nvim-treesitter/nvim-treesitter',
+      run = ts_update()
+    }
   }
 
   -- Comment
