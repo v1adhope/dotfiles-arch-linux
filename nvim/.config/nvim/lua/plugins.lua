@@ -71,6 +71,7 @@ return packer.startup(function(use)
   }
   use 'windwp/nvim-autopairs'
   use 'rafamadriz/friendly-snippets'
+  -- use "b0o/schemastore.nvim"
 
   -- Syntax Highlighting
   use {

@@ -12,7 +12,7 @@ shell:
 window:
   opacity: 0.8
   title: Alacritty Terminal
-  decorations_theme_variant: dark
+  decorations_theme_variant: Dark
 
 cursor:
   style:

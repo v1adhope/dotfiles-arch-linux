@@ -7,6 +7,13 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
+local ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+if not ok then
+  return
+end
+
+M.capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 function M.custom_lsp_attach(client, bufnr)

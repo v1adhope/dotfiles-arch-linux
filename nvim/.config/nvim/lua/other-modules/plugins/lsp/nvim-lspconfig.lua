@@ -3,13 +3,6 @@ if not ok then
   return
 end
 
-local ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
-if not ok then
-  return
-end
-
-local capabilities = cmp_lsp.default_capabilities()
-
 local ok, config = pcall(require, 'lspconfig')
 if not ok then
   return
@@ -30,9 +23,10 @@ for _, lsp in ipairs(Servers) do
     on_attach = function(client, bufnr)
       handlers.custom_lsp_attach(client, bufnr)
     end,
-    capabillities = capabilities,
+    capabillities = handlers.capabilities,
     settings = {
-      Lua = languages.lua
+      Lua = languages.lua,
+      json = languages.json
     }
   }
 end

@@ -47,7 +47,12 @@ treesitter.setup {
       'TSRainbowViolet',
       'TSRainbowCyan',
     },
-    query = { 'rainbow-parens' },
+    query = {
+      'rainbow-parens',
+      html = 'rainbow-tags',
+      javascript = 'rainbow-parens-react',
+      tsx = 'rainbow-tags'
+    },
     strategy = rainbow.strategy.global
   }
 }

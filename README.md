@@ -2,7 +2,7 @@
 
 ## Preview
 
-![preview](/assets/images/preview-20230116.png)
+![preview](/assets/images/preview.png)
 
 ## Where to look for information about current dotfiles?
 
