@@ -45,13 +45,14 @@ treesitter.setup {
       'TSRainbowBlue',
       'TSRainbowOrange',
       'TSRainbowViolet',
-      'TSRainbowCyan',
+      'TSRainbowCyan'
     },
     query = {
       'rainbow-parens',
-      html = 'rainbow-tags',
       javascript = 'rainbow-parens-react',
-      tsx = 'rainbow-tags'
+      html = 'rainbow-tags',
+      tsx = 'rainbow-tags',
+      vue = 'rainbow-tags'
     },
     strategy = rainbow.strategy.global
   }

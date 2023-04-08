@@ -1,16 +1,22 @@
 #!/bin/bash
 
+function print_help {
+  echo -e "Manual\n"
+  echo "   Flags"
+  echo -e "\t -h   help"
+  echo -e "\t -r   reboot"
+  echo -e "\t -s   shutdown"
+  echo "   Args"
+  echo -e "\t smb   mount/ umont smb"
+  echo -e "\t wg   turn on/ off wireguard"
+  echo -e "\t cam  enable android cam"
+}
+
 while getopts ":hrs" opt; do
   case $opt in
     h)
-      echo -e "Manual\n"
-      echo "   Flags"
-      echo -e "\t -r   reboot"
-      echo -e "\t -s   shutdown"
-      echo "   Args"
-      echo -e "\t smb   mount/ umont smb"
-      echo -e "\t wg   turn on/ off wireguard"
-      exit 0
+      print_help
+      exit 1
       ;;
     r)
       echo "=> Run reboot..."
@@ -23,15 +29,14 @@ while getopts ":hrs" opt; do
       exit 0
       ;;
     ?)
-      echo "=> Unknown option -$OPTARG">&2
-      echo -e "\t usage: command [-h] [-r] [-s] [smb]"
+      print_help
       exit 1
     ;;
   esac
 done
 
 if [[ -z $1 ]]; then
-  echo "=> Done nothing">&2
+  print_help
   exit 1
 fi
 
@@ -49,9 +54,8 @@ fi
 
 # DNS changer integrated into wg-quick.conf
 # Use env for config variable
-status=$(systemctl is-active wg-quick@${WG_CONFIG}.service)
-
 if [[ "$1" == "wg" ]]; then
+  status=$(systemctl is-active wg-quick@${WG_CONFIG}.service)
   if [ "$status" == "active" ]
     then
       echo "=> Closing wireguard tunnel..."
@@ -64,5 +68,22 @@ if [[ "$1" == "wg" ]]; then
   fi
 fi
 
-echo "=> Done nothing">&2
+if [[ "$1" == "cam" ]]; then
+  sudo modprobe v4l2loopback -r
+  sudo modprobe v4l2loopback exclusive_caps=1
+  scrcpy --v4l2-sink=/dev/video0 \
+         --lock-video-orientation=1 \
+         --stay-awake \
+         --max-fps=30 \
+         --crop=1080:1560:0:300 \
+         --turn-screen-off \
+         --power-off-on-close \
+         --no-display &>/dev/null &
+  sleep 3
+  ffplay -i /dev/video0
+  kill %%
+  exit 0
+fi
+
+print_help
 exit 1

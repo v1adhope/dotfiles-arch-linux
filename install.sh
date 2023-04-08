@@ -88,7 +88,7 @@ function mirror_generation {
     return
   fi
 
-  paru -Syu
+  paru
   if [ 0 != $? ]; then
     print_error
     return
@@ -208,6 +208,8 @@ PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-alsa \
           pipewire-pulse pipewire-jack lib32-pipewire-jack playerctl \
           bluez-utils noise-suppression-for-voice)
 STOWLIST+=(pipewire)
+# Video-Cam
+PKGLIST=(scrcpy v4l2loopback-dkms obs-studio obs-vkcapture lib32-obs-vkcapture)
 #
 # Utilities
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
@@ -222,11 +224,11 @@ STOWLIST+=(nnn)
 # NOTE: Telegream coredump: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7754
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
           clipgrab authy google-chrome obsidian dropbox webcord \
-          obs-studio gimp-devel audacity imv libreoffice-still mpv sioyek)
+          gimp-devel audacity imv libreoffice-still mpv sioyek)
 STOWLIST+=(google-chrome imv mpv sioyek)
 #
 # DEV
-PKGLIST+=(vim neovim go docker docker-compose apache)
+PKGLIST+=(vim neovim go docker docker-compose apache testssl.sh)
 STOWLIST+=(vim nvim)
 #
 # Games
