@@ -7,7 +7,7 @@ fi
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000000000
+HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 bindkey -v
 # End of lines configured by zsh-newuser-install
@@ -30,6 +30,8 @@ typeset -U path
 
 ### Exports
 #
+# Private info
+source "$HOME/.private"
 # WireGuard config variable
 export WG_CONFIG="arch-wg"
 # Ls and exa color overwrite

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Use crontab
-# @weekly "/home/rat/.config/scripts/paccache-clear.sh"
+# @weekly /home/rat/.config/scripts/paccache-clear.sh
 
 # Script ericmurphyxyz
 # https://gist.github.com/ericmurphyxyz/37baa4c9da9d3b057a522f20a9ad6eba

@@ -221,7 +221,8 @@ PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
 STOWLIST+=(nnn)
 #
 # Software
-# NOTE: Telegream coredump: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7754
+# BUG: Telegream coredump: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7754
+# BUG: Google Chrome: https://github.com/emersion/xdg-desktop-portal-wlr/issues/266
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
           clipgrab authy google-chrome obsidian dropbox webcord \
           gimp-devel audacity imv libreoffice-still mpv sioyek)
@@ -232,7 +233,7 @@ PKGLIST+=(vim neovim go docker docker-compose apache testssl.sh)
 STOWLIST+=(vim nvim)
 #
 # Games
-# NOTE: https://github.com/ValveSoftware/steam-for-linux/issues/9083
+# BUG: https://github.com/ValveSoftware/steam-for-linux/issues/9083
 PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
 STOWLIST+=(mangohud)
 
@@ -254,26 +255,26 @@ function settings {
   PROMPT="Make the necessary adjustments..."
   print_func_prompt
 
-for i in ${PKGLIST[@]}; do
-  case $i in
-    "dropbox")
-      # Dropbox fix
-      rm -rf ~/.dropbox-dist
-      install -dm0 ~/.dropbox-dist
-    ;; "bluez-utils")
-      # Enable bluetooth
-      rfkill unblock bluetooth
-      sudo systemctl enable --now bluetooth.service
-    ;; "zsh")
-      # ZSH as default shell
-      chsh -s /bin/zsh
-    ;; "pipewire")
-      # Use for immediate application pipewire
-      systemctl restart --user pipewire.service
-      systemctl --user daemon-reload
-    ;;
-  esac
-done
+  for i in ${PKGLIST[@]}; do
+    case $i in
+      "dropbox")
+        # Dropbox fix
+        rm -rf ~/.dropbox-dist
+        install -dm0 ~/.dropbox-dist
+      ;; "bluez-utils")
+        # Enable bluetooth
+        rfkill unblock bluetooth
+        sudo systemctl enable --now bluetooth.service
+      ;; "zsh")
+        # ZSH as default shell
+        chsh -s /bin/zsh
+      ;; "pipewire")
+        # Use for immediate application pipewire
+        systemctl restart --user pipewire.service
+        systemctl --user daemon-reload
+      ;;
+    esac
+  done
 }
 #
 # NOTE: Necessarily for first use
@@ -295,8 +296,7 @@ function setup_fonts {
 ### Create grub link config
 #
 function create_GRUB_cfg_link {
-  sudo rm /etc/default/grub
-  sudo stow -t /etc/default grub
+  sudo stow --adopt -t /etc/default grub
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 #
@@ -305,16 +305,15 @@ function create_GRUB_cfg_link {
 ### Create pacman link config
 #
 function create_pacman_cfg_link {
-  sudo rm /etc/pacman.conf
-  sudo stow -t /etc pacman
+  sudo stow --adopt -t /etc pacman
 }
-#create_pacman_cfg_link
+#
+# create_pacman_cfg_link
 
 ### Create bluetooth link config
 #
 function create_BtH_cfg_link {
-  sudo rm /etc/bluetooth/main.conf
-  sudo stow -t /etc/bluetooth bluetooth-stack
+  sudo stow --adopt -t /etc/bluetooth bluetooth-stack
 }
 #
 # create_BtH_cfg_link

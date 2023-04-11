@@ -95,9 +95,9 @@ input type:keyboard {
     bindsym --to-code $mod+u exec $manual_lock_path
 
     # Get screenshot
-    bindsym Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim
-    bindsym Shift+Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim -g "$(slurp)"
-    bindsym Ctrl+Shift+Print exec --no-startup-id grim -g "$(slurp -d)" - | wl-copy
+    bindsym Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim && notify-send "Screenshot saved to disk"
+    bindsym Shift+Print exec --no-startup-id GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots" grim -g "$(slurp)" && notify-send "Screenshot saved to disk"
+    bindsym Ctrl+Shift+Print exec --no-startup-id grim -g "$(slurp -d)" - | wl-copy && notify-send "Screenshot saved to clipboard"
 
     # bindsym Print exec --no-startup-id flameshot gui
     # https://github.com/flameshot-org/flameshot/issues/2959

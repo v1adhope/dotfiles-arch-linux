@@ -44,7 +44,6 @@ GRUB_COLOR_NORMAL="light-gray/black"
 GRUB_COLOR_HIGHLIGHT="light-green/light-blue"
 
 # Uncomment one of them for the gfx desired, a image background or a gfxtheme
-#GRUB_BACKGROUND="/etc/default/grub-cusomize/dont-worry-be-happy.jpg"
 #GRUB_THEME="/path/to/gfxtheme"
 
 # Uncomment to get a beep at GRUB start

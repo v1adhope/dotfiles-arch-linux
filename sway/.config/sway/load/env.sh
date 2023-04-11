@@ -18,6 +18,3 @@ export XDG_SESSION_DESKTOP=sway
 export _JAVA_AWT_WM_NONREPARENTING=1
 # export QT_QPA_PLATFORM=wayland
 # export GDK_BACKEND="wayland,x11"
-
-# Customize waybar
-export CITY_WEATHER=Penza

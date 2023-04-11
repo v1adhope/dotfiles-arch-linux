@@ -2,8 +2,16 @@
     "layer": "top",
     "position": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["custom/weather", "clock", "sway/language", "tray"],
+    "modules-center": ["custom/crypto-currency", "custom/weather", "clock", "sway/language", "tray"],
     "modules-right": ["cpu", "memory", "custom/space", "pulseaudio", "network", "custom/vpn", "bluetooth"],
+
+    "custom/crypto-currency": {
+        "max-length": 15,
+        "return-type": "json",
+        "format": "{}",
+        "exec": "$HOME/.config/waybar/scripts/crypto-currency",
+        "interval": 1800
+    },
 
     "custom/weather": {
         "max-length": 15,
