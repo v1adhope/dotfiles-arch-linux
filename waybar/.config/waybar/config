@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["custom/crypto-currency", "custom/weather", "clock", "sway/language", "tray"],
+    "modules-center": ["custom/crypto-currency", "custom/weather", "custom/space", "clock", "sway/language", "tray"],
     "modules-right": ["cpu", "memory", "custom/space", "pulseaudio", "network", "custom/vpn", "bluetooth"],
 
     "custom/crypto-currency": {

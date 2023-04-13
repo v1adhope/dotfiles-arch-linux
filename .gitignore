@@ -2,3 +2,4 @@ nvim/.config/nvim/plugin/
 .cache/
 swaylock/.config/swaylock/wallpapers/*
 swaylock/.config/swaylock/wallpapers/*/
+sway/.config/sway/wallpapers/*

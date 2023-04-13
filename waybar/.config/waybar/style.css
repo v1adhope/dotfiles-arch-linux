@@ -19,6 +19,11 @@ box.horizontal.modules-right, box.horizontal.modules-left, #tray {
   margin: 0px 5px;
 }
 
+box.horizontal.modules-center {
+  margin-right: 200px;
+}
+
+
 #workspaces button, #clock, #cpu, #network, #pulseaudio, #language, #bluetooth, #memory, #custom-vpn, #custom-weather, #custom-crypto-currency {
   border: 2px solid @var-blue-color;
   border-radius: 10px;
