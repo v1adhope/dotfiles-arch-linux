@@ -21,16 +21,16 @@ RED="\033[1;91m" #BOLD
 function print_error {
     echo -e "${RED}==>${DEFAULT} Something went wrong\n"
 }
-
+#
 function print_complete {
     echo -e "${GREEN}==>${DEFAULT} Task completed\n"
 }
-
+#
 function print_func_prompt {
   printf "${MAGENTA}==>${DEFAULT} %s\n" "${PROMPT}"
 
 }
-
+#
 function print_info_prompt {
   printf "${BLUE}==>${DEFAULT} %s\n%s\n\n" "${PROMPT}" "${VALUE}"
 }
@@ -140,7 +140,7 @@ function install_zen_core_tweaks {
 
   print_complete
 }
-
+#
 function install_irqbalance {
   PROMPT="Installing irqbalance..."
   print_func_prompt
