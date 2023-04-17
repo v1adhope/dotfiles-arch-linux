@@ -1,7 +1,13 @@
-### Load plagins
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+### Load plugins and completion
 #
-zstyle :compinstall filename '/home/rat/.zshrc'
-#
+zstyle :compinstall filename "$HOME/.zshrc"
 # Install zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -10,15 +16,22 @@ source "${ZINIT_HOME}/zinit.zsh"
 #
 # Before prompt
 zinit light-mode depth=1 for \
-  romkatv/powerlevel10k
+    romkatv/powerlevel10k \
+  atload"export ZVM_CURSOR_STYLE_ENABLED=false" \
+    jeffreytse/zsh-vi-mode \
 #
 # After prompt
+function zsh_history_bindkeys {
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+  bindkey -M vicmd 'k' history-substring-search-up
+  bindkey -M vicmd 'j' history-substring-search-down
+}
+#
 zinit wait lucid light-mode depth=1 for \
   atinit"zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
-  atload"export ZVM_CURSOR_STYLE_ENABLED=false" \
-    jeffreytse/zsh-vi-mode \
-  atload"bindkey '^[[A' history-substring-search-up; bindkey '^[[B' history-substring-search-down" \
+  atload"zsh_history_bindkeys" \
     zsh-users/zsh-history-substring-search
 
 ### Settings

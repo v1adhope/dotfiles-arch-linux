@@ -222,7 +222,6 @@ STOWLIST+=(nnn)
 #
 # Software
 # BUG: Telegream coredump: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7754
-# BUG: Google Chrome: https://github.com/emersion/xdg-desktop-portal-wlr/issues/266
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
           clipgrab authy google-chrome obsidian dropbox webcord \
           gimp-devel audacity imv libreoffice-still mpv sioyek)
