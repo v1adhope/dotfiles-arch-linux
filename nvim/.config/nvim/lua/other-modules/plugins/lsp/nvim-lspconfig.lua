@@ -26,7 +26,8 @@ for _, lsp in ipairs(Servers) do
     capabillities = handlers.capabilities,
     settings = {
       Lua = languages.lua,
-      json = languages.json
+      json = languages.json,
+      gopls = languages.go
     }
   }
 end

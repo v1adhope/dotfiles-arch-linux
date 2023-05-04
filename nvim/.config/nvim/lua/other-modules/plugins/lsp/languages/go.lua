@@ -1,0 +1,3 @@
+return {
+  analyses = { composites = false }
+}
