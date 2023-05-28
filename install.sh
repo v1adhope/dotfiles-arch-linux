@@ -195,7 +195,7 @@ STOWLIST+=(alacritty zsh tmux)
 PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
 #
 # Widget toolkits
-PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt6)
+PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt5 qgnomeplatform-qt6)
 STOWLIST+=(widget-toolkits)
 #
 # Sway
@@ -215,9 +215,10 @@ PKGLIST=(scrcpy v4l2loopback-dkms obs-studio obs-vkcapture lib32-obs-vkcapture)
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
           wireguard-tools neofetch nnn cronie wl-clipboard smbclient \
           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
-          ninja cups samsung-unified-driver-printer java-openjfx-src jre8-openjdk \
-          hunspell-en_us hunspell-ru xdg-desktop-portal jq viu \
-          ffmpegthumbnailer glow zip unzip exfat-utils ascii grim slurp)
+          ninja cups samsung-unified-driver-printer java-openjfx-src \
+          jre8-openjdk hunspell-en_us hunspell-ru xdg-desktop-portal jq viu \
+          ffmpegthumbnailer glow zip unzip exfat-utils dosfstools ascii \
+          grim slurp rsync libva-utils)
 STOWLIST+=(nnn)
 #
 # Software
