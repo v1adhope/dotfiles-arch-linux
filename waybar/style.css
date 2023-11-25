@@ -1,0 +1,71 @@
+@define-color var-blue-color rgba(53, 70, 161, 0.8);
+@define-color var-black-color rgba(0, 0, 0, 0.8);
+@define-color var-red-color rgba(255, 0, 0, 0.8);
+@define-color var-green-color rgba(94, 242, 70, 0.8);
+@define-color var-yellow-color rgba(255, 215, 71, 0.8);
+
+* {
+  font-family: "Noto Sans Mono";
+  font-size: 13px;
+  color: white;
+}
+
+window#waybar {
+  background-color: @var-black-color;
+  border-bottom: 2px solid @var-blue-color;
+}
+
+box.horizontal.modules-right, box.horizontal.modules-left, #tray {
+  margin: 0px 5px;
+}
+
+box.horizontal.modules-center {
+  margin-right: 200px;
+}
+
+
+#workspaces button, #clock, #cpu, #network, #pulseaudio, #language, #bluetooth, #memory, #custom-vpn, #custom-weather, #custom-crypto-currency {
+  border: 2px solid @var-blue-color;
+  border-radius: 10px;
+  margin: 8px 2px 10px;
+  padding: 2px 10px;
+}
+
+#workspaces button {
+  padding: 2px 5px;
+}
+
+#workspaces button.focused {
+  border-color: @var-red-color;
+}
+
+#workspaces button.urgent {
+  border-color: @var-yellow-color;
+}
+
+#language {
+  font-weight: bold;
+}
+
+#bluetooth, #custom-vpn, #network.ethernet, #network.wifi {
+  color: @var-green-color;
+}
+
+#bluetooth.on {
+  color: @var-yellow-color
+}
+
+#pulseaudio.muted, #network.disconnected {
+  color: @var-red-color;
+}
+
+#custom-space {
+  margin: 0px 30px;
+}
+
+#mode {
+  font-weight: bold;
+  margin: 5px 0px 10px 30px;
+  border-bottom: 2px solid @var-blue-color;
+  color: @var-red-color;
+}

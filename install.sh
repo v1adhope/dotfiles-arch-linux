@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# TODO:
+# fix schemastore
+
 ### Attention please!!!
 #
 # Comment/uncomment the groups and functions you want
@@ -8,7 +11,7 @@
 #
 # recommend pacstrap pkgs: base base-devel linux-zen linux-zen-headers
 #                          linux-firmware btrfs-progs vim git grub
-#                          efibootmgr dhcpcd dhclient networkmanager
+#                          efibootmgr dhcpcd dhclient networkmanager man-db
 #
 # A reboot is required after installation
 
@@ -81,7 +84,7 @@ function mirror_generation {
     return
   fi
 
-  sudo reflector --latest 15 --protocol https --country DE,FR,US \
+  sudo reflector --latest 15 --protocol https --country US,DE,FR \
                  --sort rate --save /etc/pacman.d/mirrorlist
   if [ 0 != $? ]; then
     print_error
@@ -176,42 +179,85 @@ function install_irqbalance {
 ### Choosing packages, configs
 #
 PKGLIST=()
-STOWLIST=()
-#
-# Common
-PKGLIST+=(stow exa bat)
-STOWLIST+=(git scripts bat)
+CONFIGS=()
 #
 # AMD # GPU/2D/3D rendering # Hardware video acceleration x64
-PKGLIST+=(amd-ucode mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon \
-          vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu \
-          libva-mesa-driver mesa-vdpau)
+# PKGLIST+=(amd-ucode mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon \
+#         vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu \
+#         libva-mesa-driver mesa-vdpau)
 #
-# Terminal emulator # Shell # Multiplexer
-PKGLIST+=(alacritty zsh tmux)
-STOWLIST+=(alacritty zsh tmux)
+# Video-Cam
+# PKGLIST=(scrcpy v4l2loopback-dkms obs-studio obs-vkcapture lib32-obs-vkcapture)
 #
-# Fonts
-PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
+# Games
+# BUG: https://github.com/ValveSoftware/steam-for-linux/issues/9083
+# PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
+# STOWLIST+=(mangohud)
 #
-# Widget toolkits
-PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt5 qgnomeplatform-qt6)
-STOWLIST+=(widget-toolkits)
+# Utilities
+# PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
+#           wireguard-tools neofetch nnn cronie wl-clipboard smbclient \
+#           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
+#           ninja cups samsung-unified-driver-printer java-openjfx-src \
+#           jre8-openjdk hunspell-en_us hunspell-ru xdg-desktop-portal jq viu \
+#           ffmpegthumbnailer glow zip unzip exfat-utils dosfstools ascii \
+#           grim slurp rsync libva-utils)
+# STOWLIST+=(nnn)
 #
-# Sway
+# Software
+# BUG: Telegream coredump: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7754
+# PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
+#           clipgrab authy google-chrome obsidian dropbox webcord \
+#           gimp-devel audacity imv libreoffice-still mpv sioyek)
+# STOWLIST+=(google-chrome imv mpv sioyek)
+#
+PKGLIST+=(vim neovim go docker docker-compose apache testssl.sh npm rust insomnium-bin)
+CONFIGS+=(nvim)
+# ln -sf $HOME/.local/dotfiles-arch-linux/vim/.vimrc $HOME
+# unlink $HOME/.vimrc
+#
 PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel \
-          xdg-desktop-portal-wlr xorg-server xorg-xwayland)
-STOWLIST+=(sway waybar mako fuzzel swaylock)
-#
-# Audio-Voice
+          xdg-desktop-portal-wlr-git xorg-server xorg-xwayland)
+CONFIGS+=(sway waybar mako fuzzel swaylock)
+
+PKGLIST+=(alacritty zsh tmux)
+CONFIGS+=(alacritty tmux)
+# ln -sf $HOME/.local/dotfiles-arch-linux/zsh/.zshrc $HOME
+# unlink $HOME/.zshrc
+
+PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
+
+PKGLIST+=(exa bat)
+CONFIGS+=(bat)
+# ln -sf $HOME/.local/dotfiles-arch-linux/scripts $HOME/.local
+# unlink $HOME/.local/scripts
+
+PKGLIST+=(google-chrome telegram-desktop keepassxc qbittorrent \
+          authy obsidian dropbox libreoffice-still imv mpv sioyek)
+CONFIGS+=(mpv imv git sioyek)
+# TODO: no GPU
+# ln -sf $HOME/.local/dotfiles-arch-linux/google-chrome/chrome-flags.conf $HOME/.config/chrome-flags.conf
+# unlink $HOME/.config/google-chrome/chrome-flags.conf
+
+PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt5 qgnomeplatform-qt6)
+# ln -sf $HOME/.local/dotfiles-arch-linux/widget-toolkits/gtk-3.0 $HOME/.config
+# unlink $HOME/.config/gtk-3.0
+
 PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-alsa \
           pipewire-pulse pipewire-jack lib32-pipewire-jack playerctl \
           bluez-utils noise-suppression-for-voice)
-STOWLIST+=(pipewire)
-# Video-Cam
-PKGLIST=(scrcpy v4l2loopback-dkms obs-studio obs-vkcapture lib32-obs-vkcapture)
-#
-# Utilities
+CONFIGS+=(pipewire)
+# ln -sf $HOME/.local/dotfiles-arch-linux/pipewire $HOME/.config
+# unlink $HOME/.config/pipewire
+
+PKGLIST+=(mesa lib32-mesa vulkan-intel lib32-vulkan-intel itel-media-driver libva-utils)
+
+PKGLIST+=(htop inxi neofetch nnn cronie wl-clipboard xorg-xeyes \
+          android-sdk-platform-tools pacman-contrib ninja rsync\
+          jre8-openjdk hunspell-en_us hunspell-ru jq viu ascii \
+          ffmpegthumbnailer glow zip unzip exfat-utils dosfstools \
+          grim slurp libnotify fd)
+
 PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
           wireguard-tools neofetch nnn cronie wl-clipboard smbclient \
           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
@@ -219,35 +265,46 @@ PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
           jre8-openjdk hunspell-en_us hunspell-ru xdg-desktop-portal jq viu \
           ffmpegthumbnailer glow zip unzip exfat-utils dosfstools ascii \
           grim slurp rsync libva-utils)
-STOWLIST+=(nnn)
-#
-# Software
-# BUG: Telegream coredump: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7754
+
 PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
           clipgrab authy google-chrome obsidian dropbox webcord \
           gimp-devel audacity imv libreoffice-still mpv sioyek)
-STOWLIST+=(google-chrome imv mpv sioyek)
-#
-# DEV
-PKGLIST+=(vim neovim go docker docker-compose apache testssl.sh)
-STOWLIST+=(vim nvim)
-#
-# Games
-# BUG: https://github.com/ValveSoftware/steam-for-linux/issues/9083
-PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
-STOWLIST+=(mangohud)
 
 ### Install packages
 #
 PROMPT="Packages list"; VALUE="${PKGLIST[*]}"
 print_info_prompt
-# paru -S ${PKGLIST[@]}
+paru -S ${PKGLIST[@]}
 
 ### Create link configs
 #
-PROMPT="Configs list"; VALUE="${STOWLIST[*]}"
+local_path=$HOME/.local
+config_path=$HOME/.config
+root_path=$local_path/dotfiles-arch-linux
+#
+PROMPT="Configs list"; VALUE="${CONFIGS[*]}"
 print_info_prompt
-# stow ${STOWLIST[@]}
+#
+function link_configs {
+  for config in ${CONFIGS[@]}; do
+    ln -sf $root_path/$config $config_path
+  done
+
+  # ln -sf $root_path/zsh/.zshrc $HOME
+  # ln -sf $root_path/scripts $local_path
+}
+#
+# link_configs
+#
+function unlink_configs {
+  for config in ${CONFIGS[@]}; do
+    unlink $config_path/$config
+  done
+
+  # unlink $HOME/.zshrc
+  # unlink $HOME/.local/scripts
+}
+# unlink_configs
 
 ### Fixes and automation
 #
@@ -272,7 +329,9 @@ function settings {
         # Use for immediate application pipewire
         systemctl restart --user pipewire.service
         systemctl --user daemon-reload
-      ;;
+      ;; "docker")
+        sudo usermod -aG docker $USER
+        newgrp docker
     esac
   done
 }
@@ -287,7 +346,7 @@ function settings {
 ### Fonts setup
 #
 function setup_fonts {
-  sudo stow -t /etc/fonts fonts
+  sudo ln -sf $HOME/.local/dotfiles-arch-linux/fonts/local.conf /etc/fonts/local.conf
   fc-cache
 }
 #
@@ -296,7 +355,7 @@ function setup_fonts {
 ### Create grub link config
 #
 function create_GRUB_cfg_link {
-  sudo stow --adopt -t /etc/default grub
+  sudo ln -sf $HOME/.local/dotfiles-arch-linux/grub/grub /etc/default/grub
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 #
@@ -305,12 +364,12 @@ function create_GRUB_cfg_link {
 ### Create pacman link config
 #
 function create_pacman_cfg_link {
-  sudo stow --adopt -t /etc pacman
+  sudo ln -sf $HOME/.local/dotfiles-arch-linux/pacman/pacman.conf /etc/pacman.conf
 }
 #
 # create_pacman_cfg_link
 
-### Create bluetooth link config
+### TODO: Create bluetooth link config
 #
 function create_BtH_cfg_link {
   sudo stow --adopt -t /etc/bluetooth bluetooth-stack

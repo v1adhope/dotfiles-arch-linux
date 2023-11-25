@@ -1,5 +1,5 @@
 .cache/
-nvim/.config/nvim/plugin/
-swaylock/.config/swaylock/wallpapers/
-sway/.config/sway/wallpapers/
-widget-toolkits/.config/gtk-3.0/bookmarks
+nvim/plugin/
+swaylock/wallpapers/
+sway/wallpapers/
+widget-toolkits/gtk-3.0/bookmarks

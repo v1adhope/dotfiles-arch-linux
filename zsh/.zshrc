@@ -53,25 +53,37 @@ typeset -U path
 # Private info
 source "$HOME/.private"
 # WireGuard config variable
-export WG_CONFIG="arch-wg"
+# TODO: export WG_CONFIG="arch-wg"
 # Ls and exa color overwrite
 export LS_COLORS="di=01;38;5;12:ln=01;38;5;13:or=01;38;5;167:ex=38;5;115:*.*=00"
 export EXA_COLORS="ur=01;38;5;187:uw=01;38;5;167:ux=01;38;5;115:ue=01;38;5;115:gr=01;38;5;187:gw=01;38;5;167:gx=01;38;5;115:tr=01;38;5;187:tw=01;38;5;167:tx=01;38;5;115:uu=01;38;5;13:gu=01;38;5;13:un=01;38;5;12:gn=01;38;5;12:sn=38;5;115:sb=38;5;115:da=38;5;187:lp=01;38;5;13:b0=01;38;5;167"
 # Set default text editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
-# Hardware video acceleration
-export VDPAU_DRIVER=radeonsi
-export LIBVA_DRIVER_NAME=radeonsi
+# TODO: not working Hardware video acceleration
+# export VDPAU_DRIVER=radeonsi
+# export LIBVA_DRIVER_NAME=radeonsi
+export LIBVA_DRIVERS_PATH=/usr/lib/vdpau/libvdpau_trace.so
+export VDPAU_DRIVER=va_gl
+export LIBVA_DRIVER_NAME=iHD
 # Executable scripts
-export PATH=$HOME/.config/scripts/bin:$PATH
+export PATH=$HOME/.local/scripts/bin:$PATH
+# Alias
+source "$HOME/.local/scripts/alias.sh"
+# TODO: Customize nnn
+# source "$HOME/.config/nnn/customize.sh"
+# Bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # Go
 export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.local/share/go/bin:$PATH
-# Alias
-source "$HOME/.config/scripts/alias.sh"
-# Customize nnn
-source "$HOME/.config/nnn/customize.sh"
+# TODO: not working paths Rust
+export RUSTUP_HOME=$HOME/.local/share/rust/rustup
+export CARGO_HOME=$HOME/.local/share/rust/cargo
+# source $HOME/.local/share/rust/cargo/env
+export RUST_BACKTRACE=1
+# Js
+source /usr/share/nvm/init-nvm.sh
 
 ### Loads
 #
