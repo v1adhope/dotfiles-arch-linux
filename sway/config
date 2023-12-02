@@ -26,8 +26,8 @@ exec dropbox
 assign [class="obsidian"] 1
 exec --no-startup-id obsidian
 # Browser(2)
-assign [app_id="google-chrome"] 2
-exec --no-startup-id google-chrome-stable
+assign [app_id="chromium"] 2
+exec --no-startup-id chromium
 # Messengers(3)
 assign [app_id="org.telegram.desktop"] 3
 exec --no-startup-id telegram-desktop
@@ -68,7 +68,7 @@ output HDMI-A-1 pos 0 0 res 1920x1080
 # VRR
 output * adaptive_sync on
 # Wallpaper
-output * bg $HOME/.config/sway/wallpapers/wallpaper-2.jpg fill
+output * bg $HOME/.local/wallpapers/screen/wallpaper-2.jpg fill
 
 ### Idle configuration
 #

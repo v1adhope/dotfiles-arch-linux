@@ -52,6 +52,8 @@ typeset -U path
 #
 # Private info
 source "$HOME/.private"
+# Wallpaper path
+export WALLPAPER_SCREEN=$HOME/.local/wallpapers/screen/wallpaper-2.jpg
 # WireGuard config variable
 # TODO: export WG_CONFIG="arch-wg"
 # Ls and exa color overwrite
@@ -60,12 +62,6 @@ export EXA_COLORS="ur=01;38;5;187:uw=01;38;5;167:ux=01;38;5;115:ue=01;38;5;115:g
 # Set default text editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
-# TODO: not working Hardware video acceleration
-# export VDPAU_DRIVER=radeonsi
-# export LIBVA_DRIVER_NAME=radeonsi
-export LIBVA_DRIVERS_PATH=/usr/lib/vdpau/libvdpau_trace.so
-export VDPAU_DRIVER=va_gl
-export LIBVA_DRIVER_NAME=iHD
 # Executable scripts
 export PATH=$HOME/.local/scripts/bin:$PATH
 # Alias
@@ -87,8 +83,9 @@ source /usr/share/nvm/init-nvm.sh
 
 ### Loads
 #
-# If running from tty1 start sway and its deps
-[ "$(tty)" = "/dev/tty1" ] && for f in $HOME/.config/sway/load/*.sh; do source $f; done
+# TODO: automation If running from tty1 start sway and its deps
+[ "$(tty)" = "/dev/tty1" ] && for f in $HOME/.config/hypr/load/*.sh; do source $f; done
+# [ "$(tty)" = "/dev/tty1" ] && for f in $HOME/.config/sway/load/*.sh; do source $f; done
 #
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

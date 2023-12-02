@@ -4,6 +4,7 @@ function print_help {
   echo -e "Manual\n"
   echo "   Flags"
   echo -e "\t -h   help"
+  echo -e "\t -a   mount/ unmount access folder"
   echo -e "\t -r   reboot"
   echo -e "\t -s   shutdown"
   echo "   Args"
@@ -12,8 +13,18 @@ function print_help {
   echo -e "\t cam  enable android cam"
 }
 
-while getopts ":hrs" opt; do
+while getopts ":hars" opt; do
   case $opt in
+    a)
+      if [[ "$(ls /mnt/access)" == "" ]]; then
+        echo "=> Mount access folder..."
+        sudo mount /dev/sda1 /mnt/access || print_help && exit 1
+      else
+        echo "=> Unmount access folder..."
+        sudo umount /mnt/access || print_help && exit 1
+      fi
+      exit 0
+      ;;
     h)
       print_help
       exit 1

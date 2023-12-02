@@ -194,7 +194,7 @@ CONFIGS=()
 # PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
 # STOWLIST+=(mangohud)
 #
-# Utilities
+# TODO: Utilities
 # PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
 #           wireguard-tools neofetch nnn cronie wl-clipboard smbclient \
 #           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
@@ -204,40 +204,43 @@ CONFIGS=()
 #           grim slurp rsync libva-utils)
 # STOWLIST+=(nnn)
 #
-# Software
+# TODO: Software
 # BUG: Telegream coredump: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7754
 # PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
 #           clipgrab authy google-chrome obsidian dropbox webcord \
 #           gimp-devel audacity imv libreoffice-still mpv sioyek)
 # STOWLIST+=(google-chrome imv mpv sioyek)
-#
-PKGLIST+=(vim neovim go docker docker-compose apache testssl.sh npm rust insomnium-bin)
+
+# INFO: There is moved to hyprland
+# PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel \
+#           xdg-desktop-portal-wlr-git xorg-server xorg-xwayland)
+# CONFIGS+=(sway waybar mako fuzzel swaylock)
+
+PKGLIST+=(vim neovim go docker docker-compose docker-buildx apache testssl.sh npm rust insomnium-bin)
 CONFIGS+=(nvim)
 # ln -sf $HOME/.local/dotfiles-arch-linux/vim/.vimrc $HOME
 # unlink $HOME/.vimrc
-#
-PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel \
-          xdg-desktop-portal-wlr-git xorg-server xorg-xwayland)
-CONFIGS+=(sway waybar mako fuzzel swaylock)
 
-PKGLIST+=(alacritty zsh tmux)
-CONFIGS+=(alacritty tmux)
+PGKLIST+=(xorg-server xorg-xwayland xdg-desktop-portal-hyprland \
+          hyprland fuzzel waybar mako swayidle swaylock hyprpaper)
+CONFIGS+=(hypr fuzzel waybar mako swaylock)
+
+PKGLIST+=(alacritty zsh tmux exa bat nnn)
+CONFIGS+=(alacritty tmux bat)
 # ln -sf $HOME/.local/dotfiles-arch-linux/zsh/.zshrc $HOME
 # unlink $HOME/.zshrc
+# ln -sf $HOME/.local/dotfiles-arch-linux/scripts $HOME/.local
+# unlink $HOME/.local/scripts
+# ln -sf $HOME/.local/dotfiles-arch-linux/nnn/customize.sh $HOME/.config/nnn/customize.sh
+# unlink $HOME/.config/chromium/chromium-flags.conf
 
 PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
 
-PKGLIST+=(exa bat)
-CONFIGS+=(bat)
-# ln -sf $HOME/.local/dotfiles-arch-linux/scripts $HOME/.local
-# unlink $HOME/.local/scripts
-
-PKGLIST+=(google-chrome telegram-desktop keepassxc qbittorrent \
+PKGLIST+=(chromium telegram-desktop keepassxc qbittorrent \
           authy obsidian dropbox libreoffice-still imv mpv sioyek)
 CONFIGS+=(mpv imv git sioyek)
-# TODO: no GPU
-# ln -sf $HOME/.local/dotfiles-arch-linux/google-chrome/chrome-flags.conf $HOME/.config/chrome-flags.conf
-# unlink $HOME/.config/google-chrome/chrome-flags.conf
+# ln -sf $HOME/.local/dotfiles-arch-linux/chromium/chromium-flags.conf $HOME/.config/chromium/chromium-flags.conf
+# unlink $HOME/.config/chromium/chromium-flags.conf
 
 PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt5 qgnomeplatform-qt6)
 # ln -sf $HOME/.local/dotfiles-arch-linux/widget-toolkits/gtk-3.0 $HOME/.config

@@ -3,7 +3,7 @@
 ### Settings
 #
 config_location="${0%/*}/config"
-wallpaper_pwd="${0%/*}/wallpapers/"
+wallpaper_pwd="$HOME/.local/wallpapers/screen_lock/"
 file_pattern="wallpaper"
 
 ### Don't touch if you don't know what you're doing
