@@ -194,84 +194,63 @@ CONFIGS=()
 # PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
 # STOWLIST+=(mangohud)
 #
-# TODO: Utilities
-# PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
-#           wireguard-tools neofetch nnn cronie wl-clipboard smbclient \
-#           perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
-#           ninja cups samsung-unified-driver-printer java-openjfx-src \
-#           jre8-openjdk hunspell-en_us hunspell-ru xdg-desktop-portal jq viu \
-#           ffmpegthumbnailer glow zip unzip exfat-utils dosfstools ascii \
-#           grim slurp rsync libva-utils)
-# STOWLIST+=(nnn)
+# Tools
+# PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
+#           smbclient pacman-contrib ninja cups samsung-unified-driver-printer \
+#           ffmpegthumbnailer ascii rsync)
 #
-# TODO: Software
-# BUG: Telegream coredump: https://gitlab.freedesktop.org/mesa/mesa/-/issues/7754
-# PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
-#           clipgrab authy google-chrome obsidian dropbox webcord \
-#           gimp-devel audacity imv libreoffice-still mpv sioyek)
-# STOWLIST+=(google-chrome imv mpv sioyek)
-
+# Software
+# PKGLIST+=(filezilla firefox clipgrab webcord gimp-devel audacity)
+#
 # INFO: There is moved to hyprland
 # PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel \
 #           xdg-desktop-portal-wlr-git xorg-server xorg-xwayland)
 # CONFIGS+=(sway waybar mako fuzzel swaylock)
-
-PKGLIST+=(vim neovim go docker docker-compose docker-buildx apache testssl.sh npm rust insomnium-bin)
+#
+# Dev
+PKGLIST+=(vim neovim glow go docker docker-compose docker-buildx apache \
+          testssl.sh npm rust insomnium-bin wireguard-tools)
 CONFIGS+=(nvim)
-# ln -sf $HOME/.local/dotfiles-arch-linux/vim/.vimrc $HOME
-# unlink $HOME/.vimrc
-
+#
+# OS
 PGKLIST+=(xorg-server xorg-xwayland xdg-desktop-portal-hyprland \
-          hyprland fuzzel waybar mako swayidle swaylock hyprpaper)
+          hyprland fuzzel waybar mako swayidle swaylock hyprpaper \
+          grim slurp)
 CONFIGS+=(hypr fuzzel waybar mako swaylock)
-
-PKGLIST+=(alacritty zsh tmux exa bat nnn)
+#
+PKGLIST+=(alacritty zsh tmux exa bat nnn fd ripgrep)
 CONFIGS+=(alacritty tmux bat)
-# ln -sf $HOME/.local/dotfiles-arch-linux/zsh/.zshrc $HOME
-# unlink $HOME/.zshrc
-# ln -sf $HOME/.local/dotfiles-arch-linux/scripts $HOME/.local
-# unlink $HOME/.local/scripts
-# ln -sf $HOME/.local/dotfiles-arch-linux/nnn/customize.sh $HOME/.config/nnn/customize.sh
-# unlink $HOME/.config/chromium/chromium-flags.conf
-
+#
 PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
-
+#
+# Software
+# Bug: https://github.com/ahrm/sioyek/issues/856
 PKGLIST+=(chromium telegram-desktop keepassxc qbittorrent \
-          authy obsidian dropbox libreoffice-still imv mpv sioyek)
+          authy obsidian dropbox libreoffice-still imv mpv sioyek-git)
 CONFIGS+=(mpv imv git sioyek)
-# ln -sf $HOME/.local/dotfiles-arch-linux/chromium/chromium-flags.conf $HOME/.config/chromium/chromium-flags.conf
-# unlink $HOME/.config/chromium/chromium-flags.conf
-
-PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt5 qgnomeplatform-qt6)
-# ln -sf $HOME/.local/dotfiles-arch-linux/widget-toolkits/gtk-3.0 $HOME/.config
-# unlink $HOME/.config/gtk-3.0
-
+#
+# Widget tool kits
+PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt5 qgnomeplatform-qt6 \
+          qqc2-desktop-style5)
+#
+# Audio
 PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-alsa \
           pipewire-pulse pipewire-jack lib32-pipewire-jack playerctl \
           bluez-utils noise-suppression-for-voice)
 CONFIGS+=(pipewire)
-# ln -sf $HOME/.local/dotfiles-arch-linux/pipewire $HOME/.config
-# unlink $HOME/.config/pipewire
-
+#
+# Video
 PKGLIST+=(mesa lib32-mesa vulkan-intel lib32-vulkan-intel itel-media-driver libva-utils)
-
+#
+# Tools
 PKGLIST+=(htop inxi neofetch nnn cronie wl-clipboard xorg-xeyes \
           android-sdk-platform-tools pacman-contrib ninja rsync\
-          jre8-openjdk hunspell-en_us hunspell-ru jq viu ascii \
-          ffmpegthumbnailer glow zip unzip exfat-utils dosfstools \
-          grim slurp libnotify fd)
+          jre8-openjdk jre-openjdk hunspell-en_us hunspell-ru jq viu ascii \
+          ffmpegthumbnailer zip unzip exfat-utils dosfstools \
+          libnotify numbat perl-file-mimeinfo)
 
-PKGLIST+=(mesa-utils vulkan-tools htop nvtop inxi xorg-xeyes \
-          wireguard-tools neofetch nnn cronie wl-clipboard smbclient \
-          perl-file-mimeinfo android-sdk-platform-tools pacman-contrib \
-          ninja cups samsung-unified-driver-printer java-openjfx-src \
-          jre8-openjdk hunspell-en_us hunspell-ru xdg-desktop-portal jq viu \
-          ffmpegthumbnailer glow zip unzip exfat-utils dosfstools ascii \
-          grim slurp rsync libva-utils)
-
-PKGLIST+=(filezilla keepassxc firefox telegram-desktop qbittorrent \
-          clipgrab authy google-chrome obsidian dropbox webcord \
-          gimp-devel audacity imv libreoffice-still mpv sioyek)
+# TODO: install through npm
+# npm install -g tldr
 
 ### Install packages
 #
@@ -293,6 +272,10 @@ function link_configs {
     ln -sf $root_path/$config $config_path
   done
 
+  # ln -sf $HOME/.local/dotfiles-arch-linux/widget-toolkits/gtk-3.0 $HOME/.config
+  # ln -sf $HOME/.local/dotfiles-arch-linux/chromium/chromium-flags.conf $HOME/.config/chromium/chromium-flags.conf
+  # ln -sf $HOME/.local/dotfiles-arch-linux/nnn/customize.sh $HOME/.config/nnn/customize.sh
+  # ln -sf $HOME/.local/dotfiles-arch-linux/vim/.vimrc $HOME
   # ln -sf $root_path/zsh/.zshrc $HOME
   # ln -sf $root_path/scripts $local_path
 }
@@ -304,6 +287,10 @@ function unlink_configs {
     unlink $config_path/$config
   done
 
+  # unlink $HOME/.config/gtk-3.0
+  # unlink $HOME/.config/chromium/chromium-flags.conf
+  # unlink $HOME/.vimrc
+  # unlink $HOME/.config/nnn/customize.sh
   # unlink $HOME/.zshrc
   # unlink $HOME/.local/scripts
 }

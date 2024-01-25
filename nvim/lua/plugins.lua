@@ -90,6 +90,12 @@ return packer.startup(function(use)
   use 'simrat39/rust-tools.nvim'
   use 'Saecki/crates.nvim'
 
+  -- Markdown
+  use '0x00-ketsu/markdown-preview.nvim'
+
+  -- Git
+  use 'lewis6991/gitsigns.nvim'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

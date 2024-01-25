@@ -67,9 +67,10 @@ export PATH=$HOME/.local/scripts/bin:$PATH
 # Alias
 source "$HOME/.local/scripts/alias.sh"
 # TODO: Customize nnn
-# source "$HOME/.config/nnn/customize.sh"
+source "$HOME/.config/nnn/customize.sh"
 # Bat
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# TODO: It' has bug
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 # Go
 export GOPATH=$HOME/.local/share/go
 export PATH=$HOME/.local/share/go/bin:$PATH

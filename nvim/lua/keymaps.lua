@@ -19,6 +19,13 @@ Map('n', '<M-l>', ':wincmd l<CR>', { silent = true })
 -- File explorer
 Map('n', '<M-f>', ':NvimTreeToggle<CR>', { silent = true })
 
+-- Gitsigns
+Map('n', '<M-p>', ':Gitsigns preview_hunk<CR>', { silent = true })
+Map('n', '<M-s>', ':Gitsigns select_hunk<CR>', { silent = true })
+
+-- Markdown
+Map('n', '<M-m>', ':MPToggle<CR>', { silent = true })
+
 -- Navigate between buffers
 -- map('n', '<S-H>', ':bp<CR>', { silent = true })
 -- map('n', '<S-L>', ':bn<CR>', { silent = true })

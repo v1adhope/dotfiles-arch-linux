@@ -18,7 +18,7 @@ while getopts ":hars" opt; do
     a)
       if [[ "$(ls /mnt/access)" == "" ]]; then
         echo "=> Mount access folder..."
-        sudo mount /dev/sda1 /mnt/access || print_help && exit 1
+        sudo mount /dev/sd[ab]1 /mnt/access || print_help && exit 1
       else
         echo "=> Unmount access folder..."
         sudo umount /mnt/access || print_help && exit 1

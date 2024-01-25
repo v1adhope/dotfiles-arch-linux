@@ -3,8 +3,7 @@
     "position": "top",
     "modules-left": ["hyprland/workspaces", "hyprland/submap"],
     "modules-center": ["custom/crypto-currency", "custom/weather", "custom/space", "clock", "hyprland/language", "tray"],
-    "modules-right": ["cpu", "memory", "custom/space", "pulseaudio", "network", "bluetooth"],
-//    "modules-right": ["cpu", "memory", "custom/space", "pulseaudio", "network", "custom/vpn", "bluetooth"],
+    "modules-right": ["cpu", "memory", "custom/space", "pulseaudio", "network", "custom/vpn", "bluetooth"],
 
     "custom/crypto-currency": {
         "max-length": 15,
@@ -22,11 +21,11 @@
         "interval": 1800
     },
 
-//    "custom/vpn": {
-//        "max-lenght": 3,
-//        "exec": "$HOME/.config/waybar/scripts/vpn-indicator.sh",
-//        "interval": 5
-//    },
+    "custom/vpn": {
+        "max-lenght": 3,
+        "exec": "$HOME/.config/waybar/scripts/vpn-indicator.sh",
+        "interval": 5
+    },
 
     "custom/space": {
         "format": " ",

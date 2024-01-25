@@ -13,6 +13,7 @@ require 'other-modules/plugins/treesitter'
 require 'other-modules/plugins/nvim-comment'
 require 'other-modules/plugins/trim'
 require 'other-modules/plugins/telescope'
+require 'other-modules/plugins/gitsigns'
 
 -- Features
 require 'other-modules/new-line-without-comment'
