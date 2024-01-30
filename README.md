@@ -1,8 +1,10 @@
 # System description
 
-Dotfiles using GNU Stow. XWayland system, isn't perfect, but it's close to it. All controls are customized for vim. All legacy components and code are removed if possible.
+Dotfiles using common links. XWayland system, isn't perfect, but it's close to it. All controls are customized for vim. All legacy components and code are removed if possible.
 
 The build does not come with wallpaper, install it. Extra instructions in the sway config file. [background wallpaper](/sway/.config/sway/) | [Lock screen wallpaper](/swaylock/.config/swaylock/)
+
+Don't forget use `crontab -e` and place this `* * 1 * * /home/rat/.local/scripts/paccache-clear.sh` for clean cache every first day of month
 
 # Navigation
 
