@@ -11,7 +11,11 @@ function print_help {
   echo -e "\t smb   mount/ umont smb"
   echo -e "\t wg   turn on/ off wireguard"
   echo -e "\t cam  enable android cam"
+  echo -e "\t guard   turn on/ off adguard vpn"
 }
+
+### System manipulation
+#
 
 while getopts ":hars" opt; do
   case $opt in
@@ -46,10 +50,15 @@ while getopts ":hars" opt; do
   esac
 done
 
+###
+
 if [[ -z $1 ]]; then
   print_help
   exit 1
 fi
+
+### Connect remote external drive
+#
 
 if [[ "$1" == "smb" ]]; then
   if ! sudo cat /proc/mounts | grep -q smb; then
@@ -63,21 +72,28 @@ if [[ "$1" == "smb" ]]; then
   fi
 fi
 
+### Wireguard
+#
 # DNS changer integrated into wg-quick.conf
-# Use env for config variable
+# Use $WG_CONFIG to define config name
+
 if [[ "$1" == "wg" ]]; then
   status=$(systemctl is-active wg-quick@${WG_CONFIG}.service)
+
   if [ "$status" == "active" ]
     then
       echo "=> Closing wireguard tunnel..."
       sudo systemctl stop "wg-quick@${WG_CONFIG}.service"
-      exit 0
     else
       echo "=> Opening wireguard tunnel..."
       sudo systemctl start "wg-quick@${WG_CONFIG}.service"
-      exit 0
   fi
+
+  exit 0
 fi
+
+### Android screen (camera)
+#
 
 if [[ "$1" == "cam" ]]; then
   sudo modprobe v4l2loopback -r
@@ -93,6 +109,21 @@ if [[ "$1" == "cam" ]]; then
   sleep 3
   ffplay -i /dev/video0
   kill %%
+  exit 0
+fi
+
+### Adguard VPN
+#
+
+if [[ "$1" == "guard" ]]; then
+  status=$(adguardvpn-cli status | grep "VPN is disconnected")
+
+  if [ "$status" != "" ]; then
+    adguardvpn-cli connect -l FI
+    exit 0
+  fi
+
+  adguardvpn-cli disconnect
   exit 0
 fi
 

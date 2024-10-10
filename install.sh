@@ -1,19 +1,24 @@
 #!/bin/bash
 
-# TODO:
-# fix schemastore
-
 ### Attention please!!!
 #
 # Comment/uncomment the groups and functions you want
 #
 # Use install_paru function if you have not paru
 #
-# recommend pacstrap pkgs: base base-devel linux-zen linux-zen-headers
+# Recommending pacstrap pkgs: base base-devel linux-zen linux-zen-headers
 #                          linux-firmware btrfs-progs vim git grub
 #                          efibootmgr dhcpcd dhclient networkmanager man-db
+#                          openssh os-prober
 #
 # A reboot is required after installation
+
+### Supporting
+#
+
+local_path=$HOME/.local
+config_path=$HOME/.config
+dotfiles_path=$local_path/dotfiles-arch-linux
 
 DEFAULT="\033[0m"
 BLUE="\033[1;94m" # BOLD
@@ -24,23 +29,24 @@ RED="\033[1;91m" #BOLD
 function print_error {
     echo -e "${RED}==>${DEFAULT} Something went wrong\n"
 }
-#
+
 function print_complete {
     echo -e "${GREEN}==>${DEFAULT} Task completed\n"
 }
-#
+
 function print_func_prompt {
   printf "${MAGENTA}==>${DEFAULT} %s\n" "${PROMPT}"
 
 }
-#
+
 function print_info_prompt {
   printf "${BLUE}==>${DEFAULT} %s\n%s\n\n" "${PROMPT}" "${VALUE}"
 }
 
-### Functions
+### Pre functions
 #
-function TRIM_enable {
+
+function enable_TRIM {
   PROMPT="Enabling TRIM..."
   print_func_prompt
 
@@ -52,7 +58,7 @@ function TRIM_enable {
 
   print_complete
 }
-#
+
 function install_paru {
   PROMPT="Installation of the AUR paru manager..."
   print_func_prompt
@@ -73,7 +79,7 @@ function install_paru {
 
   print_complete
 }
-#
+
 function mirror_generation {
   PROMPT="Mirror generation..."
   print_func_prompt
@@ -99,7 +105,7 @@ function mirror_generation {
 
   print_complete
 }
-#
+
 function refresh_keyring {
   PROMPT="Keychain update..."
   print_func_prompt
@@ -124,7 +130,7 @@ function refresh_keyring {
 
   print_complete
 }
-#
+
 function install_zen_core_tweaks {
   PROMPT="Installing tweaks to the linux zen kernel..."
   print_func_prompt
@@ -143,7 +149,7 @@ function install_zen_core_tweaks {
 
   print_complete
 }
-#
+
 function install_irqbalance {
   PROMPT="Installing irqbalance..."
   print_func_prompt
@@ -162,142 +168,169 @@ function install_irqbalance {
 
   print_complete
 }
-#
-# TRIM_enable
-#
-# install_paru
-#
-# mirror_generation
-#
-# NOTE: Is recomended after mirror_generation
-# refresh_keyring
-#
-# install_zen_core_tweaks
-#
-# install_irqbalance
+
+#TRIM_enable
+
+#install_paru
+
+#mirror_generation
+
+## Recomending after mirror_generation
+#refresh_keyring
+
+#install_zen_core_tweaks
+
+## Unknown impact
+#install_irqbalance
 
 ### Choosing packages, configs
 #
+
 PKGLIST=()
 CONFIGS=()
-#
-# AMD # GPU/2D/3D rendering # Hardware video acceleration x64
-# PKGLIST+=(amd-ucode mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon \
-#         vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu \
-#         libva-mesa-driver mesa-vdpau)
-#
-# Video-Cam
-# PKGLIST=(scrcpy v4l2loopback-dkms obs-studio obs-vkcapture lib32-obs-vkcapture)
-#
-# Games
-# BUG: https://github.com/ValveSoftware/steam-for-linux/issues/9083
-# PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
-# STOWLIST+=(mangohud)
-#
-# Tools
-# PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
-#           smbclient pacman-contrib ninja cups samsung-unified-driver-printer \
-#           ffmpegthumbnailer ascii rsync)
-#
-# Software
-# PKGLIST+=(filezilla firefox clipgrab webcord gimp-devel audacity)
-#
-# INFO: There is moved to hyprland
-# PKGLIST+=(sway swaybg swayidle swaylock waybar mako fuzzel \
-#           xdg-desktop-portal-wlr-git xorg-server xorg-xwayland)
-# CONFIGS+=(sway waybar mako fuzzel swaylock)
-#
-# Dev
-PKGLIST+=(vim neovim glow go docker docker-compose docker-buildx apache \
-          testssl.sh npm rust insomnium-bin wireguard-tools)
-CONFIGS+=(nvim)
-#
-# OS
-PGKLIST+=(xorg-server xorg-xwayland xdg-desktop-portal-hyprland \
-          hyprland fuzzel waybar mako swayidle swaylock hyprpaper \
-          grim slurp)
-CONFIGS+=(hypr fuzzel waybar mako swaylock)
-#
-PKGLIST+=(alacritty zsh tmux exa bat nnn fd ripgrep)
-CONFIGS+=(alacritty tmux bat)
-#
-PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
-#
-# Software
-# Bug: https://github.com/ahrm/sioyek/issues/856
-PKGLIST+=(chromium telegram-desktop keepassxc qbittorrent \
-          authy obsidian dropbox libreoffice-still imv mpv sioyek-git)
-CONFIGS+=(mpv imv git sioyek)
-#
-# Widget tool kits
-PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt5 qgnomeplatform-qt6 \
-          qqc2-desktop-style5)
-#
-# Audio
-PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-alsa \
-          pipewire-pulse pipewire-jack lib32-pipewire-jack playerctl \
-          bluez-utils noise-suppression-for-voice)
-CONFIGS+=(pipewire)
-#
-# Video
-PKGLIST+=(mesa lib32-mesa vulkan-intel lib32-vulkan-intel itel-media-driver libva-utils)
-#
-# Tools
-PKGLIST+=(htop inxi neofetch nnn cronie wl-clipboard xorg-xeyes \
-          android-sdk-platform-tools pacman-contrib ninja rsync\
-          jre8-openjdk jre-openjdk hunspell-en_us hunspell-ru jq viu ascii \
-          ffmpegthumbnailer zip unzip exfat-utils dosfstools \
-          libnotify numbat perl-file-mimeinfo)
 
-# TODO: install through npm
-# npm install -g tldr
-
-### Install packages
+## AMD build (optional)
 #
+# See gpu_undervolt
+
+#GPU/2D/3D rendering # Hardware video acceleration x64
+#PKGLIST+=(amd-ucode mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon \
+#          vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu \
+#          libva-mesa-driver mesa-vdpau)
+
+## Intel CPU only build (optional)
+#
+
+#PKGLIST+=(mesa lib32-mesa vulkan-intel lib32-vulkan-intel itel-media-driver libva-utils)
+
+## Fonts
+#
+# See setup_fonts
+
+#PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
+
+## Console and navigation
+#
+
+#PKGLIST+=(alacritty zsh tmux exa bat nnn fd ripgrep)
+#CONFIGS+=(alacritty tmux bat)
+
+## Widget tool kits
+#
+
+#PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt5 qgnomeplatform-qt6 \
+#          qqc2-desktop-style5)
+
+## Audio stack
+#
+
+#PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa \
+#          pipewire-pulse pipewire-jack-client jack2 lib32-jack2 \
+#          playerctl bluez-utils noise-suppression-for-voice)
+#CONFIGS+=(pipewire)
+
+## GUI
+#
+# Required alacritty, qtk, audio stack
+
+## Software
+#
+
+#PKGLIST+=(chromium telegram-desktop keepassxc qbittorrent \
+#          obsidian dropbox libreoffice-still imv mpv sioyek-git)
+#CONFIGS+=(mpv imv git sioyek)
+
+#PKGLIST+=(filezilla firefox clipgrab webcord gimp-devel audacity)
+
+## Dev
+#
+
+#PKGLIST+=(glow npm neovim)
+#CONFIGS+=(nvim)
+
+#PKGLIST+=(go php rust)
+
+#PKGLIST+=(docker docker-compose docker-buildx)
+
+#PKGLIST+=(apache testssl.sh insomnia)
+
+## Useful tools
+#
+
+#PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
+#          smbclient pacman-contrib ninja cups samsung-unified-driver-printer \
+#          ffmpegthumbnailer ascii rsync tldr)
+
+#PKGLIST+=(htop inxi neofetch cronie wl-clipboard xorg-xeyes \
+#          android-sdk-platform-tools pacman-contrib rsync\
+#          jre8-openjdk jre-openjdk hunspell-en_us hunspell-ru jq viu ascii \
+#          ffmpegthumbnailer zip unzip exfat-utils dosfstools \
+#          libnotify numbat perl-file-mimeinfo)
+
+## Video-Cam
+#
+
+#PKGLIST=(scrcpy v4l2loopback-dkms obs-studio obs-vkcapture lib32-obs-vkcapture)
+
+## Games
+#
+# Bug https://github.com/ValveSoftware/steam-for-linux/issues/9083
+
+#PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
+#STOWLIST+=(mangohud)
+
+### Packages installation
+#
+# Required paru
+
 PROMPT="Packages list"; VALUE="${PKGLIST[*]}"
 print_info_prompt
 paru -S ${PKGLIST[@]}
 
 ### Create link configs
 #
-local_path=$HOME/.local
-config_path=$HOME/.config
-root_path=$local_path/dotfiles-arch-linux
-#
-PROMPT="Configs list"; VALUE="${CONFIGS[*]}"
-print_info_prompt
-#
+
 function link_configs {
   for config in ${CONFIGS[@]}; do
-    ln -sf $root_path/$config $config_path
+    ln -sf $dotfiles_path/$config $config_path
   done
-
-  # ln -sf $HOME/.local/dotfiles-arch-linux/widget-toolkits/gtk-3.0 $HOME/.config
-  # ln -sf $HOME/.local/dotfiles-arch-linux/chromium/chromium-flags.conf $HOME/.config/chromium/chromium-flags.conf
-  # ln -sf $HOME/.local/dotfiles-arch-linux/nnn/customize.sh $HOME/.config/nnn/customize.sh
-  # ln -sf $HOME/.local/dotfiles-arch-linux/vim/.vimrc $HOME
-  # ln -sf $root_path/zsh/.zshrc $HOME
-  # ln -sf $root_path/scripts $local_path
 }
+
+PROMPT="Configs list"; VALUE="${CONFIGS[*]}"
+print_info_prompt
+link_configs
+
+
+## Manual mapping
 #
-# link_configs
-#
+
+#ln -sf $dotfiles_path/widget-toolkits/gtk-3.0 $config_path
+#mkdir -p  $config_path/chromium && ln -sf $dotfiles_path/chromium/chromium-flags.conf $config_path/chromium/chromium-flags.conf
+#mkdir -p  $config_path/nnn && ln -sf $dotfiles_path/nnn/customize.sh $config_path/nnn/customize.sh
+#ln -sf $dotfiles_path/vim/.vimrc $HOME
+#ln -sf $dotfiles_path/zsh/.zshrc $HOME
+#ln -sf $dotfiles_path/scripts $local_path
+
+##
+
 function unlink_configs {
   for config in ${CONFIGS[@]}; do
     unlink $config_path/$config
   done
 
-  # unlink $HOME/.config/gtk-3.0
-  # unlink $HOME/.config/chromium/chromium-flags.conf
-  # unlink $HOME/.vimrc
-  # unlink $HOME/.config/nnn/customize.sh
-  # unlink $HOME/.zshrc
-  # unlink $HOME/.local/scripts
+  #unlink $config_path/gtk-3.0
+  #unlink $config_path/chromium/chromium-flags.conf
+  #unlink $config_path/nnn/customize.sh
+  #unlink $HOME/.vimrc
+  #unlink $HOME/.zshrc
+  #unlink $local_path/scripts
 }
-# unlink_configs
+
+#unlink_configs
 
 ### Fixes and automation
 #
+
 function settings {
   PROMPT="Make the necessary adjustments..."
   print_func_prompt
@@ -325,48 +358,54 @@ function settings {
     esac
   done
 }
-#
-# NOTE: Necessarily for first use
-# settings
 
-### NetworkManager
-#
-# sudo stow -t /etc/NetworkManager/conf.d/ networkmanager
+## Necessarily for first use
+#settings
 
-### Fonts setup
+### Post functions
 #
-function setup_fonts {
-  sudo ln -sf $HOME/.local/dotfiles-arch-linux/fonts/local.conf /etc/fonts/local.conf
-  fc-cache
-}
-#
-# setup_fonts
 
-### Create grub link config
-#
 function create_GRUB_cfg_link {
-  sudo ln -sf $HOME/.local/dotfiles-arch-linux/grub/grub /etc/default/grub
+  sudo ln -sf $dotfiles_path/grub/grub /etc/default/grub
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
-#
-# create_GRUB_cfg_link
 
-### Create pacman link config
-#
+function gpu_undervolt {
+  ./gpu-undervolt/undervolt-rx5700xt.sh
+}
+
 function create_pacman_cfg_link {
-  sudo ln -sf $HOME/.local/dotfiles-arch-linux/pacman/pacman.conf /etc/pacman.conf
+  sudo ln -sf $dotfiles_path/pacman/pacman.conf /etc/pacman.conf
 }
-#
-# create_pacman_cfg_link
 
-### TODO: Create bluetooth link config
-#
+function setup_fonts {
+  sudo ln -sf $dotfiles_path/fonts/local.conf /etc/fonts/local.conf
+  fc-cache
+}
+
+## TODO: fix
+function set_up_NetworkManager {
+  systemctl enable --now systemd-networkd
+  systemctl enable --now systemd-resolved
+  #sudo rm -rf /etc/NetworkManager/conf.d
+  #sudo ln -sf networkmanager/conf.d /etc/NetworkManager
+}
+
+## TODO: up to date
 function create_BtH_cfg_link {
-  sudo stow --adopt -t /etc/bluetooth bluetooth-stack
+  echo "TODO"
+  #sudo stow --adopt -t /etc/bluetooth bluetooth-stack
 }
-#
-# create_BtH_cfg_link
 
-### Mimetype TODO: system overwrites the file
+#create_GRUB_cfg_link
+#create_pacman_cfg_link
+#gpu_undervolt
+#setup_fonts
+#set_up_NetworkManager
+#create_BtH_cfg_link
+
+### Mimetypes
 #
-# cat mimetype/.config/mimeapps.list > $HOME/.config/mimeapps.list
+#TODO: system overwrites the file
+
+#cat mimetype/.config/mimeapps.list > $HOME/.config/mimeapps.list

@@ -1,12 +1,16 @@
 [user]
-        email = vladislavgardner@gmail.com
-        name = v1adhope
+email = vladislavgardner@gmail.com
+name = v1adhope
+
 [init]
-        defaultBranch = main
+defaultBranch = main
+
 [alias]
-        br = branch
-        ci = commit
-        st = status
-        last = log -1 HEAD
+br = branch
+ci = commit
+st = status
+last = log -1 HEAD
+
 [core]
-	autocrlf = input
+autocrlf = input
+editor = nvim

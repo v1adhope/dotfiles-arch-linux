@@ -2,7 +2,7 @@ show-failed-attempts
 ignore-empty-password
 
 font="Noto Sans Mono"
-image="/home/rat/.local/wallpapers/screen_lock/wallpaper.jpg"
+image="/home/rat/Dropbox/arch/lock-wallpapers/wallpaper.jpg"
 scaling=fill
 indicator-caps-lock
 show-keyboard-layout

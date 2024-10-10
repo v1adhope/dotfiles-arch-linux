@@ -1,4 +1,4 @@
-local ok, _ = pcall(require, 'other-modules/create-keymap')
+local ok, _ = pcall(require, 'features/create_keymap')
 if not ok then
   return
 end

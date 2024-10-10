@@ -1,20 +1,19 @@
 #!/bin/bash
 
-### Customization block
-#
+## Customization block
 ${0%/*}/random-wallpaper.sh
 
-### The block below is always the last one
+## The block below is always the last one
 swayidle \
   timeout 10 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
-#
+
 makoctl mode -a away
-#
-# Before lock
+
+## Section before lock
 swaylock
-# After unlock
-#
+## Section after unlock
+
 makoctl mode -r away
-#
-# Cancel swayidle
+
+## Cancel swayidle
 kill %%

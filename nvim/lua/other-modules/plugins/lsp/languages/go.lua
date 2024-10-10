@@ -1,3 +1,0 @@
-return {
-  analyses = { composites = false }
-}

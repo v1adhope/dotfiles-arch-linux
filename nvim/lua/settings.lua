@@ -5,13 +5,13 @@ local api = vim.api
 -- Visual limiter
 opt.colorcolumn = '70'
 api.nvim_set_hl(0, 'ColorColumn', { ctermbg = 0 })
--- True Color 24-bit
-opt.termguicolors = true
 -- Line numbering
 opt.number = true
 opt.relativenumber = true
 -- Use space characters instead of tabs.
 opt.expandtab = true
+-- Tab exeption for Makefiles
+api.nvim_command('au BufEnter Makefile set noexpandtab')
 -- Set tab width to n columns.
 opt.tabstop = 2
 opt.shiftwidth = 2

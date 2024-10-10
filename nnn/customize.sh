@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Hidden files on top
-# export LC_COLLATE="C"
-
 # Runner alias
 alias nnn="nnn -a -e"
 # -H - show hidden files
@@ -19,9 +16,8 @@ export NNN_ARCHIVE="\\.(7z|bz2|gz|tar|tgz|zip)$"
 
 export NNN_FIFO=/tmp/nnn.fifo
 
-### Plugins
-#
+# Plugins
 export NNN_PLUG="p:preview-tui;u:getplugs;i:imgview"
-#
+
 # Preview-tui
 export SPLIT="v"

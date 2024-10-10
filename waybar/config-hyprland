@@ -1,9 +1,30 @@
 {
     "layer": "top",
     "position": "top",
-    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-    "modules-center": ["custom/crypto-currency", "custom/weather", "custom/space", "clock", "hyprland/language", "tray"],
-    "modules-right": ["cpu", "memory", "custom/space", "pulseaudio", "network", "custom/vpn", "bluetooth"],
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap"
+    ],
+
+    "modules-center": [
+        "custom/crypto-currency",
+        "custom/weather",
+        "custom/space",
+        "clock",
+        "hyprland/language",
+        "tray"
+    ],
+
+    "modules-right": [
+        "cpu",
+        "memory",
+        "custom/space",
+        "pulseaudio",
+        "network",
+        "custom/vpn",
+        "bluetooth"
+    ],
 
     "custom/crypto-currency": {
         "max-length": 15,
@@ -70,7 +91,7 @@
     },
 
     "network": {
-        "interface": "enp2s0",
+        "interface": "wlo1",
         "interval": 60,
         "format-disconnected": "Offline",
         "tooltip-format-disconnected": "Disconnected",

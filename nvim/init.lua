@@ -1,23 +1,15 @@
-require 'plugins'
-require 'settings'
-require 'keymaps'
+require "plugins_manager"
+require "settings"
+require "keymaps"
 
-require 'other-modules/plugins/colorscheme'
-require 'other-modules/plugins/nvim-tree'
-
-require 'other-modules/plugins/lualine'
-require 'other-modules/plugins/lsp/nvim-lspconfig'
-require 'other-modules/plugins/nvim-cmp'
-require 'other-modules/plugins/nvim-autopairs'
-require 'other-modules/plugins/treesitter'
-require 'other-modules/plugins/nvim-comment'
-require 'other-modules/plugins/trim'
-require 'other-modules/plugins/telescope'
-require 'other-modules/plugins/gitsigns'
+-- TODO: lsp relations
+require 'lsp_configs/nvim_lspconfig'
+require 'lsp_configs/nvim_cmp'
 
 -- Features
-require 'other-modules/new-line-without-comment'
-require 'other-modules/formatting'
+require 'features/new_line_without_comment'
+require 'features/formatting'
+require 'features/blade'
 
--- Rust features
-require 'other-modules/plugins/crates'
+-- TODO: Rust features
+-- require 'other-modules/plugins/crates'
