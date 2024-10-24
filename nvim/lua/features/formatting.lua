@@ -5,7 +5,7 @@ local format_pattern = {
   "*.ts",
   "*.jsx",
   "*.tsx",
-  "*.rs", 
+  "*.rs",
   "*.php"
 }
 

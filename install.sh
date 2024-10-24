@@ -229,9 +229,19 @@ CONFIGS=()
 #          playerctl bluez-utils noise-suppression-for-voice)
 #CONFIGS+=(pipewire)
 
+## Counting
+#
+
+#PKGLIST+=(homebank)
+
 ## GUI
 #
 # Required alacritty, qtk, audio stack
+
+#PGKLIST+=(xorg-server xorg-xwayland xdg-desktop-portal-hyprland \
+#          hyprland fuzzel waybar mako swayidle swaylock hyprpaper \
+#          grim slurp)
+#CONFIGS+=(hypr fuzzel waybar mako swaylock)
 
 ## Software
 #

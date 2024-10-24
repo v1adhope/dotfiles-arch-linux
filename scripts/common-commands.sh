@@ -119,7 +119,7 @@ if [[ "$1" == "guard" ]]; then
   status=$(adguardvpn-cli status | grep "VPN is disconnected")
 
   if [ "$status" != "" ]; then
-    adguardvpn-cli connect -l FI
+    adguardvpn-cli connect -l NL
     exit 0
   fi
 
