@@ -218,8 +218,7 @@ CONFIGS=()
 ## Widget tool kits
 #
 
-#PKGLIST+=(gtk3 gnome-themes-extra qgnomeplatform-qt5 qgnomeplatform-qt6 \
-#          qqc2-desktop-style5)
+#PKGLIST+=(gtk3 gtk4 adwaita-qt5 adwaita-qt6)
 
 ## Audio stack
 #
