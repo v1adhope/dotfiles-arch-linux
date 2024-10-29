@@ -14,6 +14,7 @@ if not ok then
 end
 
 for _, lsp in ipairs(Servers) do
+  -- INFO: go
   if lsp == 'gopls' then
     config[lsp].setup {
       on_attach = function(client, bufnr)
@@ -28,6 +29,8 @@ for _, lsp in ipairs(Servers) do
         }
       }
     }
+
+    -- INFO: lua
   elseif lsp == 'lua_ls' then
     config[lsp].setup {
       on_attach = function(client, bufnr)
@@ -69,6 +72,7 @@ for _, lsp in ipairs(Servers) do
       }
     }
 
+    -- INFO: rust
     -- TODO: refresh with https://github.com/mrcjkb/rustaceanvim
   elseif lsp == 'rust_analyzer' then
     config[lsp].setup {
@@ -98,7 +102,9 @@ for _, lsp in ipairs(Servers) do
     --       ['language_server_php_cs_fixer.bin'] = '/usr/local/bin/php-cs-fixer'
     --     }
     --   }
-    elseif lsp == 'intelephense' then
+
+    -- INFO: php
+  elseif lsp == 'intelephense' then
     config[lsp].setup {
       on_attach = function(client, bufnr)
         handlers.custom_lsp_attach(client, bufnr)
@@ -107,6 +113,7 @@ for _, lsp in ipairs(Servers) do
       filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "php", "blade" }
     }
 
+    -- INFO: frontend
   elseif lsp == 'emmet_ls' then
     config[lsp].setup {
       on_attach = function(client, bufnr)
@@ -123,6 +130,8 @@ for _, lsp in ipairs(Servers) do
       capabillities = handlers.capabilities,
       filetypes = { "blade" },
     }
+
+    -- INFO: others with default settings
   else
     config[lsp].setup {
       on_attach = function(client, bufnr)

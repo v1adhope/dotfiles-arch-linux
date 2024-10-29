@@ -6,6 +6,7 @@ alias grep='rg'
 alias diff='diff -us'
 alias v='nvim'
 alias n='nnn'
+alias py="python3"
 
 # Removing unnecessary dependencies
 alias pman='sudo pacman -Rns $(pacman -Qdtq)'

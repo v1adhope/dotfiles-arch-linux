@@ -254,7 +254,7 @@ CONFIGS=()
 ## Dev
 #
 
-#PKGLIST+=(glow npm neovim)
+#PKGLIST+=(glow npm neovim python-pip ruff)
 #CONFIGS+=(nvim)
 
 #PKGLIST+=(go php rust)
