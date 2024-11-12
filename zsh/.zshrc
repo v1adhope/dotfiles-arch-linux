@@ -70,16 +70,18 @@ source $HOME/Dropbox/arch/.private
 export LS_COLORS="di=01;38;5;12:ln=01;38;5;13:or=01;38;5;167:ex=38;5;115:*.*=00"
 export EXA_COLORS="ur=01;38;5;187:uw=01;38;5;167:ux=01;38;5;115:ue=01;38;5;115:gr=01;38;5;187:gw=01;38;5;167:gx=01;38;5;115:tr=01;38;5;187:tw=01;38;5;167:tx=01;38;5;115:uu=01;38;5;13:gu=01;38;5;13:un=01;38;5;12:gn=01;38;5;12:sn=38;5;115:sb=38;5;115:da=38;5;187:lp=01;38;5;13:b0=01;38;5;167"
 
-
 ## Executable scripts
 export PATH=$HOME/.local/scripts/bin:$PATH
 
 ## Customize nnn
 source $config_path/nnn/customize.sh
 
-# Go
+## Go
 export GOPATH=$local_path/share/go
 export PATH=$local_path/share/go/bin:$PATH
+
+## .NET
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 ## Bat
 # TODO: that has a bug

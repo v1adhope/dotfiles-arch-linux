@@ -261,6 +261,11 @@ CONFIGS=()
 
 #PKGLIST+=(docker docker-compose docker-buildx)
 
+#PKGLIST+=(dotnet-host dotnet-runtime dotnet-sdk aspnet-runtime)
+#PKGLIST+=(dotnet-runtime-7.0 dotnet-sdk-7.0 aspnet-runtime-7.0 \
+#          dotnet-runtime-6.0 dotnet-sdk-6.0 aspnet-runtime-6.0 \
+#          mono dotnet-runtime-3.0 dotnet-sdk-3.0 aspnet-runtime-3.0)
+
 #PKGLIST+=(apache testssl.sh insomnia)
 
 ## Useful tools
