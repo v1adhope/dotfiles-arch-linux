@@ -245,11 +245,11 @@ CONFIGS=()
 ## Software
 #
 
-#PKGLIST+=(chromium telegram-desktop keepassxc qbittorrent \
+#PKGLIST+=(firefox telegram-desktop keepassxc qbittorrent \
 #          obsidian dropbox libreoffice-still imv mpv sioyek-git)
 #CONFIGS+=(mpv imv git sioyek)
 
-#PKGLIST+=(filezilla firefox clipgrab webcord gimp-devel audacity)
+#PKGLIST+=(filezilla chromium clipgrab webcord gimp-devel audacity)
 
 ## Dev
 #
