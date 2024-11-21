@@ -9,11 +9,32 @@ local config = function()
     return
   end
 
+  local ok, _ = pcall(require, 'features/create_keymap')
+  if not ok then
+    return
+  end
+
+  local on_attach = function(bufnr)
+    -- Default mapping
+    tree_api.config.mappings.default_on_attach(bufnr)
+
+    local opts = function(desc)
+      return { desc = "nvim-tree: " .. desc, buffer = bufnr, nowait = true }
+    end
+
+    -- Custom mapping
+    Map('n', 'ff', ':Telescope find_files<CR>', opts('Telescope find_files'))
+    Map('n', 'fg', ':Telescope live_grep<CR>', opts('Telescope live_grep'))
+    Map('n', 'fb', ':Telescope buffers<CR>', opts('Telescope buffers'))
+    Map('n', 'fh', ':Telescope help_tags<CR>', opts('Telescope help_tags'))
+  end
+
   -- disable netrw at the very start of your init.lua (strongly advised)
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
 
   tree.setup {
+    on_attach = on_attach,
     disable_netrw = true,
     diagnostics = {
       enable = true,

@@ -15,7 +15,10 @@ local config = function()
       globalstatus = true,
       extensions = loaded_extensions
     },
-    sections = { lualine_x = { 'encoding', 'filetype' } }
+    sections = {
+      lualine_c = { { 'filename', file_status = true, path = 1 } },
+      lualine_x = { { 'encoding', show_bomb = true }, 'filetype' }
+    }
   }
 end
 

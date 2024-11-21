@@ -6,7 +6,7 @@ local config = function()
   conform.setup {
     formatters_by_ft = {
       go = {
-        -- go install golang.org/x/tools/cmd/goimports@latest
+        -- WATCH: go install golang.org/x/tools/cmd/goimports@latest
         'goimports',
         'gofmt'
       },

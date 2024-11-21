@@ -5,27 +5,33 @@ end
 
 -- No highlighting
 Map('n', '<M-n>', ':noh<CR>')
+
 -- Move line
 Map('n', '<M-i>', ':m-2<CR>')
 Map('n', '<M-o>', ':m+<CR>')
+
 -- Open terminal
-Map('n', '<M-t>', ':terminal<CR>', { silent = true })
+Map('n', '<M-t>', ':terminal<CR>')
+
 -- Split navigation
-Map('n', '<M-h>', ':wincmd h<CR>', { silent = true })
-Map('n', '<M-j>', ':wincmd j<CR>', { silent = true })
-Map('n', '<M-k>', ':wincmd k<CR>', { silent = true })
-Map('n', '<M-l>', ':wincmd l<CR>', { silent = true })
+Map('n', '<M-h>', ':wincmd h<CR>')
+Map('n', '<M-j>', ':wincmd j<CR>')
+Map('n', '<M-k>', ':wincmd k<CR>')
+Map('n', '<M-l>', ':wincmd l<CR>')
 
 -- File explorer
-Map('n', '<M-f>', ':NvimTreeToggle<CR>', { silent = true })
+Map('n', '<M-f>', ':NvimTreeToggle<CR>')
 
 -- Gitsigns
-Map('n', '<M-p>', ':Gitsigns preview_hunk<CR>', { silent = true })
-Map('n', '<M-s>', ':Gitsigns select_hunk<CR>', { silent = true })
+Map('n', '<M-p>', ':Gitsigns preview_hunk<CR>')
+Map('n', '<M-s>', ':Gitsigns select_hunk<CR>')
+Map('n', '<M-b>', ':Gitsigns blame_line<CR>')
 
 -- Markdown
-Map('n', '<M-m>', ':MPToggle<CR>', { silent = true })
+Map('n', '<M-m>', ':MPToggle<CR>')
 
--- Navigate between buffers
--- map('n', '<S-H>', ':bp<CR>', { silent = true })
--- map('n', '<S-L>', ':bn<CR>', { silent = true })
+-- Telescope
+Map('n', 'ff', ':Telescope find_files<CR>')
+Map('n', 'fg', ':Telescope live_grep<CR>')
+Map('n', 'fb', ':Telescope buffers<CR>')
+Map('n', 'fh', ':Telescope help_tags<CR>')

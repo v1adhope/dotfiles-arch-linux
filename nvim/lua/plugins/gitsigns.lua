@@ -1,4 +1,3 @@
--- TODO: reduce config
 local config = function()
   local ok, gs = pcall(require, 'gitsigns')
   if not ok then
