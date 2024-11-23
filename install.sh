@@ -291,7 +291,7 @@ CONFIGS=()
 # Bug https://github.com/ValveSoftware/steam-for-linux/issues/9083
 
 #PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
-#STOWLIST+=(mangohud)
+#CONFIGS+=(mangohud)
 
 ### Packages installation
 #
