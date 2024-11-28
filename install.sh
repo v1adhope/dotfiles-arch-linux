@@ -238,9 +238,9 @@ CONFIGS=()
 # Required alacritty, qtk, audio stack
 
 #PGKLIST+=(xorg-server xorg-xwayland xdg-desktop-portal-hyprland \
-#          hyprland fuzzel waybar mako swayidle swaylock hyprpaper \
+#          hyprland fuzzel waybar mako hypridle hyprlock hyprpaper \
 #          grim slurp)
-#CONFIGS+=(hypr fuzzel waybar mako swaylock)
+#CONFIGS+=(hypr fuzzel waybar mako)
 
 ## Software
 #
