@@ -188,7 +188,7 @@ CONFIGS=()
 #GPU/2D/3D rendering # Hardware video acceleration x64
 #PKGLIST+=(amd-ucode mesa lib32-mesa vulkan-radeon lib32-vulkan-radeon \
 #          vulkan-icd-loader lib32-vulkan-icd-loader xf86-video-amdgpu \
-#          libva-mesa-driver mesa-vdpau)
+#          libva-mesa-driver mesa-vdpau amdgpu-fan)
 
 # Intel CPU only build (optional)
 #PKGLIST+=(mesa lib32-mesa vulkan-intel lib32-vulkan-intel itel-media-driver libva-utils)
@@ -238,7 +238,7 @@ CONFIGS=()
 #          dotnet-runtime-6.0 dotnet-sdk-6.0 aspnet-runtime-6.0 \
 #          mono dotnet-runtime-3.0 dotnet-sdk-3.0 aspnet-runtime-3.0)
 
-#PKGLIST+=(apache testssl.sh insomnia)
+#PKGLIST+=(apache testssl.sh insomnia postgresql-libs)
 
 # Useful tools
 #PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
