@@ -1,4 +1,1 @@
-.cache/
-nvim/plugin/
-nvim/lazy-lock.json
-widget-toolkits/gtk-3.0/bookmarks
+.cache

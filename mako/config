@@ -3,7 +3,7 @@ on-button-right=dismiss-all
 default-timeout=5000
 ignore-timeout=1
 
-font="Noto Sans Mono" Regular 11
+font="Noto Sans Mono" Regular 11.5
 background-color=#000000CE
 text-color=#FFFFFFFF
 padding=12, 6

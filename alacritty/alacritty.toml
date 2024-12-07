@@ -1,10 +1,3 @@
-general.import = [
-    # "~/.config/alacritty/themes/base16_default_dark.toml"
-
-    # TODO: remove???
-    # "~/.config/alacritty/themes/tokyo_night_storm.toml"
-]
-
 general.live_config_reload = true
 
 [cursor]
@@ -17,9 +10,8 @@ shape = "Block"
 [env]
 TERM = "xterm-256color"
 
-# TODO: set up pretty
-# [font]
-# size = 11
+[font]
+size = 11.5
 
 [font.normal]
 family = "Hack Nerd Font Mono"
