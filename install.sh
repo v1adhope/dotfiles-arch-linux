@@ -214,7 +214,7 @@ CONFIGS=()
 
 # GUI (required alacritty, qtk, audio stack)
 #PGKLIST+=(xorg-server xorg-xwayland xdg-desktop-portal-hyprland \
-#          hyprland fuzzel waybar mako hypridle hyprlock hyprpaper \
+#          hyprland hyprland-qtutils fuzzel waybar mako hypridle hyprlock hyprpaper \
 #          grim slurp)
 #CONFIGS+=(hypr fuzzel waybar mako)
 

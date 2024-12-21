@@ -50,6 +50,9 @@ typeset -U path
 config_path=$HOME/.config
 local_path=$HOME/.local
 
+# Hardware video acceleration
+export VDPAU_DRIVER=radeonsi
+
 # Default text editor
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim

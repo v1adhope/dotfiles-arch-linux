@@ -1,0 +1,6 @@
+# Ensure these flags are set up
+gfx.webrender.all=true
+media.ffmpeg.vaapi.enabled=true
+media.hardware-video-decoding.force-enabled=true
+widget.wayland.opaque-region.enabled=false
+layout.frame_rate=144
