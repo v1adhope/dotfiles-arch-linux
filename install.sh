@@ -243,7 +243,7 @@ CONFIGS=()
 # Useful tools
 #PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
 #          smbclient pacman-contrib ninja cups samsung-unified-driver-printer \
-#          ffmpegthumbnailer ascii rsync tldr)
+#          ffmpegthumbnailer ascii rsync tldr love)
 
 #PKGLIST+=(htop inxi neofetch cronie wl-clipboard xorg-xeyes \
 #          android-sdk-platform-tools pacman-contrib rsync\
