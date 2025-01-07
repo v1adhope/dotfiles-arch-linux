@@ -25,3 +25,6 @@ opt.incsearch = true
 opt.hlsearch = true
 -- OS buffer with wl-clipboard
 opt.clipboard = 'unnamedplus'
+-- Avoid Russian keyboard layoud conflicts
+opt.langmap =
+'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
