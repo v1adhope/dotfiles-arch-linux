@@ -238,7 +238,7 @@ CONFIGS=()
 #          dotnet-runtime-6.0 dotnet-sdk-6.0 aspnet-runtime-6.0 \
 #          mono dotnet-runtime-3.0 dotnet-sdk-3.0 aspnet-runtime-3.0)
 
-#PKGLIST+=(apache testssl.sh insomnia postgresql-libs)
+#PKGLIST+=(apache testssl.sh insomnia postgresql-libs go-task)
 
 # Useful tools
 #PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
