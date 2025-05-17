@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 alias ls='exa -F -l --group-directories-first --sort=name -g --color=auto'
 alias cat='bat'

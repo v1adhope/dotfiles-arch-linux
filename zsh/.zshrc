@@ -36,15 +36,18 @@ zinit wait lucid light-mode depth=1 for \
 # === Settings ===
 bindkey -v
 
-# ZSH history
+# Increasing the limit of open file descriptors for the current shell session
+ulimit -n 8096
+
+# Zsh history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 HISTFILE=~/.zsh_histfile
-HISTSIZE=1000000
-SAVEHIST=$HISTSIZE
+HISTSIZE=100000
+SAVEHIST=100000
 
 # Remove $PATH duplicates
-typeset -U path
+typeset -U PATH
 
 # === Exports and sources ===
 config_path=$HOME/.config
@@ -54,35 +57,54 @@ local_path=$HOME/.local
 export VDPAU_DRIVER=radeonsi
 
 # Default text editor
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
+export EDITOR=$(which nvim)
+export VISUAL=$(which nvim)
 
 # Aliases
-source $local_path/scripts/aliases.sh
+[ -s $local_path/scripts/aliases.sh ] && source $local_path/scripts/aliases.sh
 
 # Private
-source $HOME/Dropbox/arch/.private
+[ -s $HOME/Dropbox/arch/.private ] && source $HOME/Dropbox/arch/.private
 
 # Ls and exa color overwrite
 export LS_COLORS="di=01;38;5;12:ln=01;38;5;13:or=01;38;5;167:ex=38;5;115:*.*=00"
 export EXA_COLORS="ur=01;38;5;187:uw=01;38;5;167:ux=01;38;5;115:ue=01;38;5;115:gr=01;38;5;187:gw=01;38;5;167:gx=01;38;5;115:tr=01;38;5;187:tw=01;38;5;167:tx=01;38;5;115:uu=01;38;5;13:gu=01;38;5;13:un=01;38;5;12:gn=01;38;5;12:sn=38;5;115:sb=38;5;115:da=38;5;187:lp=01;38;5;13:b0=01;38;5;167"
 
 # Executable scripts
-export PATH=$HOME/.local/scripts/bin:$PATH
+[ -s $HOME/.local/scripts/bin ] && export PATH=$HOME/.local/scripts/bin:$PATH
 
 # Customize nnn
-source $config_path/nnn/customize.sh
+[ -s $config_path/nnn/customize.sh ] && source $config_path/nnn/customize.sh
 
 # Go
 export GOPATH=$local_path/share/go
 export PATH=$local_path/share/go/bin:$PATH
 
+export GONOSUMDB=gitea.gospodaprogrammisty.ru
+export GOPROXY=https://proxy.golang.org,direct
+
+# Rust
+
+export RUSTUP_HOME=$local_path/share/rust
+export CARGO_HOME=$local_path/share/cargo
+export PATH=$CARGO_HOME/bin:$PATH
+export RUST_BACKTRACE=1
+
 # .NET
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# Node
+[ -s /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 
 # === Loads ===
 # Start hypr and its deps after log in
 [ "$(tty)" = "/dev/tty1" ] && for f in $config_path/hypr/load/*.sh; do source $f; done
 
+# Completion adguardvpn-cli: TODO: fix
+[ -s "/opt/adguardvpn_cli/bash-completion.sh" ] && source /opt/adguardvpn_cli/bash-completion.sh
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+autoload -Uz compinit
+compinit

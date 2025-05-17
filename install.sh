@@ -198,7 +198,7 @@ CONFIGS=()
 
 # Console and navigation
 #PKGLIST+=(alacritty zsh tmux exa bat nnn fd ripgrep)
-#CONFIGS+=(alacritty tmux bat)
+#CONFIGS+=(alacritty tmux bat git)
 
 # Widget tool kits
 #PKGLIST+=(gtk3 gtk4 adwaita-qt5 adwaita-qt6)
@@ -221,15 +221,19 @@ CONFIGS=()
 # Software
 #PKGLIST+=(firefox telegram-desktop keepassxc qbittorrent \
 #          obsidian dropbox libreoffice-still imv mpv sioyek-git)
-#CONFIGS+=(mpv imv git sioyek)
+#CONFIGS+=(mpv imv sioyek)
 
 #PKGLIST+=(filezilla chromium clipgrab webcord gimp-devel audacity)
 
 # Dev
-#PKGLIST+=(glow npm neovim python-pip ruff)
+#PKGLIST+=(glow npm nvm neovim python-pip ruff lazygit)
 #CONFIGS+=(nvim)
 
-#PKGLIST+=(go php rust)
+#PKGLIST+=(php rust)
+
+#PKGLIST+=(go gopls go-tools delve ko)
+
+#PKGLIST+=(rustup)
 
 #PKGLIST+=(docker docker-compose docker-buildx)
 
@@ -238,7 +242,7 @@ CONFIGS=()
 #          dotnet-runtime-6.0 dotnet-sdk-6.0 aspnet-runtime-6.0 \
 #          mono dotnet-runtime-3.0 dotnet-sdk-3.0 aspnet-runtime-3.0)
 
-#PKGLIST+=(apache testssl.sh insomnia postgresql-libs go-task)
+#PKGLIST+=(apache testssl.sh insomnia postgresql-libs go-task goreleaser)
 
 # Useful tools
 #PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
@@ -350,6 +354,11 @@ function setup_fonts {
   fc-cache
 }
 
+function init_rust {
+  rustup default stable
+  rustup toolchain install stable
+}
+
 #create_GRUB_cfg_link
 
 #create_pacman_cfg_link
@@ -357,6 +366,8 @@ function setup_fonts {
 #gpu_undervolt
 
 #setup_fonts
+
+# init_rust
 
 
 

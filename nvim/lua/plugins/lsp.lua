@@ -1,21 +1,13 @@
 return {
   {
-    "williamboman/mason.nvim"
+    "mason-org/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
   },
   {
-    "williamboman/mason-lspconfig.nvim"
-  },
-  {
-    "neovim/nvim-lspconfig"
-  },
-  {
-    "hrsh7th/nvim-cmp"
-  },
-  {
-    "hrsh7th/cmp-nvim-lsp"
-  },
-  {
-    "saadparwaiz1/cmp_luasnip"
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
+    "saadparwaiz1/cmp_luasnip",
   },
   -- TODO: unstable
   -- {
@@ -34,7 +26,7 @@ return {
   --   },
   -- },
   {
-    "hrsh7th/cmp-buffer"
+    "hrsh7th/cmp-buffer",
   },
   {
     "L3MON4D3/LuaSnip",
