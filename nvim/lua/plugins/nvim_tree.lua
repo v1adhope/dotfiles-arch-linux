@@ -39,10 +39,10 @@ local config = function()
 		diagnostics = {
 			enable = true,
 			icons = {
-				hint = "",
-				info = "",
-				warning = "",
-				error = "",
+				hint = "",
+				info = "",
+				warning = "",
+				error = "",
 			},
 		},
 		git = { ignore = false },
