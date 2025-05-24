@@ -3,15 +3,15 @@ local opt = vim.opt
 local api = vim.api
 
 -- Visual limiter
-opt.colorcolumn = '70'
-api.nvim_set_hl(0, 'ColorColumn', { ctermbg = 0 })
+opt.colorcolumn = "70"
+api.nvim_set_hl(0, "ColorColumn", { ctermbg = 0 })
 -- Line numbering
 opt.number = true
 opt.relativenumber = true
 -- Use space characters instead of tabs.
 opt.expandtab = true
 -- Tab exeption for Makefiles
-api.nvim_command('au BufEnter Makefile set noexpandtab')
+api.nvim_command("au BufEnter Makefile set noexpandtab")
 -- Set tab width to n columns.
 opt.tabstop = 2
 opt.shiftwidth = 2
@@ -24,7 +24,7 @@ opt.incsearch = true
 -- Use highlighting when doing a search.
 opt.hlsearch = true
 -- OS buffer with wl-clipboard
-opt.clipboard = 'unnamedplus'
+opt.clipboard = "unnamedplus"
 -- Avoid Russian keyboard layoud conflicts
 opt.langmap =
-'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
+	"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"

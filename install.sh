@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # === Attention please!!! ===
 # Comment/uncomment the groups and functions you want
@@ -226,7 +226,7 @@ CONFIGS=()
 #PKGLIST+=(filezilla chromium clipgrab webcord gimp-devel audacity)
 
 # Dev
-#PKGLIST+=(glow npm nvm neovim python-pip ruff lazygit)
+#PKGLIST+=(glow npm nvm neovim python-pip ruff lazygit stylua)
 #CONFIGS+=(nvim)
 
 #PKGLIST+=(php rust)
@@ -367,7 +367,7 @@ function init_rust {
 
 #setup_fonts
 
-# init_rust
+#init_rust
 
 
 

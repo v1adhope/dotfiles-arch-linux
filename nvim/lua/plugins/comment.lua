@@ -1,15 +1,15 @@
 local config = function()
-  local ok, comment = pcall(require, 'Comment')
-  if not ok then
-    return
-  end
+	local ok, comment = pcall(require, "Comment")
+	if not ok then
+		return
+	end
 
-  comment.setup {}
+	comment.setup({})
 end
 
 return {
-  {
-    "numToStr/Comment.nvim",
-    config = config,
-  }
+	{
+		"numToStr/Comment.nvim",
+		config = config,
+	},
 }

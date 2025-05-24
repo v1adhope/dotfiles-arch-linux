@@ -42,9 +42,9 @@ ulimit -n 8096
 # Zsh history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
-HISTFILE=~/.zsh_histfile
-HISTSIZE=100000
-SAVEHIST=100000
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=100000
+export SAVEHIST=100000
 
 # Remove $PATH duplicates
 typeset -U PATH
