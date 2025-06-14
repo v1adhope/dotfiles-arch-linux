@@ -226,12 +226,12 @@ CONFIGS=()
 #PKGLIST+=(filezilla chromium clipgrab webcord gimp-devel audacity)
 
 # Dev
-#PKGLIST+=(glow npm nvm neovim python-pip ruff lazygit stylua)
+#PKGLIST+=(glow npm nvm neovim python-pip ruff lazygit stylua eslint yarn wget)
 #CONFIGS+=(nvim)
 
 #PKGLIST+=(php rust)
 
-#PKGLIST+=(go gopls go-tools delve ko)
+#PKGLIST+=(go gopls go-tools delve golangci-lint ko)
 
 #PKGLIST+=(rustup)
 
@@ -249,7 +249,7 @@ CONFIGS=()
 #          smbclient pacman-contrib ninja cups samsung-unified-driver-printer \
 #          ffmpegthumbnailer ascii rsync tldr love)
 
-#PKGLIST+=(htop inxi neofetch cronie wl-clipboard xorg-xeyes \
+#PKGLIST+=(htop inxi fastfetch cronie wl-clipboard xorg-xeyes \
 #          android-sdk-platform-tools pacman-contrib rsync\
 #          jre8-openjdk jre-openjdk hunspell-en_us hunspell-ru jq viu ascii \
 #          ffmpegthumbnailer zip unzip exfat-utils dosfstools \

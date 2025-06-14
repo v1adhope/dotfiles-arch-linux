@@ -13,6 +13,13 @@ if not ok then
 	return
 end
 
+local ok, friendly_snippets = pcall(require, "luasnip.loaders.from_vscode")
+if not ok then
+	return
+end
+
+friendly_snippets.lazy_load({ exclude = {} })
+
 -- Correct work cmp with luasnip
 local has_words_before = function()
 	unpack = unpack
