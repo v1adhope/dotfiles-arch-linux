@@ -201,7 +201,7 @@ CONFIGS=()
 #CONFIGS+=(alacritty tmux bat git)
 
 # Widget tool kits
-#PKGLIST+=(gtk3 gtk4 adwaita-qt5 adwaita-qt6)
+#PKGLIST+=(gtk3 gtk4 libayatana-appindicator libappindicator-gtk3 adwaita-qt5 adwaita-qt6)
 
 # Audio stack
 #PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa \
