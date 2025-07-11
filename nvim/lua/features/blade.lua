@@ -11,9 +11,3 @@ ntp.get_parser_configs().blade = {
 	},
 	filetype = "blade",
 }
-
-vim.filetype.add({
-	pattern = {
-		[".*%.blade%.php"] = "blade",
-	},
-})

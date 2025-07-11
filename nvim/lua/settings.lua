@@ -28,3 +28,13 @@ opt.clipboard = "unnamedplus"
 -- Avoid Russian keyboard layoud conflicts
 opt.langmap =
 	"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
+
+vim.filetype.add({
+	pattern = {
+		[".*%.blade%.php"] = "blade",
+		["%.env%.*"] = "sh",
+		["Dockerfile%.local"] = "dockerfile",
+		["Dockerfile%.prod"] = "dockerfile",
+		["Dockerfile%.dev"] = "dockerfile",
+	},
+})
