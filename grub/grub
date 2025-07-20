@@ -1,7 +1,7 @@
 # GRUB boot loader configuration
 
 GRUB_DEFAULT=0
-GRUB_TIMEOUT=1
+GRUB_TIMEOUT=10
 GRUB_DISTRIBUTOR="Arch"
 
 # INFO: inject with GPU undervolt amdgpu.ppfeaturemask=0xffffffff
