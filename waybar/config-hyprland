@@ -22,7 +22,6 @@
         "custom/space",
         "pulseaudio",
         "network",
-        "custom/vpn",
         "bluetooth"
     ],
 
@@ -40,12 +39,6 @@
         "format": "WX: {}",
         "exec": "$HOME/.config/waybar/scripts/weather",
         "interval": 1800
-    },
-
-    "custom/vpn": {
-        "max-lenght": 3,
-        "exec": "$HOME/.config/waybar/scripts/vpn-indicator.sh",
-        "interval": 5
     },
 
     "custom/space": {

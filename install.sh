@@ -169,10 +169,10 @@ function install_irqbalance {
 
 #install_paru
 
-#mirror_generation
+# mirror_generation
 
 # Recomending after mirror_generation
-#refresh_keyring
+# refresh_keyring
 
 #install_zen_core_tweaks
 
@@ -220,7 +220,7 @@ CONFIGS=()
 
 # Software
 #PKGLIST+=(firefox telegram-desktop keepassxc qbittorrent \
-#          obsidian dropbox libreoffice-still imv mpv sioyek-git)
+#          obsidian dropbox libreoffice-still imv mpv sioyek-git amneziavpn-bin)
 #CONFIGS+=(mpv imv sioyek)
 
 #PKGLIST+=(filezilla chromium clipgrab webcord gimp-devel audacity)
