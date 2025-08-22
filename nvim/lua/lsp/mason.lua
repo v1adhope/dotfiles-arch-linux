@@ -32,6 +32,8 @@ M.servers = {
 	"jsonls",
 	"yamlls",
 	"marksman",
+	"docker_language_server",
+	"taplo",
 
 	"pyright",
 	"rust_analyzer",

@@ -1,0 +1,52 @@
+version: "2"
+
+linters:
+  default: standard
+
+  enable:
+    - gosec
+    - gocritic
+    - sloglint
+    - usetesting
+    - usestdlibvars
+    - unparam
+    - unconvert
+    - testpackage
+    - testifylint
+    - tagalign
+    - spancheck
+    - recvcheck
+    - reassign
+    - protogetter
+    - prealloc
+    - perfsprint
+    - paralleltest
+    - nonamedreturns
+    - noctx
+    - nilerr
+    - musttag
+    - mirror
+    - gosmopolitan
+    - gocyclo
+    - exptostd
+    - exhaustive
+    - errchkjson
+    - embeddedstructfieldcheck
+    - canonicalheader
+
+  settings:
+    sloglint:
+      kv-only: true
+      msg-style: lowercased
+      no-raw-keys: true
+      key-naming-case: camel
+      args-on-sep-lines: true
+
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+    - golines
+    - swaggo

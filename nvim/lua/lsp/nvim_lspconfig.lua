@@ -91,4 +91,16 @@ for _, lsp in ipairs(mason.servers) do
 			filetypes = { "markdown", "markdown.mdx" },
 		}
 	end
+
+	if lsp == "docker_language_server" then
+		vim.lsp.config[lsp] = {
+			filetypes = { "dockerfile" },
+		}
+	end
+
+	if lsp == "taplo" then
+		vim.lsp.config[lsp] = {
+			filetypes = { "toml" },
+		}
+	end
 end

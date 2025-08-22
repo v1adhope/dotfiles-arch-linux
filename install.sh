@@ -25,11 +25,11 @@ GREEN="\033[1;92m"
 RED="\033[1;91m"
 
 function print_error {
-    echo -e "${RED}==>${DEFAULT} Something went wrong\n"
+  echo -e "${RED}==>${DEFAULT} Something went wrong\n"
 }
 
 function print_complete {
-    echo -e "${GREEN}==>${DEFAULT} Task completed\n"
+  echo -e "${GREEN}==>${DEFAULT} Task completed\n"
 }
 
 function print_func_prompt {
@@ -46,8 +46,7 @@ function enable_TRIM {
   PROMPT="Enabling TRIM..."
   print_func_prompt
 
-  sudo systemctl enable fstrim.timer
-  if [ 0 != $? ]; then
+  if ! sudo systemctl enable fstrim.timer; then
     print_error
     return
   fi
@@ -59,14 +58,12 @@ function install_paru {
   PROMPT="Installation of the AUR paru manager..."
   print_func_prompt
 
-  git clone --depth=1 https://aur.archlinux.org/paru-bin.git .cache/paru
-  if [ 0 != $? ]; then
+  if ! git clone --depth=1 https://aur.archlinux.org/paru-bin.git .cache/paru; then
     print_error
     return
   fi
 
-  cd .cache/paru && makepkg -si
-  if [ 0 != $? ]; then
+  if ! cd .cache/paru && makepkg -si; then
     print_error
     return
   fi
@@ -80,21 +77,18 @@ function mirror_generation {
   PROMPT="Mirror generation..."
   print_func_prompt
 
-  paru -S reflector
-  if [ 0 != $? ]; then
+  if ! paru -S reflector; then
     print_error
     return
   fi
 
-  sudo reflector --latest 15 --protocol https --country US,DE,FR \
-                 --sort rate --save /etc/pacman.d/mirrorlist
-  if [ 0 != $? ]; then
+  if ! sudo reflector --latest 15 --protocol https --country US,DE,FR \
+    --sort rate --save /etc/pacman.d/mirrorlist; then
     print_error
     return
   fi
 
-  paru
-  if [ 0 != $? ]; then
+  if ! paru; then
     print_error
     return
   fi
@@ -106,20 +100,17 @@ function refresh_keyring {
   PROMPT="Keychain update..."
   print_func_prompt
 
-  sudo pacman-key --init
-  if [ 0 != $? ]; then
+  if ! sudo pacman-key --init; then
     print_error
     return
   fi
 
-  sudo pacman-key --populate archlinux
-  if [ 0 != $? ]; then
+  if ! sudo pacman-key --populate archlinux; then
     print_error
     return
   fi
 
-  sudo pacman-key --refresh-keys
-  if [ 0 != $? ]; then
+  if ! sudo pacman-key --refresh-keys; then
     print_error
     return
   fi
@@ -131,14 +122,12 @@ function install_zen_core_tweaks {
   PROMPT="Installing tweaks to the linux zen kernel..."
   print_func_prompt
 
-  paru -S cfs-zen-tweaks
-  if [ 0 != $? ]; then
+  if ! paru -S cfs-zen-tweaks; then
     print_error
     return
   fi
 
-  sudo systemctl enable --now set-cfs-tweaks.service
-  if [ 0 != $? ]; then
+  if ! sudo systemctl enable --now set-cfs-tweaks.service; then
     print_error
     return
   fi
@@ -150,14 +139,12 @@ function install_irqbalance {
   PROMPT="Installing irqbalance..."
   print_func_prompt
 
-  paru -S irqbalance
-  if [ 0 != $? ]; then
+  if ! paru -S irqbalance; then
     print_error
     return
   fi
 
-  sudo systemctl enable --now irqbalance.service
-  if [ 0 != $? ]; then
+  if ! sudo systemctl enable --now irqbalance.service; then
     print_error
     return
   fi
@@ -226,16 +213,19 @@ CONFIGS=()
 #PKGLIST+=(filezilla chromium clipgrab webcord gimp-devel audacity)
 
 # Dev
-#PKGLIST+=(glow npm nvm neovim python-pip ruff lazygit stylua eslint yarn wget)
+#PKGLIST+=(glow neovim python-pip ruff lazygit stylua wget shfmt mdformat shellcheck sqlfluff)
 #CONFIGS+=(nvim)
 
-#PKGLIST+=(php rust)
+#PGKLIST+=(npm nvm eslint yarn fixjson)
+
+#PKGLIST+=(php)
 
 #PKGLIST+=(go gopls go-tools delve golangci-lint ko)
+# CONFIGS+=(golangci-lint)
 
-#PKGLIST+=(rustup)
+#PKGLIST+=(rust rustup  taplo-cli)
 
-#PKGLIST+=(docker docker-compose docker-buildx)
+#PKGLIST+=(docker docker-compose docker-buildx dockerfmt)
 
 #PKGLIST+=(dotnet-host dotnet-runtime dotnet-sdk aspnet-runtime)
 #PKGLIST+=(dotnet-runtime-7.0 dotnet-sdk-7.0 aspnet-runtime-7.0 \
@@ -265,18 +255,20 @@ CONFIGS=()
 
 # === Packages installation ===
 # Required paru
-PROMPT="Packages list"; VALUE="${PKGLIST[*]}"
+PROMPT="Packages list"
+VALUE="${PKGLIST[*]}"
 print_info_prompt
-paru -S ${PKGLIST[@]}
+paru -S "${PKGLIST[@]}"
 
 # === Create link configs ===
 function link_configs {
-  for config in ${CONFIGS[@]}; do
-    ln -sf $dotfiles_path/$config $config_path
+  for config in "${CONFIGS[@]}"; do
+    ln -sf "$dotfiles_path/$config" "$config_path"
   done
 }
 
-PROMPT="Configs list"; VALUE="${CONFIGS[*]}"
+PROMPT="Configs list"
+VALUE="${CONFIGS[*]}"
 print_info_prompt
 link_configs
 
@@ -289,8 +281,8 @@ link_configs
 #ln -sf $dotfiles_path/scripts $local_path
 
 function unlink_configs {
-  for config in ${CONFIGS[@]}; do
-    unlink $config_path/$config
+  for config in "${CONFIGS[@]}"; do
+    unlink "$config_path/$config"
   done
 
   #unlink $config_path/gtk-3.0
@@ -308,26 +300,31 @@ function settings {
   PROMPT="Make the necessary adjustments..."
   print_func_prompt
 
-  for i in ${PKGLIST[@]}; do
+  for i in "${PKGLIST[@]}"; do
     case $i in
-      "dropbox")
-        # Dropbox fix
-        rm -rf ~/.dropbox-dist
-        install -dm0 ~/.dropbox-dist
-      ;; "bluez-utils")
-        # Enable bluetooth
-        rfkill unblock bluetooth
-        sudo systemctl enable --now bluetooth.service
-      ;; "zsh")
-        # ZSH as default shell
-        chsh -s /bin/zsh
-      ;; "pipewire")
-        # Use for immediate application pipewire
-        systemctl restart --user pipewire.service
-        systemctl --user daemon-reload
-      ;; "docker")
-        sudo usermod -aG docker $USER
-        newgrp docker
+    "dropbox")
+      # Dropbox fix
+      rm -rf ~/.dropbox-dist
+      install -dm0 ~/.dropbox-dist
+      ;;
+    "bluez-utils")
+      # Enable bluetooth
+      rfkill unblock bluetooth
+      sudo systemctl enable --now bluetooth.service
+      ;;
+    "zsh")
+      # ZSH as default shell
+      chsh -s /bin/zsh
+      ;;
+    "pipewire")
+      # Use for immediate application pipewire
+      systemctl restart --user pipewire.service
+      systemctl --user daemon-reload
+      ;;
+    "docker")
+      sudo usermod -aG docker "$USER"
+      newgrp docker
+      ;;
     esac
   done
 }
@@ -337,7 +334,7 @@ function settings {
 
 # === Post functions ===
 function create_GRUB_cfg_link {
-  sudo ln -sf $dotfiles_path/grub/grub /etc/default/grub
+  sudo ln -sf "$dotfiles_path/grub/grub" /etc/default/grub
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 }
 
@@ -346,11 +343,11 @@ function gpu_undervolt {
 }
 
 function create_pacman_cfg_link {
-  sudo ln -sf $dotfiles_path/pacman/pacman.conf /etc/pacman.conf
+  sudo ln -sf "$dotfiles_path/pacman/pacman.conf" /etc/pacman.conf
 }
 
 function setup_fonts {
-  sudo ln -sf $dotfiles_path/fonts/local.conf /etc/fonts/local.conf
+  sudo ln -sf "$dotfiles_path/fonts/local.conf" /etc/fonts/local.conf
   fc-cache
 }
 
@@ -368,8 +365,6 @@ function init_rust {
 #setup_fonts
 
 #init_rust
-
-
 
 # TODO: fix
 function set_up_NetworkManager {
