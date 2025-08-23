@@ -223,7 +223,7 @@ CONFIGS=()
 #PKGLIST+=(go gopls go-tools delve golangci-lint ko)
 # CONFIGS+=(golangci-lint)
 
-#PKGLIST+=(rust rustup  taplo-cli)
+#PKGLIST+=(rust rustup taplo-cli)
 
 #PKGLIST+=(docker docker-compose docker-buildx dockerfmt)
 
