@@ -9,11 +9,8 @@ Run `crontab -e` and paste this `* * 1 * * /home/rat/.local/scripts/paccache-cle
 # Navigation
 
 - [/install.sh](/install.sh)
-
 - [Scripts](/scripts/)
-
-- [Additional waybar indicators](/waybar/scripts/README.md)
-
+- [Additional waybar indicators](/waybar/scripts/readme.md)
 - [GPU undervolt (AMD)](/gpu-undervolt/README.md)
 
 # Preview

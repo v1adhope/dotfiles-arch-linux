@@ -194,7 +194,7 @@ CONFIGS=()
 #PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa \
 #          pipewire-pulse pipewire-jack-client jack2 lib32-jack2 \
 #          playerctl bluez-utils noise-suppression-for-voice)
-#CONFIGS+=(pipewire)
+#CONFIGS+=(pipewire wireplumber)
 
 # Counting
 #PKGLIST+=(homebank)
@@ -274,8 +274,8 @@ link_configs
 
 # Manual mapping
 #ln -sf $dotfiles_path/widget-toolkits/gtk-3.0 $config_path
-#mkdir -p  $config_path/chromium && ln -sf $dotfiles_path/chromium/chromium-flags.conf $config_path/chromium/chromium-flags.conf
-#mkdir -p  $config_path/nnn && ln -sf $dotfiles_path/nnn/customize.sh $config_path/nnn/customize.sh
+#mkdir -p $config_path/chromium && ln -sf $dotfiles_path/chromium/chromium-flags.conf $config_path/chromium/chromium-flags.conf
+#mkdir -p $config_path/nnn && ln -sf $dotfiles_path/nnn/customize.sh $config_path/nnn/customize.sh
 #ln -sf $dotfiles_path/vim/.vimrc $HOME
 #ln -sf $dotfiles_path/zsh/.zshrc $HOME
 #ln -sf $dotfiles_path/scripts $local_path
