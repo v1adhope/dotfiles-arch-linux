@@ -1,8 +1,11 @@
 {
   "_documentation": "https://zed.dev/docs/configuring-zed",
-  "buffer_font_fallbacks": ["Zed Plex Mono"],
+  "buffer_font_fallbacks": [
+    "Zed Plex Mono"
+  ],
   "buffer_font_family": "Hack Nerd Font Mono",
   "base_keymap": "JetBrains",
+  "ensure_final_newline_on_save": false,
   "git": {
     "inline_blame": {
       "enabled": false
@@ -13,7 +16,7 @@
   },
   "auto_update": false,
   "theme": {
-    "mode": "dark",
+    "mode": "system",
     "dark": "Tokyo Night Storm",
     "light": "Tokyo Night Light"
   },
@@ -23,13 +26,19 @@
   },
   "vim_mode": true,
   "ui_font_size": 16,
-  "buffer_font_size": 15,
+  "buffer_font_size": 16,
   "languages": {
     "JavaScript": {
-      "format_on_save": "off"
+      "format_on_save": "on",
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true
+      }
     },
     "CSS": {
-      "format_on_save": "off"
+      "format_on_save": "on"
+    },
+    "HTML": {
+      "format_on_save": "on"
     }
   }
 }

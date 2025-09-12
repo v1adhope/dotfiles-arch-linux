@@ -69,6 +69,7 @@ for _, lsp in ipairs(mason.servers) do
 					analyses = {
 						composites = false,
 					},
+					gofumpt = true,
 				},
 			},
 		}

@@ -41,12 +41,12 @@ linters:
       no-raw-keys: true
       key-naming-case: camel
       args-on-sep-lines: true
+    gosec:
+      excludes:
+        - G104 # Audit errors not checked (duplicated)
 
 formatters:
   enable:
-    - gci
-    - gofmt
     - gofumpt
     - goimports
-    - golines
-    - swaggo
+    - gci
