@@ -156,10 +156,10 @@ function install_irqbalance {
 
 #install_paru
 
-# mirror_generation
+#mirror_generation
 
 # Recomending after mirror_generation
-# refresh_keyring
+#refresh_keyring
 
 #install_zen_core_tweaks
 
@@ -223,7 +223,7 @@ CONFIGS=()
 #PKGLIST+=(go gopls go-tools delve golangci-lint ko)
 # CONFIGS+=(golangci-lint)
 
-#PKGLIST+=(rust rustup taplo-cli)
+#PKGLIST+=(mold lld taplo-cli)
 
 #PKGLIST+=(docker docker-compose docker-buildx dockerfmt)
 
@@ -237,7 +237,7 @@ CONFIGS=()
 # Useful tools
 #PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
 #          smbclient pacman-contrib ninja cups samsung-unified-driver-printer \
-#          ffmpegthumbnailer ascii rsync tldr love)
+#          ffmpegthumbnailer ascii rsync tldr love tree)
 
 #PKGLIST+=(htop inxi fastfetch cronie wl-clipboard xorg-xeyes \
 #          android-sdk-platform-tools pacman-contrib rsync\
@@ -279,6 +279,7 @@ link_configs
 #ln -sf $dotfiles_path/vim/.vimrc $HOME
 #ln -sf $dotfiles_path/zsh/.zshrc $HOME
 #ln -sf $dotfiles_path/scripts $local_path
+#ln -sf $dotfiles_path/rust/cargo/config.toml $local_path/share/cargo/config.toml
 
 function unlink_configs {
   for config in "${CONFIGS[@]}"; do
@@ -351,9 +352,13 @@ function setup_fonts {
   fc-cache
 }
 
-function init_rust {
-  rustup default stable
-  rustup toolchain install stable
+function install_rust() {
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  rustup toolchain install nightly
+  cargo install cargo-udeps --locked
+  cargo install sqlx-cli
+  cargo install cargo-expand
+  cargo install cargo-audit --locked
 }
 
 #create_GRUB_cfg_link
@@ -364,7 +369,7 @@ function init_rust {
 
 #setup_fonts
 
-#init_rust
+#install_rust
 
 # TODO: fix
 function set_up_NetworkManager {

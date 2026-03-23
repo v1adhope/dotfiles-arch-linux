@@ -75,6 +75,22 @@ for _, lsp in ipairs(mason.servers) do
 		}
 	end
 
+	if lsp == "rust_analyzer" then
+		vim.lsp.config[lsp] = {
+			on_attach = handlers.custom_lsp_attach,
+			capabillities = handlers.capabilities,
+			filetypes = { "rust" },
+		}
+	end
+
+	if lsp == "nil_ls" then
+		vim.lsp.config[lsp] = {
+			on_attach = handlers.custom_lsp_attach,
+			capabillities = handlers.capabilities,
+			filetypes = { "nix" },
+		}
+	end
+
 	if lsp == "jsonls" then
 		vim.lsp.config[lsp] = {
 			filetypes = { "json", "jsonc" },
