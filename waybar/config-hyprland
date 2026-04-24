@@ -38,7 +38,7 @@
         "return-type": "json",
         "format": "WX: {}",
         "exec": "$HOME/.config/waybar/scripts/weather",
-        "interval": 1800
+        "interval": 600
     },
 
     "custom/space": {
