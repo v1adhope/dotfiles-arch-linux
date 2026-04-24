@@ -188,7 +188,7 @@ CONFIGS=()
 #CONFIGS+=(alacritty tmux bat git)
 
 # Widget tool kits
-#PKGLIST+=(gtk3 gtk4 libayatana-appindicator libappindicator-gtk3 adwaita-qt5 adwaita-qt6)
+#PKGLIST+=(gtk3 gtk4 libayatana-appindicator libappindicator-gtk3 adwaita-qt5 adwaita-qt6 qt5-wayland qt6-wayland)
 
 # Audio stack
 #PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa \
@@ -202,7 +202,7 @@ CONFIGS=()
 # GUI (required alacritty, qtk, audio stack)
 #PGKLIST+=(xorg-server xorg-xwayland xdg-desktop-portal-hyprland \
 #          hyprland hyprland-qtutils fuzzel waybar mako hypridle hyprlock hyprpaper \
-#          grim slurp)
+#          hyprshutdown grim slurp)
 #CONFIGS+=(hypr fuzzel waybar mako)
 
 # Software

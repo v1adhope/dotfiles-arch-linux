@@ -33,12 +33,12 @@ while getopts ":hars" opt; do
     ;;
   r)
     echo "=> Run reboot..."
-    shutdown -r now
+    hyprshutdown --top-label "Rebooting..." --post-cmd "shutdown -r now"
     exit 0
     ;;
   s)
     echo "=> Run shutdown..."
-    shutdown now
+    hyprshutdown --post-cmd "shutdown now"
     exit 0
     ;;
   ?)
