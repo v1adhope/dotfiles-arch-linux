@@ -188,7 +188,8 @@ CONFIGS=()
 #CONFIGS+=(alacritty tmux bat git)
 
 # Widget tool kits
-#PKGLIST+=(gtk3 gtk4 libayatana-appindicator libappindicator-gtk3 adwaita-qt5 adwaita-qt6 qt5-wayland qt6-wayland)
+#PKGLIST+=(gtk3 gtk4 libayatana-appindicator libappindicator-gtk3 adwaita-qt5 adwaita-qt6 \
+#          qt6-wayland qadwaitadecorations-qt5 qadwaitadecorations-qt6)
 
 # Audio stack
 #PKGLIST+=(pipewire lib32-pipewire wireplumber pipewire-audio pipewire-alsa \
@@ -274,6 +275,7 @@ link_configs
 
 # Manual mapping
 #ln -sf $dotfiles_path/widget-toolkits/gtk-3.0 $config_path
+#ln -sf $dotfiles_path/widget-toolkits/gtk-4.0 $config_path
 #mkdir -p $config_path/chromium && ln -sf $dotfiles_path/chromium/chromium-flags.conf $config_path/chromium/chromium-flags.conf
 #ln -sf $dotfiles_path/chromium/chromium-flags.conf $config_path/chromium-flags.conf
 #mkdir -p $config_path/nnn && ln -sf $dotfiles_path/nnn/customize.sh $config_path/nnn/customize.sh
@@ -288,6 +290,7 @@ function unlink_configs {
   done
 
   #unlink $config_path/gtk-3.0
+  #unlink $config_path/gtk-4.0
   #unlink $config_path/chromium/chromium-flags.conf
   #unlink $config_path/chromium-flags.conf
   #unlink $config_path/nnn/customize.sh
