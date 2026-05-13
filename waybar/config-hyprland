@@ -1,112 +1,109 @@
 {
-    "layer": "top",
-    "position": "top",
+  "layer": "top",
+  "position": "top",
 
-    "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/submap"
-    ],
+  "modules-left": ["hyprland/workspaces", "hyprland/submap"],
 
-    "modules-center": [
-        "custom/crypto-currency",
-        "custom/weather",
-        "custom/space",
-        "clock",
-        "hyprland/language",
-        "tray"
-    ],
+  "modules-center": [
+    "custom/crypto-currency",
+    "custom/weather",
+    "custom/space",
+    "clock",
+    "hyprland/language",
+    "tray"
+  ],
 
-    "modules-right": [
-        "cpu",
-        "memory",
-        "custom/space",
-        "wireplumber",
-        "network",
-        "bluetooth"
-    ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "custom/space",
+    "wireplumber",
+    "network",
+    "bluetooth"
+  ],
 
-    "custom/crypto-currency": {
-        "max-length": 15,
-        "return-type": "json",
-        "format": "{}",
-        "exec": "$HOME/.config/waybar/scripts/crypto-currency",
-        "interval": 1800
+  "custom/crypto-currency": {
+    "max-length": 15,
+    "return-type": "json",
+    "format": "{}",
+    "exec": "$HOME/.config/waybar/scripts/crypto-currency",
+    "interval": 1800
+  },
+
+  "custom/weather": {
+    "max-length": 15,
+    "return-type": "json",
+    "format": "WX: {}",
+    "exec": "$HOME/.config/waybar/scripts/weather",
+    "interval": 600
+  },
+
+  "custom/space": {
+    "format": " ",
+    "tooltip": false
+  },
+
+  "wireplumber": {
+    "format": "VOL: {volume}%",
+    "format-muted": "VOL: X",
+    "scroll-step": 5,
+    "on-click": "playerctl play-pause"
+  },
+
+  "clock": {
+    "interval": 1,
+    "format": "{:%a %b %d.%m %H:%M:%S}",
+    "tooltip-format": "{calendar}",
+    "calendar": {
+      "mode": "month",
+      "iso8601": true,
+      "format": {
+        "today": "<b><u>{}</u></b>"
+      }
     },
-
-    "custom/weather": {
-        "max-length": 15,
-        "return-type": "json",
-        "format": "WX: {}",
-        "exec": "$HOME/.config/waybar/scripts/weather",
-        "interval": 600
-    },
-
-    "custom/space": {
-        "format": " ",
-        "tooltip": false
-    },
-
-    "wireplumber": {
-      "format": "VOL: {volume}%",
-      "format-muted": "VOL: X",
-      "scroll-step": 5,
-      "on-click": "playerctl play-pause"
-    },
-
-    "clock": {
-        "interval": 1,
-        "format": "{:%a %b %d.%m %H:%M:%S}",
-        "tooltip-format": "{calendar}",
-        "calendar": {
-          "mode": "month",
-          "iso8601": true,
-          "format": {
-            "today": "<b><u>{}</u></b>"
-          }
-        },
-        "actions": {
-          "on-scroll-up": "shift_up",
-          "on-scroll-down": "shift_down",
-          "on-click": "shift_reset"
-        }
-    },
-
-    "cpu": {
-        "format": "CPU: {usage}%"
-    },
-
-    "memory": {
-        "format": "MEM: {used:0.1f}/{total:0.1f} GB"
-    },
-
-    "hyprland/language": {
-        "format": "{}",
-        "format-en": "en",
-        "format-ru": "ru"
-    },
-
-    "bluetooth": {
-        "format": "",
-        "format-disabled": "",
-        "format-off": "",
-        "format-on": "BtH",
-        "tooltip-format-on": "{controller_alias}\t{controller_address}\n\nBluetooth is enabled but not used",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
-    },
-
-    "network": {
-        "interval": 10,
-        "format-disconnected": "Offline",
-        "tooltip-format-disconnected": "Disconnected",
-        "format-wifi": "WiFi: {signalStrength}%",
-        "tooltip-format-wifi": "Interface: {ifname}\nIP: {ipaddr}\nESSID: {essid}\n\nUpBytes: {bandwidthUpBytes}\nDownBytes: {bandwidthDownBytes}",
-        "format-ethernet": "Online",
-        "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}\n\nUpBytes: {bandwidthUpBytes}\nDownBytes: {bandwidthDownBytes}"
-    },
-
-    "tray": {
-        "icon-size": 18,
-        "spacing": 5
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+      "on-click": "shift_reset"
     }
+  },
+
+  "cpu": {
+    "format": "CPU: {usage}%"
+  },
+
+  "memory": {
+    "format": "MEM: {used:0.1f}/{total:0.1f} GB"
+  },
+
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "en",
+    "format-ru": "ru"
+  },
+
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "",
+    "format-off": "",
+    "format-on": "BtH",
+    "tooltip-format-on": "{controller_alias}\t{controller_address}\n\nBluetooth is enabled but not used",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },
+
+  "network": {
+    "interval": 10,
+    "format-disconnected": "Offline",
+    "tooltip-format-disconnected": "Disconnected",
+    "format-wifi": "WiFi: {signalStrength}%",
+    "tooltip-format-wifi": "Interface: {ifname}\nIP: {ipaddr}\nESSID: {essid}\n\nUpBytes: {bandwidthUpBytes}\nDownBytes: {bandwidthDownBytes}",
+    "format-ethernet": "Online",
+    "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}\n\nUpBytes: {bandwidthUpBytes}\nDownBytes: {bandwidthDownBytes}"
+  },
+
+  "tray": {
+    "icon-size": 18,
+    "spacing": 5
+  }
 }
