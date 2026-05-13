@@ -24,7 +24,7 @@ box.horizontal.modules-center {
 }
 
 
-#workspaces button, #clock, #cpu, #network, #pulseaudio, #language, #bluetooth, #memory, #custom-vpn, #custom-weather, #custom-crypto-currency {
+#workspaces button, #clock, #cpu, #network, #wireplumber, #language, #bluetooth, #memory, #custom-vpn, #custom-weather, #custom-crypto-currency {
   border: 2px solid @var-blue-color;
   border-radius: 10px;
   margin: 8px 2px 10px;
@@ -55,7 +55,7 @@ box.horizontal.modules-center {
   color: @var-yellow-color
 }
 
-#pulseaudio.muted, #network.disconnected {
+#wireplumber.muted, #network.disconnected {
   color: @var-red-color;
 }
 

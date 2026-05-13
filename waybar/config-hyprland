@@ -20,7 +20,7 @@
         "cpu",
         "memory",
         "custom/space",
-        "pulseaudio",
+        "wireplumber",
         "network",
         "bluetooth"
     ],
@@ -46,17 +46,29 @@
         "tooltip": false
     },
 
-    "pulseaudio": {
-        "format": "VOL: {volume}%",
-        "format-bluetooth": "HVOL: {volume}%",
-        "format-muted": "VOL: X",
-        "scroll-step": 5
+    "wireplumber": {
+      "format": "VOL: {volume}%",
+      "format-muted": "VOL: X",
+      "scroll-step": 5,
+      "on-click": "playerctl play-pause"
     },
 
     "clock": {
         "interval": 1,
         "format": "{:%a %b %d.%m %H:%M:%S}",
-        "tooltip-format": "{calendar}"
+        "tooltip-format": "{calendar}",
+        "calendar": {
+          "mode": "month",
+          "iso8601": true,
+          "format": {
+            "today": "<b><u>{}</u></b>"
+          }
+        },
+        "actions": {
+          "on-scroll-up": "shift_up",
+          "on-scroll-down": "shift_down",
+          "on-click": "shift_reset"
+        }
     },
 
     "cpu": {
@@ -84,14 +96,13 @@
     },
 
     "network": {
-        "interface": "wlo1",
-        "interval": 60,
+        "interval": 10,
         "format-disconnected": "Offline",
         "tooltip-format-disconnected": "Disconnected",
         "format-wifi": "WiFi: {signalStrength}%",
-        "tooltip-format-wifi": "ESSID: {essid} \nIP: {ipaddr}",
+        "tooltip-format-wifi": "Interface: {ifname}\nIP: {ipaddr}\nESSID: {essid}\n\nUpBytes: {bandwidthUpBytes}\nDownBytes: {bandwidthDownBytes}",
         "format-ethernet": "Online",
-        "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}"
+        "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}\n\nUpBytes: {bandwidthUpBytes}\nDownBytes: {bandwidthDownBytes}"
     },
 
     "tray": {
