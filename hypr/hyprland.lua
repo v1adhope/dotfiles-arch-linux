@@ -1,8 +1,10 @@
 -- === Envs ===
+local homePath = os.getenv("HOME")
+
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
-hl.env("XDG_PICTURES_DIR", "$HOME/Pictures/Screenshots")
+hl.env("XDG_PICTURES_DIR", homePath .. "/Pictures/Screenshots")
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
@@ -103,10 +105,8 @@ local openTerminal = 'WS=$(hyprctl clients | grep -m 1 -A 29 "Alacritty" | grep 
 local screenLocker = "hyprlock"
 local appLauncher = "fuzzel"
 
-local saveOnDisk = 'GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR grim && notify-send "Screenshot saved on disk"'
 -- stylua: ignore
-local saveFragmentOnDisk = 'GRIM_DEFAULT_DIR=$XDG_PICTURES_DIR grim -g "$(slurp)" && notify-send "Screen fragment saved on disk"'
-local saveFragmentInClipboard = 'grim -g "$(slurp -d)" - | wl-copy && notify-send "Screen fragment saved in clipboard"'
+local makeScreenshot = 'grim -g "$(slurp -o)" -t ppm - | satty --filename - --output-filename "$XDG_PICTURES_DIR/$(date "+%Y%m%d_%Hh%Mm%Ss_satty").png"'
 
 local gracefulExit = 'command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch "hl.dsp.exit()"'
 
@@ -117,9 +117,7 @@ hl.bind(mainMod .. " + U", hl.dsp.exec_cmd(screenLocker))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(appLauncher))
 
 -- Screenshots
-hl.bind("PRINT", hl.dsp.exec_cmd(saveOnDisk))
-hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd(saveFragmentOnDisk))
-hl.bind("CTRL + SHIFT + PRINT", hl.dsp.exec_cmd(saveFragmentInClipboard))
+hl.bind("PRINT", hl.dsp.exec_cmd(makeScreenshot))
 
 -- Multimedia XF86 keys
 -- See https://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols

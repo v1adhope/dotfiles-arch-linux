@@ -203,8 +203,8 @@ CONFIGS=()
 # GUI (required alacritty, qtk, audio stack)
 #PGKLIST+=(xorg-server xorg-xwayland xdg-desktop-portal-hyprland \
 #          hyprland hyprland-qtutils fuzzel waybar mako hypridle hyprlock hyprpaper \
-#          hyprshutdown grim slurp)
-#CONFIGS+=(hypr fuzzel waybar mako)
+#          hyprshutdown grim slurp satty)
+#CONFIGS+=(hypr fuzzel waybar mako satty)
 
 # Software
 #PKGLIST+=(firefox telegram-desktop keepassxc qbittorrent \

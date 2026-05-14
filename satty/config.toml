@@ -1,0 +1,5 @@
+[general]
+fullscreen = true
+early-exit = true
+early-exit-save-as = true
+copy-command = "wl-copy"
