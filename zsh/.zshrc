@@ -15,9 +15,9 @@ source ${ZINIT_HOME}/zinit.zsh
 
 # Before prompt
 zinit light-mode depth=1 for \
-    romkatv/powerlevel10k \
+  romkatv/powerlevel10k \
   atload"export ZVM_CURSOR_STYLE_ENABLED=false" \
-    jeffreytse/zsh-vi-mode \
+  jeffreytse/zsh-vi-mode
 
 # After prompt
 function zsh_history_bindkeys {
@@ -29,9 +29,9 @@ function zsh_history_bindkeys {
 
 zinit wait lucid light-mode depth=1 for \
   atinit"zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
+  zdharma-continuum/fast-syntax-highlighting \
   atload"zsh_history_bindkeys" \
-    zsh-users/zsh-history-substring-search
+  zsh-users/zsh-history-substring-search
 
 # === Settings ===
 bindkey -v
@@ -104,3 +104,5 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 autoload -Uz compinit
 compinit
+
+[ -s "$HOME/.local/bin/env" ] && source "$HOME/.local/bin/env"
