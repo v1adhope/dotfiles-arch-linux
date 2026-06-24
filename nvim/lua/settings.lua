@@ -3,8 +3,8 @@ local opt = vim.opt
 local api = vim.api
 
 -- Visual limiter
-opt.colorcolumn = "70"
-api.nvim_set_hl(0, "ColorColumn", { ctermbg = 0 })
+opt.colorcolumn = "80"
+api.nvim_set_hl(0, "ColorColumn", { bg = "#292e42", ctermbg = 0 })
 -- Line numbering
 opt.number = true
 opt.relativenumber = true
@@ -28,13 +28,3 @@ opt.clipboard = "unnamedplus"
 -- Avoid Russian keyboard layoud conflicts
 opt.langmap =
 	"ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
-
-vim.filetype.add({
-	pattern = {
-		[".*%.blade%.php"] = "blade",
-		["%.env%.*"] = "sh",
-		["Dockerfile%.local"] = "dockerfile",
-		["Dockerfile%.prod"] = "dockerfile",
-		["Dockerfile%.dev"] = "dockerfile",
-	},
-})

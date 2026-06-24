@@ -120,4 +120,11 @@ for _, lsp in ipairs(mason.servers) do
 			filetypes = { "toml" },
 		}
 	end
+
+	if lsp == "regols" then
+		vim.lsp.config[lsp] = {
+
+			filetypes = { "rego" },
+		}
+	end
 end
