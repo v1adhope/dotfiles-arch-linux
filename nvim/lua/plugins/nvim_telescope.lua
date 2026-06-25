@@ -10,6 +10,7 @@ local config = function()
 	end
 
 	telescope.setup({
+		defaults = { file_ignore_patterns = { "vendor" } },
 		pickers = {
 			buffers = {
 				mappings = {
@@ -24,6 +25,7 @@ return {
 	"nvim-telescope/telescope.nvim",
 	lazy = false,
 	dependencies = { "nvim-lua/plenary.nvim" },
-	branch = "0.1.x",
+	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	tag = "v0.2.*",
 	config = config,
 }
