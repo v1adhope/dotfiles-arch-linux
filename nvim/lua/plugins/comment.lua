@@ -1,5 +1,5 @@
 local config = function()
-	local ok, comment = pcall(require, "Comment")
+	local ok, comment = pcall(require, "mini.comment")
 	if not ok then
 		return
 	end
@@ -9,7 +9,8 @@ end
 
 return {
 	{
-		"numToStr/Comment.nvim",
+		"nvim-mini/mini.comment",
+		version = "*",
 		config = config,
 	},
 }

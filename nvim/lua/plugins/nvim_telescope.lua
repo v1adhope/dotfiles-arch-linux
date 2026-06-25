@@ -26,6 +26,6 @@ return {
 	lazy = false,
 	dependencies = { "nvim-lua/plenary.nvim" },
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	tag = "v0.2.*",
+	version = "*",
 	config = config,
 }
