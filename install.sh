@@ -82,7 +82,7 @@ function mirror_generation {
     return
   fi
 
-  if ! sudo reflector --latest 15 --protocol https --country US,DE,FR \
+  if ! sudo reflector --latest 15 --protocol https --country DE \
     --sort rate --save /etc/pacman.d/mirrorlist; then
     print_error
     return
@@ -233,16 +233,20 @@ CONFIGS=()
 #          dotnet-runtime-6.0 dotnet-sdk-6.0 aspnet-runtime-6.0 \
 #          mono dotnet-runtime-3.0 dotnet-sdk-3.0 aspnet-runtime-3.0)
 
-#PKGLIST+=(apache testssl.sh insomnia postgresql-libs go-task goreleaser)
+#PKGLIST+=(apache testssl.sh insomnia postgresql-libs go-task gorelease dbeaver \
+#         insomnia-bin opencode)
 
 # Useful tools
 #PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
 #          smbclient pacman-contrib ninja cups samsung-unified-driver-printer \
 #          ffmpegthumbnailer ascii rsync tldr love tree)
 
+# See https://wiki.archlinux.org/title/Java#Switching_between_JVM for switching between
+#PKGLIST+=(jre8-openjdk jdk-openjdk)
+
 #PKGLIST+=(htop inxi fastfetch cronie wl-clipboard xorg-xeyes \
 #          android-sdk-platform-tools pacman-contrib rsync\
-#          jre8-openjdk jre-openjdk hunspell-en_us hunspell-ru jq viu ascii \
+#          hunspell-en_us hunspell-ru jq viu ascii \
 #          ffmpegthumbnailer zip unzip exfat-utils dosfstools \
 #          libnotify numbat perl-file-mimeinfo)
 
@@ -253,6 +257,9 @@ CONFIGS=()
 # Bug https://github.com/ValveSoftware/steam-for-linux/issues/9083
 #PKGLIST+=(steam mangohud lib32-mangohud xpadneo-dkms)
 #CONFIGS+=(mangohud)
+
+# Scanlation
+#PKGLIST+=(gimp gimp-plugin-resynthesizer hakuneko-desktop-bin gallery-dl)
 
 # === Packages installation ===
 # Required paru
@@ -273,7 +280,7 @@ VALUE="${CONFIGS[*]}"
 print_info_prompt
 link_configs
 
-# Manual mapping
+# Manual linking
 #ln -sf $dotfiles_path/widget-toolkits/gtk-3.0 $config_path
 #ln -sf $dotfiles_path/widget-toolkits/gtk-4.0 $config_path
 #mkdir -p $config_path/chromium && ln -sf $dotfiles_path/chromium/chromium-flags.conf $config_path/chromium/chromium-flags.conf
@@ -283,6 +290,7 @@ link_configs
 #ln -sf $dotfiles_path/zsh/.zshrc $HOME
 #ln -sf $dotfiles_path/scripts $local_path
 #ln -sf $dotfiles_path/rust/cargo/config.toml $local_path/share/cargo/config.toml
+#ln -sf $dotfiles_path/opencode/opencode.jsonc $config_path/opencode/opencode.jsonc
 
 function unlink_configs {
   for config in "${CONFIGS[@]}"; do
@@ -294,6 +302,7 @@ function unlink_configs {
   #unlink $config_path/chromium/chromium-flags.conf
   #unlink $config_path/chromium-flags.conf
   #unlink $config_path/nnn/customize.sh
+  #unlink $config_path/opencode/opencode.jsonc
   #unlink $HOME/.vimrc
   #unlink $HOME/.zshrc
   #unlink $local_path/scripts
@@ -359,11 +368,15 @@ function setup_fonts {
 
 function install_rust() {
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
   rustup toolchain install nightly
-  cargo install cargo-udeps --locked
+
+  cargo install cargo-udeps
   cargo install sqlx-cli
   cargo install cargo-expand
-  cargo install cargo-audit --locked
+  cargo install cargo-audit
+  cargo install cargo-update
+  cargo install cargo-tarpaulin
 }
 
 #create_GRUB_cfg_link
