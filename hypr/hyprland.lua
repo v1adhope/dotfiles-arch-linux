@@ -28,7 +28,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("mako")
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("hypridle")
-	hl.exec_cmd("dropbox & obsidian & chromium & Telegram & AmneziaVPN")
+	hl.exec_cmd("AmneziaVPN & dropbox & obsidian & chromium & Telegram")
 end)
 
 -- === Look nad Feel ===

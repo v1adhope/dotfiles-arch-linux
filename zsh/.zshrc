@@ -34,6 +34,11 @@ zinit wait lucid light-mode depth=1 for \
   zsh-users/zsh-history-substring-search
 
 # === Settings ===
+# Vars
+config_path="$HOME/.config"
+local_path="$HOME/.local"
+
+# Use Vim keybindings instead of Emacs
 bindkey -v
 
 # Increasing the limit of open file descriptors for the current shell session
@@ -49,10 +54,6 @@ export SAVEHIST=100000
 # Remove $PATH duplicates
 typeset -U PATH
 
-# === Exports and sources ===
-config_path=$HOME/.config
-local_path=$HOME/.local
-
 # Hardware video acceleration
 export VDPAU_DRIVER=radeonsi
 
@@ -60,18 +61,28 @@ export VDPAU_DRIVER=radeonsi
 export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 
-# Aliases
-[ -s $local_path/scripts/aliases.sh ] && source $local_path/scripts/aliases.sh
-
 # Private
-[ -s $HOME/Dropbox/arch/.private ] && source $HOME/Dropbox/arch/.private
+[ -f "$HOME/Dropbox/arch/.private" ] && source "$HOME/Dropbox/arch/.private"
 
-# Ls and exa color overwrite
+# Ls and exa color overwriting
 export LS_COLORS="di=01;38;5;12:ln=01;38;5;13:or=01;38;5;167:ex=38;5;115:*.*=00"
 export EXA_COLORS="ur=01;38;5;187:uw=01;38;5;167:ux=01;38;5;115:ue=01;38;5;115:gr=01;38;5;187:gw=01;38;5;167:gx=01;38;5;115:tr=01;38;5;187:tw=01;38;5;167:tx=01;38;5;115:uu=01;38;5;13:gu=01;38;5;13:un=01;38;5;12:gn=01;38;5;12:sn=38;5;115:sb=38;5;115:da=38;5;187:lp=01;38;5;13:b0=01;38;5;167"
 
+# Aliases
+alias ls='exa -F -l --group-directories-first --sort=name -g --color=auto'
+alias cat='bat'
+alias grep='rg'
+alias diff='diff -us'
+alias v='nvim'
+alias n='nnn'
+alias py="python3"
+alias task="go-task"
+# Removing unnecessary packages
+alias pman='sudo pacman -Rns $(pacman -Qdtq)'
+alias comcom='common-commands'
+
 # Executable scripts
-[ -s $HOME/.local/scripts/bin ] && export PATH=$HOME/.local/scripts/bin:$PATH
+[ -s $local_path/bin/env ] && source $local_path/bin/env
 
 # Customize nnn
 [ -s $config_path/nnn/customize.sh ] && source $config_path/nnn/customize.sh
@@ -80,7 +91,7 @@ export EXA_COLORS="ur=01;38;5;187:uw=01;38;5;167:ux=01;38;5;115:ue=01;38;5;115:g
 export GOPATH=$local_path/share/go
 export PATH=$local_path/share/go/bin:$PATH
 
-export GONOSUMDB=gitea.gospodaprogrammisty.ru
+export GONOSUMDB=sum.golang.org
 export GOPROXY=https://proxy.golang.org,direct
 
 # Rust
@@ -95,14 +106,12 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 # Node
 [ -s /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 
-# === Loads ===
 # Start hypr and its deps after log in
 [ "$(tty)" = "/dev/tty1" ] && for f in $config_path/hypr/load/*.sh; do source $f; done
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Init completion system (comp settings should be below)
 autoload -Uz compinit
 compinit
-
-[ -s "$HOME/.local/bin/env" ] && source "$HOME/.local/bin/env"

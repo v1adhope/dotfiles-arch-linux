@@ -215,7 +215,7 @@ CONFIGS=()
 
 # Dev
 #PKGLIST+=(glow neovim python-pip ruff lazygit stylua wget shfmt mdformat shellcheck \
-#          sqlfluff git-filter-repo)
+#          sqlfluff git-filter-repo act)
 #CONFIGS+=(nvim)
 
 #PGKLIST+=(npm nvm eslint yarn fixjson)
@@ -249,7 +249,7 @@ CONFIGS=()
 #          android-sdk-platform-tools pacman-contrib rsync\
 #          hunspell-en_us hunspell-ru jq viu ascii \
 #          ffmpegthumbnailer zip unzip exfat-utils dosfstools \
-#          libnotify numbat perl-file-mimeinfo)
+#          libnotify numbat perl-file-mimeinfo nzip rocm-smi-lib btop)
 
 # Video-Cam
 #PKGLIST=(scrcpy v4l2loopback-dkms obs-studio obs-vkcapture lib32-obs-vkcapture)
@@ -289,7 +289,7 @@ link_configs
 #mkdir -p $config_path/nnn && ln -sf $dotfiles_path/nnn/customize.sh $config_path/nnn/customize.sh
 #ln -sf $dotfiles_path/vim/.vimrc $HOME
 #ln -sf $dotfiles_path/zsh/.zshrc $HOME
-#ln -sf $dotfiles_path/scripts $local_path
+#ln -sf $dotfiles_path/bin/* $local_path/bin/
 #ln -sf $dotfiles_path/rust/cargo/config.toml $local_path/share/cargo/config.toml
 #ln -sf $dotfiles_path/opencode/opencode.jsonc $config_path/opencode/opencode.jsonc
 
@@ -306,7 +306,7 @@ function unlink_configs {
   #unlink $config_path/opencode/opencode.jsonc
   #unlink $HOME/.vimrc
   #unlink $HOME/.zshrc
-  #unlink $local_path/scripts
+  #find #local_path/bin -lname "$(pwd)/bin/*"
 }
 
 #unlink_configs
