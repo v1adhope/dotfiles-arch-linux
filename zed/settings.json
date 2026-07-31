@@ -1,4 +1,11 @@
 {
+  "_documentation": "https://zed.dev/docs/configuring-zed",
+  "proxy": "",
+  "format_on_save": "modifications",
+  "ui_font_family": ".ZedMono",
+  "session": {
+    "trust_all_worktrees": false
+  },
   "project_panel": {
     "dock": "left"
   },
@@ -16,9 +23,8 @@
   "git_panel": {
     "dock": "left"
   },
-  "_documentation": "https://zed.dev/docs/configuring-zed",
   "buffer_font_fallbacks": [
-    "Zed Plex Mono"
+    ".ZedMono"
   ],
   "buffer_font_family": "Hack Nerd Font Mono",
   "base_keymap": "JetBrains",
@@ -32,18 +38,14 @@
     "hour_format": "hour24"
   },
   "auto_update": false,
-  "theme": {
-    "mode": "system",
-    "dark": "Tokyo Night Storm",
-    "light": "Tokyo Night Light"
-  },
+  "theme": "Tokyo Night",
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
   "vim_mode": true,
   "ui_font_size": 16,
-  "buffer_font_size": 16,
+  "buffer_font_size": 16.0,
   "languages": {
     "JavaScript": {
       "format_on_save": "on",
