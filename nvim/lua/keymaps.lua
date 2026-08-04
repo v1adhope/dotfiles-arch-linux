@@ -30,5 +30,10 @@ Map("n", "ff", ":Telescope find_files<CR>")
 Map("n", "fg", ":Telescope live_grep<CR>")
 Map("n", "fb", ":Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal<CR>")
 Map("n", "fh", ":Telescope help_tags<CR>")
-Map("n", "fc", ":Telescope git_commits initial_mode=normal<CR><CR>")
-Map("n", "fd", ":Telescope diagnostics initial_mode=normal<CR><CR>")
+Map("n", "fc", ":Telescope git_commits initial_mode=normal<CR>")
+Map("n", "fd", ":Telescope diagnostics initial_mode=normal<CR>")
+
+-- Crates
+Map("n", "<leader>cv", ":Crates show_versions_popup<CR>")
+Map("n", "<leader>cf", ":Crates show_features_popup<CR>")
+Map("n", "<leader>cR", ":Crates open_repository<CR>")
