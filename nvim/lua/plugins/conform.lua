@@ -5,7 +5,6 @@ local config = function()
 	end
 	conform.setup({
 		formatters_by_ft = {
-			-- ["_"] = { "trim_whitespace", "trim_newlines" },
 			go = { "golangci_lint" },
 			python = { "ruff_organize_imports", "ruff_format" },
 			lua = { "stylua" },
@@ -13,10 +12,10 @@ local config = function()
 			sh = { "shfmt" },
 			bash = { "shfmt" },
 			zsh = { "shfmt" },
-			markdown = { "mdformat" },
-			json = { "fixjson" },
+			markdown = { "prettier" },
+			json = { "prettier" },
 			toml = { "taplo" },
-			rust = { "rustfmt", lsp_format = "fallback" },
+			rust = { "rustfmt" },
 		},
 		format_on_save = {
 			timeout_ms = 500,

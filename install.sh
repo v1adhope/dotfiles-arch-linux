@@ -214,11 +214,11 @@ CONFIGS=()
 #PKGLIST+=(filezilla chromium clipgrab webcord gimp-devel audacity)
 
 # Dev
-#PKGLIST+=(glow neovim python-pip ruff lazygit stylua wget shfmt mdformat shellcheck \
+#PKGLIST+=(glow neovim python-pip ruff lazygit stylua wget shfmt shellcheck \
 #          sqlfluff git-filter-repo act)
 #CONFIGS+=(nvim)
 
-#PGKLIST+=(npm nvm eslint yarn fixjson)
+#PGKLIST+=(npm nvm eslint yarn pretier)
 
 #PKGLIST+=(php)
 
