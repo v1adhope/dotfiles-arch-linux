@@ -6,18 +6,14 @@ end
 -- No highlighting
 Map("n", "gnh", ":noh<CR>")
 
--- Move line
-Map("n", "<M-i>", ":m-2<CR>")
-Map("n", "<M-o>", ":m+<CR>")
-
 -- Buffer navigation
 Map("n", "<Space><Space>", ":b#<CR>")
 
 -- Split navigation
-Map("n", "<M-h>", ":wincmd h<CR>")
-Map("n", "<M-j>", ":wincmd j<CR>")
-Map("n", "<M-k>", ":wincmd k<CR>")
-Map("n", "<M-l>", ":wincmd l<CR>")
+Map("n", "<C-h>", ":wincmd h<CR>")
+Map("n", "<C-j>", ":wincmd j<CR>")
+Map("n", "<C-k>", ":wincmd k<CR>")
+Map("n", "<C-l>", ":wincmd l<CR>")
 
 -- File explorer
 Map("n", "fe", ":NvimTreeToggle<CR>")
