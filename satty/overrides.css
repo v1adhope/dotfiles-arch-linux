@@ -1,0 +1,7 @@
+window, .inner_box, .outer_box {
+    background-color: transparent;
+}
+.toolbar {
+    color: @headerbar_fg_color;
+    background-color: #ddddddaa;
+}
