@@ -20,6 +20,7 @@ Map("n", "fe", ":NvimTreeToggle<CR>")
 
 -- Gitsigns
 Map("n", "gbl", ":Gitsigns blame_line<CR>")
+Map("n", "gph", ":Gitsigns preview_hunk<CR>")
 
 -- Telescope
 Map("n", "ff", ":Telescope find_files<CR>")

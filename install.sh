@@ -215,7 +215,7 @@ CONFIGS=()
 
 # Dev
 #PKGLIST+=(glow neovim python-pip ruff lazygit stylua wget shfmt shellcheck \
-#          sqlfluff git-filter-repo act)
+#          sqlfluff git-filter-repo act github-cli)
 #CONFIGS+=(nvim)
 
 #PGKLIST+=(npm nvm eslint yarn pretier)
@@ -240,7 +240,7 @@ CONFIGS=()
 # Useful tools
 #PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
 #          smbclient pacman-contrib ninja cups samsung-unified-driver-printer \
-#          ffmpegthumbnailer ascii rsync tldr love tree)
+#          ffmpegthumbnailer ascii rsync tldr love tree bind)
 
 # See https://wiki.archlinux.org/title/Java#Switching_between_JVM for switching between
 #PKGLIST+=(jre8-openjdk jdk-openjdk)
@@ -292,6 +292,7 @@ link_configs
 #ln -sf $dotfiles_path/bin/* $local_path/bin/
 #ln -sf $dotfiles_path/rust/cargo/config.toml $local_path/share/cargo/config.toml
 #ln -sf $dotfiles_path/opencode/opencode.jsonc $config_path/opencode/opencode.jsonc
+#ln -sf $dotfiles_path/gh/config.yml $config_path/gh/config.yml
 
 function unlink_configs {
   for config in "${CONFIGS[@]}"; do
@@ -307,6 +308,7 @@ function unlink_configs {
   #unlink $HOME/.vimrc
   #unlink $HOME/.zshrc
   #find #local_path/bin -lname "$(pwd)/bin/*"
+  #unlink $config_path/gh/config.yml
 }
 
 #unlink_configs
@@ -380,6 +382,10 @@ function install_rust() {
   cargo install cargo-tarpaulin
 }
 
+function intall_claude_cli() {
+  curl -fsSL https://claude.ai/install.sh | bash
+}
+
 #create_GRUB_cfg_link
 
 #create_pacman_cfg_link
@@ -389,6 +395,8 @@ function install_rust() {
 #setup_fonts
 
 #install_rust
+
+#install_claude_cli
 
 # TODO: fix
 function set_up_NetworkManager {

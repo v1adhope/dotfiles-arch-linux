@@ -10,7 +10,7 @@ local config = function()
 		disable_filetype = { "TelescopePrompt" },
 		fast_wrap = {
 			map = "<M-e>",
-			chars = { "{", "[", "(", '"', "'" },
+			chars = { "{", "[", "(", '"', "'", "`" },
 			pattern = [=[[%'%"%)%>%]%)%}%,%:%;]]=],
 			end_key = "$",
 			before_key = "h",
