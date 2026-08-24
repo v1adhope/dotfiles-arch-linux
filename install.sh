@@ -227,7 +227,7 @@ CONFIGS=()
 
 #PKGLIST+=(mold lld taplo-cli)
 
-#PKGLIST+=(docker docker-compose docker-buildx dockerfmt)
+#PKGLIST+=(docker docker-compose docker-buildx dockerfmt docker-sbx)
 
 #PKGLIST+=(dotnet-host dotnet-runtime dotnet-sdk aspnet-runtime)
 #PKGLIST+=(dotnet-runtime-7.0 dotnet-sdk-7.0 aspnet-runtime-7.0 \

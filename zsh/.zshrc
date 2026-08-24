@@ -51,6 +51,9 @@ export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
 
+# Start ssh-agent
+[[ -z "${SSH_CONNECTION}" ]] && export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # Remove $PATH duplicates
 typeset -U PATH
 
@@ -102,6 +105,9 @@ export RUST_BACKTRACE=1
 
 # .NET
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# Docker sandbox
+export SBX_NO_TELEMETRY=1
 
 # Node
 [ -s /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
