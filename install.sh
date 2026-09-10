@@ -208,7 +208,7 @@ CONFIGS=()
 
 # Software
 #PKGLIST+=(firefox telegram-desktop keepassxc qbittorrent \
-#          obsidian dropbox libreoffice-still imv mpv sioyek-git amneziavpn-bin)
+#          obsidian dropbox libreoffice-still imv mpv sioyek-git)
 #CONFIGS+=(mpv imv sioyek)
 
 #PKGLIST+=(filezilla chromium clipgrab webcord gimp-devel audacity)
@@ -419,3 +419,5 @@ function create_BtH_cfg_link {
 # Mimetypes
 #TODO: system overwrites the file
 #cat mimetype/.config/mimeapps.list > $HOME/.config/mimeapps.list
+
+# TODO: Add v2rayA isntallation
