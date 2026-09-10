@@ -18,6 +18,9 @@ Map("n", "<C-l>", ":wincmd l<CR>")
 -- File explorer
 Map("n", "fe", ":NvimTreeToggle<CR>")
 
+-- Copy relative path to system clipboard
+Map("n", "cp", ":let @+ = expand('%')<CR>")
+
 -- Gitsigns
 Map("n", "gbl", ":Gitsigns blame_line<CR>")
 Map("n", "gph", ":Gitsigns preview_hunk<CR>")
