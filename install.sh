@@ -197,7 +197,7 @@ CONFIGS=()
 #          playerctl bluez-utils noise-suppression-for-voice)
 #CONFIGS+=(pipewire wireplumber)
 
-# Counting
+# Accounting
 #PKGLIST+=(homebank)
 
 # GUI (required alacritty, qtk, audio stack)
@@ -237,10 +237,10 @@ CONFIGS=()
 #PKGLIST+=(apache testssl.sh insomnia postgresql-libs go-task gorelease dbeaver \
 #         insomnia-bin opencode)
 
-# Useful tools
+# Other tools
 #PKGLIST+=(mesa-utils vulkan-tools nvtop xorg-xeyes  \
 #          smbclient pacman-contrib ninja cups samsung-unified-driver-printer \
-#          ffmpegthumbnailer ascii rsync tldr love tree bind)
+#          ffmpegthumbnailer ascii rsync tldr love tree bind v2ray)
 
 # See https://wiki.archlinux.org/title/Java#Switching_between_JVM for switching between
 #PKGLIST+=(jre8-openjdk jdk-openjdk)
