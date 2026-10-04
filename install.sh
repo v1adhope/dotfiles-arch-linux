@@ -208,7 +208,7 @@ CONFIGS=()
 
 # Software
 #PKGLIST+=(firefox telegram-desktop keepassxc qbittorrent \
-#          obsidian dropbox libreoffice-still imv mpv sioyek-git)
+#          obsidian dropbox libreoffice-still imv mpv sioyek-git obs-studio)
 #CONFIGS+=(mpv imv sioyek)
 
 #PKGLIST+=(filezilla chromium clipgrab webcord gimp-devel audacity)
