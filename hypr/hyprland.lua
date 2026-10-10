@@ -28,7 +28,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("mako")
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("hypridle")
-	hl.exec_cmd("AmneziaVPN & dropbox & obsidian & chromium & Telegram")
+	hl.exec_cmd("krusader & dropbox & obsidian & chromium & Telegram")
 end)
 
 -- === Look nad Feel ===
@@ -89,7 +89,7 @@ hl.config({
 hl.window_rule({ match = { class = "obsidian" }, workspace = "1 silent" })
 hl.window_rule({ match = { class = "chromium" }, workspace = "2 silent" })
 hl.window_rule({ match = { class = "org.telegram.desktop" }, workspace = "3 silent" })
-hl.window_rule({ match = { class = "krusader" }, workspace = "5 silent" })
+hl.window_rule({ match = { class = "org.kde.krusader" }, workspace = "5 silent" })
 hl.window_rule({ match = { class = "org.qbittorrent.qBittorrent" }, workspace = "6 silent" })
 -- stylua: ignore
 hl.window_rule({ match = { class = "org.keepassxc.KeePassXC" }, workspace = "7 silent", float = true, center = true, size = { 1600, 1200 } })
