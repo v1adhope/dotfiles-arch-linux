@@ -89,10 +89,11 @@ hl.config({
 hl.window_rule({ match = { class = "obsidian" }, workspace = "1 silent" })
 hl.window_rule({ match = { class = "chromium" }, workspace = "2 silent" })
 hl.window_rule({ match = { class = "org.telegram.desktop" }, workspace = "3 silent" })
-hl.window_rule({ match = { class = "homebank" }, workspace = "5 silent" })
+hl.window_rule({ match = { class = "krusader" }, workspace = "5 silent" })
 hl.window_rule({ match = { class = "org.qbittorrent.qBittorrent" }, workspace = "6 silent" })
 -- stylua: ignore
 hl.window_rule({ match = { class = "org.keepassxc.KeePassXC" }, workspace = "7 silent", float = true, center = true, size = { 1600, 1200 } })
+hl.window_rule({ match = { class = "homebank" }, workspace = "7 silent" })
 -- stylua: ignore
 hl.window_rule({ match = { title = "Picture in picture" }, pin = true, float = true, size = { 450, 255 }, move = { 2100, 1160 } })
 
