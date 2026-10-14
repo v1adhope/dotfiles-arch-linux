@@ -16,7 +16,7 @@ Clone with `git clone --recurse-submodules` or run `git submodule update --init`
 
 - [/install.sh](/install.sh)
 - [Scripts](/scripts/)
-- [Additional waybar indicators](/waybar/scripts/readme.md)
+- [Additional waybar indicators](/waybar/scripts/README.md)
 - [GPU undervolt (AMD)](/gpu-undervolt/README.md)
 
 # Preview
