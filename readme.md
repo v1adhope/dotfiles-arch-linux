@@ -6,6 +6,12 @@ The build does not come with wallpaper, set up it.
 
 Run `crontab -e` and paste this `* * 1 * * /home/rat/.local/scripts/paccache-clear.sh` for clean cache every first day of month
 
+# Submodules
+
+- [nvim](/nvim)
+
+Clone with `git clone --recurse-submodules` or run `git submodule update --init` after.
+
 # Navigation
 
 - [/install.sh](/install.sh)
