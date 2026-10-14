@@ -20,5 +20,11 @@ editor = nvim
 [pull]
 rebase = true
 
+[push]
+recurseSubmodules = on-demand
+
+[submodule]
+recurse = true
+
 [url "git@gitea.gospodaprogrammisty.ru:"]
 insteadOf = https://gitea.gospodaprogrammisty.ru
