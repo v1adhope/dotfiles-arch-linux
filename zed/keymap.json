@@ -1,11 +1,1 @@
-[
-  {
-    "context": "Editor && vim_mode == normal",
-    "bindings": {
-      "gh": [
-        "workspace::SendKeystrokes",
-        "K"
-      ]
-    }
-  }
-]
+[]

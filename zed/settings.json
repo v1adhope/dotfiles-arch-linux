@@ -1,63 +1,46 @@
 {
-  "_documentation": "https://zed.dev/docs/configuring-zed",
+  "format_on_save": "on",
   "proxy": "",
-  "format_on_save": "modifications",
   "ui_font_family": ".ZedMono",
   "session": {
-    "trust_all_worktrees": false
+    "trust_all_worktrees": false,
   },
   "project_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "outline_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "collaboration_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "agent": {
     "dock": "right",
     "favorite_models": [],
-    "model_parameters": []
+    "model_parameters": [],
   },
   "git_panel": {
-    "dock": "left"
+    "dock": "left",
   },
-  "buffer_font_fallbacks": [
-    ".ZedMono"
-  ],
+  "buffer_font_fallbacks": [".ZedMono"],
   "buffer_font_family": "Hack Nerd Font Mono",
   "base_keymap": "JetBrains",
-  "ensure_final_newline_on_save": false,
+  "ensure_final_newline_on_save": true,
   "git": {
     "inline_blame": {
-      "enabled": false
-    }
+      "enabled": false,
+    },
   },
   "journal": {
-    "hour_format": "hour24"
+    "hour_format": "hour24",
   },
   "auto_update": false,
   "theme": "Tokyo Night",
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
   "vim_mode": true,
   "ui_font_size": 16,
   "buffer_font_size": 16.0,
-  "languages": {
-    "JavaScript": {
-      "format_on_save": "on",
-      "code_actions_on_format": {
-        "source.fixAll.eslint": true
-      }
-    },
-    "CSS": {
-      "format_on_save": "on"
-    },
-    "HTML": {
-      "format_on_save": "on"
-    }
-  }
 }
