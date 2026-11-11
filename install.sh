@@ -208,7 +208,7 @@ CONFIGS=()
 
 # Software
 #PKGLIST+=(firefox telegram-desktop keepassxc qbittorrent \
-#          obsidian dropbox libreoffice-still imv mpv sioyek-git obs-studio krusader)
+#          obsidian syncthing syncthingtray libreoffice-still imv mpv sioyek-git obs-studio krusader)
 #CONFIGS+=(mpv imv sioyek)
 
 #PKGLIST+=(filezilla chromium clipgrab webcord gimp-devel audacity)
@@ -320,11 +320,6 @@ function settings {
 
   for i in "${PKGLIST[@]}"; do
     case $i in
-    "dropbox")
-      # Dropbox fix
-      rm -rf ~/.dropbox-dist
-      install -dm0 ~/.dropbox-dist
-      ;;
     "bluez-utils")
       # Enable bluetooth
       rfkill unblock bluetooth

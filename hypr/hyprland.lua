@@ -28,7 +28,8 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("mako")
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("hypridle")
-	hl.exec_cmd("krusader & dropbox & obsidian & chromium & Telegram")
+	hl.exec_cmd("krusader & obsidian & chromium & Telegram")
+	hl.exec_cmd("syncthing & syncthingtray")
 end)
 
 -- === Look nad Feel ===
