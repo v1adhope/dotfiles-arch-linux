@@ -65,7 +65,7 @@ export EDITOR=$(which nvim)
 export VISUAL=$(which nvim)
 
 # Private
-[ -f "$HOME/Dropbox/arch/.private" ] && source "$HOME/Dropbox/arch/.private"
+[ -f "$HOME/Storage/arch/.private" ] && source "$HOME/Storage/arch/.private"
 
 # Ls and exa color overwriting
 export LS_COLORS="di=01;38;5;12:ln=01;38;5;13:or=01;38;5;167:ex=38;5;115:*.*=00"
