@@ -229,10 +229,7 @@ CONFIGS=()
 
 #PKGLIST+=(docker docker-compose docker-buildx dockerfmt docker-sbx)
 
-#PKGLIST+=(dotnet-host dotnet-runtime dotnet-sdk aspnet-runtime)
-#PKGLIST+=(dotnet-runtime-7.0 dotnet-sdk-7.0 aspnet-runtime-7.0 \
-#          dotnet-runtime-6.0 dotnet-sdk-6.0 aspnet-runtime-6.0 \
-#          mono dotnet-runtime-3.0 dotnet-sdk-3.0 aspnet-runtime-3.0)
+#PKGLIST+=(dotnet-host dotnet-runtime dotnet-sdk aspnet-runtime aspnet-targeting-pack)
 
 #PKGLIST+=(apache testssl.sh insomnia postgresql-libs go-task gorelease dbeaver \
 #         insomnia-bin opencode)
