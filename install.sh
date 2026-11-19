@@ -181,7 +181,7 @@ CONFIGS=()
 #PKGLIST+=(mesa lib32-mesa vulkan-intel lib32-vulkan-intel itel-media-driver libva-utils)
 
 # Fonts (see setup_fonts)
-#PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk)
+#PKGLIST+=(ttf-hack-nerd noto-fonts noto-fonts-emoji noto-fonts-cjk woff2)
 
 # Console and navigation
 #PKGLIST+=(alacritty zsh tmux exa bat nnn fd ripgrep)
