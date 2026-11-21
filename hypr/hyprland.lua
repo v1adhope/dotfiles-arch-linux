@@ -118,6 +118,10 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(gracefulExit))
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd(screenLocker))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(appLauncher))
 
+-- Power
+hl.bind(mainMod .. " + CTRL + SHIFT + S", hl.dsp.exec_cmd('hyprshutdown --post-cmd "shutdown now"'))
+hl.bind(mainMod .. " + CTRL + SHIFT + R", hl.dsp.exec_cmd('hyprshutdown --post-cmd "shutdown -r now"'))
+
 -- Screenshots
 hl.bind("PRINT", hl.dsp.exec_cmd(makeScreenshot))
 
