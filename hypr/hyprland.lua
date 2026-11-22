@@ -76,6 +76,7 @@ hl.config({
 	misc = {
 		disable_hyprland_logo = true,
 		disable_splash_rendering = true,
+		session_lock_xray = true,
 	},
 
 	ecosystem = {
