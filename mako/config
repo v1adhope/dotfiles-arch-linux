@@ -2,6 +2,7 @@ on-button-left=dismiss
 on-button-right=dismiss-all
 default-timeout=5000
 ignore-timeout=1
+layer=overlay
 
 font="Noto Sans Mono" Regular 11.5
 background-color=#000000CE
