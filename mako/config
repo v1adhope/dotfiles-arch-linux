@@ -10,7 +10,7 @@ text-color=#ffffffff
 padding=12, 6
 border-color=#7aa2f7ff
 border-size=2
-border-radius=10
+border-radius=8
 
 [mode=away]
 default-timeout=0
