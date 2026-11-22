@@ -4,7 +4,7 @@ default-timeout=5000
 ignore-timeout=1
 layer=overlay
 
-font="Noto Sans Mono" Regular 11.5
+font="Noto Sans Mono" Regular 12
 background-color=#000000ce
 text-color=#ffffffff
 padding=12, 6
