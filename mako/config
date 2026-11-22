@@ -5,12 +5,15 @@ ignore-timeout=1
 layer=overlay
 
 font="Noto Sans Mono" Regular 11.5
-background-color=#000000CE
-text-color=#FFFFFFFF
+background-color=#000000ce
+text-color=#ffffffff
 padding=12, 6
-border-color=#3546A1CC
+border-color=#7aa2f7ff
 border-size=2
 border-radius=10
 
 [mode=away]
 default-timeout=0
+
+[urgency=critical]
+border-color=#f7768eff
