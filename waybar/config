@@ -5,7 +5,7 @@
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
 
   "modules-center": [
-    "custom/crypto-currency",
+    "custom/cryptocurrency",
     "custom/weather",
     "custom/space",
     "clock",
@@ -22,11 +22,11 @@
     "bluetooth"
   ],
 
-  "custom/crypto-currency": {
+  "custom/cryptocurrency": {
     "max-length": 15,
     "return-type": "json",
     "format": "{}",
-    "exec": "$HOME/.config/waybar/scripts/crypto-currency",
+    "exec": "$HOME/.config/waybar/scripts/cryptocurrency",
     "interval": 1800
   },
 
